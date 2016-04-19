@@ -32,11 +32,14 @@ fi
 # Alias
 
 # Copy folder with all contents
+
+alias R='ranger'
 alias cpf='cp -avr'
 
-alias l='ls -CF'
+alias e='exit'
+alias l='ls -CF --group-directories-first'
 alias c='clear'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 
 # Fedora based aliases

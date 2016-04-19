@@ -1,30 +1,26 @@
-# Useful
-#::::::::::::::::::::::::::::::::::::::::
-  awesome
-  rxvt-unicode
-  ncmpcpp mopidy
-  python-pip
-  Mopidy-Spotify (pip)
+# Applications
+*  awesome
+*  rxvt-unicode
+*  ncmpcpp
+*  mopidy
+*  python-pip
+*  Mopidy-Spotify (pip)
+*  lolcat (gem)
+*  [Fedy](https://github.com/folkswithhats/fedy) (Fedora)
 
-# Notes
-#::::::::::::::::::::::::::::::::::::::::
-Add lines to .config/mopidy/mopidy.conf
-  [spotify]
-  username =
-  password =
-# ------------
-Fedy for faster configuration of fonts and (uggly) installation of useful applications
-  http://github.com/folkswithhats/fedy/
-# ------------
-Atom Settings
-  Themes
-    UI:     One Dark
-    Syntax: An Old Hope
-  Packages
-    minimap
-    minimap-cursorline
-    autocomplete-clang
-    autocomplete-python
-    color-picker
-    language-lua
-    pigments
+# Settings
+
+Atom
+------
+###### Settings
+*    UI:     One Dark
+*    Syntax: An Old Hope
+
+###### Packages
+*    minimap
+*    minimap-cursorline
+*    autocomplete-clang
+*    autocomplete-python
+*    color-picker
+*    language-lua
+*    pigments
