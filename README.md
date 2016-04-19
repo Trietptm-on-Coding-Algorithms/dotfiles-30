@@ -9,6 +9,7 @@
 *  [Fedy](https://github.com/folkswithhats/fedy) (Fedora)
 * ranger (terminal files browser)
 * python-pep8
+* zsh ([zim](https://github.com/Eriner/zim))
 
 # Settings
 
