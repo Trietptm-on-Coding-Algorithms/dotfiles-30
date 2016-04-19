@@ -7,6 +7,8 @@
 *  Mopidy-Spotify (pip)
 *  lolcat (gem)
 *  [Fedy](https://github.com/folkswithhats/fedy) (Fedora)
+* ranger (terminal files browser)
+* python-pep8
 
 # Settings
 
@@ -24,3 +26,9 @@ Atom
 *    color-picker
 *    language-lua
 *    pigments
+*    Atom Beautify
+*    File-icons
+*    Git plus
+*    linter
+*    linter-pep8
+*    python-indent
