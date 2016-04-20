@@ -1,3 +1,8 @@
+# Install
+git clone --recursive https://github.com/lemones/dotfiles/dotfiles.git $HOME  
+DO NOT USE IF YOU ARE NOT ME!  
+THIS WILL BREAK YOUR CURRENT UI AND SHELL SETUP.
+
 # Applications
 *  awesome
 *  rxvt-unicode
