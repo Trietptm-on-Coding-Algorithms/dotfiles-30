@@ -11,9 +11,11 @@
 
 ! URxvt Settings-----------------------------------------------------------------------
 
-  Rxvt*depth:           32
-  URxvt*background:     rgba:0000/0000/0200/a300
-  URxvt*foreground:     #DEDEDE
+  Rxvt*depth:       32
+! URxvt*background: rgba:0000/0000/0200/a300
+  URxvt*background: [90]#17130d
+  URxvt*foreground: #c6a57b
+
   URxvt.perl-ext-common: default,matcher
   URxvt.urlLauncher:     /usr/bin/firefox
   URxvt.matcher.button:  1
@@ -22,39 +24,45 @@
   URxvt*scrollBar:       false
   URxvt*cursorBlink:     true
   URxvt*cursorUnderline: true
-  URxvt*colorUL: #86a2b0
-! black
-  URxvt*color0  : #2E3436
-  URxvt*color8  : #555753
-! red
-  URxvt*color1  : #CC0000
-  URxvt*color9  : #EF2929
-! green
-  URxvt*color2  : #4E9A06
-  URxvt*color10 : #8AE234
-! yellow
-  URxvt*color3  : #C4A000
-  URxvt*color11 : #FCE94F
-! blue
-  URxvt*color4  : #3465A4
-  URxvt*color12 : #729FCF
-! magenta
-  URxvt*color5  : #75507B
-  URxvt*color13 : #AD7FA8
-! cyan
-  URxvt*color6  : #06989A
-  URxvt*color14 : #34E2E2
-! white
-  URxvt*color7  : #D3D7CF
-  URxvt*color15 : #EEEEEC
 
+  URxvt*colorUL: #86a2b0
+
+  URxvt*color0  : #101010
+  URxvt*color8  : #404040
+
+  URxvt*color1  : #953331
+  URxvt*color9  : #8D4A48
+
+  URxvt*color2  : #546A29
+  URxvt*color10 : #7E9960
+
+  URxvt*color3  : #909737
+  URxvt*color11 : #9CA554
+
+  URxvt*color4  : #385E6B
+  URxvt*color12 : #5C737C
+
+  URxvt*color5  : #7F355E
+  URxvt*color13 : #95618B
+
+  URxvt*color6  : #34676F
+  URxvt*color14 : #5D858A
+
+  URxvt*color7  : #dddddd
+  URxvt*color15 : #dddddd
 
 ! Fonts-----------------------------------------------------------------------
 
-  URxvt.font:       xft:Bitstream Vera Sans Mono:pixelsize=12:Regular
-  URxvt.boldFont:   xft:Bitstream Vera Sans Mono:pixelsize=12:Bold
-! URxvt.letterSpace: -1
+! Bistream Vera Sans Mono - 12px
+!  URxvt.font:       xft:Bitstream Vera Sans Mono:pixelsize=12:Regular
+!  URxvt.boldFont:   xft:Bitstream Vera Sans Mono:pixelsize=12:Bold
 
+! DejaVu Sans Mono - 12px
+  URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+  URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
+!
+! Use letterSpace to fix spacing bugg
+! URxvt.letterSpace: -1
 
 
 !xcalc-----------------------------------------------------------------------

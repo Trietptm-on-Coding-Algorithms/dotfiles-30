@@ -23,7 +23,7 @@ clockwidget:set_widget(mytextclock)
 clockwidget:set_bgimage(beautiful.widget_bg)
 
 -- Calendar
-mytextcalendar = awful.widget.textclock(markup("#FFFFFF", space3 .. "%d %b<span font='Tamsyn 5'> </span>"))
+mytextcalendar = awful.widget.textclock(markup("#FFFFFF", space3 .. "%d %b<span font='DejaVu Sans Mono 8'> </span>"))
 calendar_icon = wibox.widget.imagebox()
 calendar_icon:set_image(beautiful.calendar)
 calendarwidget = wibox.widget.background()
@@ -265,15 +265,38 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(bigspr)
+
+    right_layout:add(netdown_icon)
+    right_layout:add(networkwidget)
+    right_layout:add(netup_icon)
+--  right_layout:add(bottom_bar)
+    right_layout:add(spr_very_small)
+    right_layout:add(cpu_icon)
+    right_layout:add(cpuwidget)
+
+    right_layout:add(bigspr)
+    right_layout:add(prev_icon)
+    right_layout:add(next_icon)
+    right_layout:add(stop_icon)
+    right_layout:add(play_pause_icon)
+    right_layout:add(bar)
+--  right_layout:add(mpd_icon)
+--  right_layout:add(musicwidget)
+--  right_layout:add(bar)
+--  right_layout:add(spr_very_small)
+--  right_layout:add(volumewidget)
+
+    right_layout:add(bigspr)
     right_layout:add(calendar_icon)
     right_layout:add(calendarwidget)
     right_layout:add(clock_icon)
     right_layout:add(clockwidget)
 
+
+
 -- █▓▒░  Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
     mywibox[s]:set_widget(layout)
 
@@ -282,17 +305,6 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
-    bottom_left_layout:add(spr_right)
-    bottom_left_layout:add(prev_icon)
-    bottom_left_layout:add(next_icon)
-    bottom_left_layout:add(stop_icon)
-    bottom_left_layout:add(play_pause_icon)
-    bottom_left_layout:add(bar)
-    bottom_left_layout:add(mpd_icon)
-    bottom_left_layout:add(musicwidget)
-    bottom_left_layout:add(bar)
-    bottom_left_layout:add(spr_very_small)
-    bottom_left_layout:add(volumewidget)
     bottom_left_layout:add(spr_left)
     bottom_left_layout:add(mypromptbox[s])
 
@@ -300,23 +312,15 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the bottom right
     bottom_right_layout = wibox.layout.fixed.horizontal()
     bottom_right_layout:add(spr_bottom_right)
-    bottom_right_layout:add(netdown_icon)
-    bottom_right_layout:add(networkwidget)
-    bottom_right_layout:add(netup_icon)
-    bottom_right_layout:add(bottom_bar)
-    bottom_right_layout:add(cpu_icon)
-    bottom_right_layout:add(cpuwidget)
-    bottom_right_layout:add(bottom_bar)
-    bottom_right_layout:add(bottom_bar)
-    bottom_right_layout:add(last)
 
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()
     bottom_layout:set_left(bottom_left_layout)
+    bottom_layout:set_middle(mytasklist[s])
     bottom_layout:set_right(bottom_right_layout)
     mybottomwibox[s]:set_widget(bottom_layout)
 
     -- Set proper backgrounds, instead of beautiful.bg_normal
     mywibox[s]:set_bg(beautiful.topbar_path .. math.floor((screen[mouse.screen].workarea.width)) .. ".png")
-    mybottomwibox[s]:set_bg("#242424")
+    mybottomwibox[s]:set_bg("#17130d")
 end

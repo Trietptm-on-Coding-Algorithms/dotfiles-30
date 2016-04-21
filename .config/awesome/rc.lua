@@ -18,7 +18,7 @@ require("lemones/autostart")
 
 
 
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/dgraybean/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/julia/theme.lua")
 modkey     = "Mod4"
 altkey     = "Mod1"
 terminal   = "urxvtc" or "xterm"
@@ -44,21 +44,19 @@ local layouts = {
 
 tags = {
    names = {
-     " TERMINAL ",
      " WEB ",
-     " PYTHON ",
-     " EDITOR ",
-     " MEDIA ",
-     " MISC ",
-     " FILES " },
+     " TERM ",
+     " DEV ",
+     " FILE ",
+     " DUMP ",
+    },
    layout = {
      layouts[7],
      layouts[1],
      layouts[1],
      layouts[1],
-     layouts[3],
-     layouts[1],
-     layouts[4] }
+     layouts[3]
+  }
 }
 
 for s = 1, screen.count() do
