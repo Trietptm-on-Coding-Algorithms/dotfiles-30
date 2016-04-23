@@ -6,13 +6,24 @@ local lain      = require("lain")
 
 -- {{{ Wibox
 markup = lain.util.markup
-blue   = "#80CCE6"
+blue   = "#c6a57b"
 space3 = markup.font("Tamsyn 3", " ")
 space2 = markup.font("Tamsyn 2", " ")
 
--- Test
+-- Battery
+batwidget = lain.widgets.bat({
+    settings = function()
+        bat_header = " Bat: "
+        bat_p      = bat_now.perc .. "%"
 
+        if bat_now.status == "Not present" then
+            bat_header = ""
+            bat_p      = ""
+        end
 
+        widget:set_markup(markup(blue, bat_header) .. bat_p)
+    end
+})
 
 -- Clock
 mytextclock = awful.widget.textclock(markup("#FFFFFF", space3 .. "%H:%M" .. space2))
@@ -273,6 +284,7 @@ for s = 1, screen.count() do
     right_layout:add(spr_very_small)
     right_layout:add(cpu_icon)
     right_layout:add(cpuwidget)
+    right_layout:add(batwidget)
 
     right_layout:add(bigspr)
     right_layout:add(prev_icon)
