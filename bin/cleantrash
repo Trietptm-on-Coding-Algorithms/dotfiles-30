@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "Removing browser cache"
+rm -rf ~/.cache/google-chrome/
+rm -rf ~/.cache/mozilla/firefox/
+
+echo "Removing other cache files"
+rm -rf ~/.cache/shotwell/
+rm -rf ~/.cache/media-art/
+rm -rf ~/.cache/thumbnails/
+rm -rf ~/.cache/vlc/
+
+echo "Removing shell history files"
+rm ~/.zhistory
+rm ~/.bash_history
+sh -c "history -c"

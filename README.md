@@ -15,6 +15,7 @@ THIS WILL BREAK YOUR CURRENT UI AND SHELL SETUP.
 * ranger (terminal files browser)
 * python-pep8
 * zsh ([zim](https://github.com/Eriner/zim))
+* VIM (vim-jedi, vim-powerline)
 
 # Settings
 
