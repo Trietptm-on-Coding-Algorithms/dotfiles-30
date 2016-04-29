@@ -1,0 +1,20 @@
+#!/bin/bash
+
+setdate=$(date +'%d-%h-%y-%H%M')
+mkdir ~/Backup/$setdate
+
+tar -cvf ~/Backup/$setdate/projects.tar.gz ~/Projects/
+tar -cvf ~/Backup/$setdate/awesome.tar.gz ~/.config/awesome/
+tar -cvf ~/Backup/$setdate/bin.tar.gz ~/bin/
+tar -cvf ~/Backup/$setdate/dotfiles.tar.gz ~/.zim \
+                                           ~/.ncmpcpp/ \
+                                           ~/.bashrc \
+                                           ~/.nanorc \
+                                           ~/.vimrc \
+                                           ~/.xinitrc \
+                                           ~/.Xresources \
+                                           ~/.zimrc \
+                                           ~/.zshrc \
+                                           ~/Readme.md
+
+rsync -avz ~/Backup/$setdate ~/Dropbox/Backups/

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sshfs citronster@lemones.sytes.net:/home/citronster/public_html ~/mount/sshfs/
