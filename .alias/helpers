@@ -5,3 +5,5 @@ alias l='ls -CF --group-directories-first'
 alias c='clear'
 alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
+
+alias snano='sudo nano'
