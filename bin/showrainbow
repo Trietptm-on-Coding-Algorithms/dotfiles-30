@@ -50,5 +50,5 @@ cat << EOF
 
 EOF
 
-uname -a
-uptime
+# uname -a
+# uptime

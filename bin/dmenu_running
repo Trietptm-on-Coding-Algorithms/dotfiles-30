@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # Search through open programs and switch to their tag
+
 application=$(
 	# List all running programs
 	xlsclients |\

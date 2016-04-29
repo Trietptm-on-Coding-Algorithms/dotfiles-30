@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cp -r /home/lemones/{.ncmpcpp/, .config/awesome/} /home/lemones/Gitbackup/dotfiles/
-
-cp /home/lemones/{.bashrc, .nanorc, .vimrc, .xinitrc, .Xresource, .zimrc, .zshrc, Readme.md} /home/lemones/Gitbackup/dotfiles/
