@@ -1,8 +1,0 @@
-# Copy folder with all contents
-alias cpf='cp -avr'
-alias e='exit'
-alias l='ls -CF --color=auto --group-directories-first'
-alias c='clear'
-alias ls='ls --color=auto --group-directories-first'
-alias grep='grep --color=auto'
-alias ports='netstat -tulanpg'

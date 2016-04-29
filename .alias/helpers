@@ -1,5 +1,13 @@
 # Copy folder with all contents
+
+# List all open TCP/UDP ports
+alias oports='netstat -atun'
+# Print what using the port
+alias wports='echo lsof -n -i4TCP:$1'
+
+# Copy folder
 alias cpf='cp -avr'
+
 alias e='exit'
 alias l='ls -CF --group-directories-first'
 alias c='clear'
