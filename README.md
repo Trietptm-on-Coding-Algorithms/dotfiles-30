@@ -39,3 +39,8 @@ Atom
 *    linter
 *    linter-pep8
 *    python-indent
+
+# Fedora   
+To install bmc4322 drivers   
+wget http://git.io/vuLC7 -v -O fedora23_broadcom_wl_install.sh && sh ./fedora23_broadcom_wl_install.sh;   
+A temporary fix for kernel 4-6-0, change license to GPL in src/wl/sys/wl_linux.c (this is not legal!)
