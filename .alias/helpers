@@ -1,19 +1,18 @@
-# Copy folder with all contents
-
-# List all open TCP/UDP ports
 alias oports='netstat -atun'
-# Print what using the port
-alias wports='echo lsof -n -i4TCP:$1'
+alias wports='lsof -n -i4TCP:$1'
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-# Copy folder
+alias cp='cp -v'
+alias mv='mv -vi'
+alias rm='rm -vI'
 alias cpf='cp -avr'
+alias l='ls -CF --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
+alias ll='ls++'
 
 alias psa='ps aux | grep '
+alias snano='sudo nano'
 
 alias e='exit'
-alias l='ls -CF --group-directories-first'
 alias c='clear'
-alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
-
-alias snano='sudo nano'

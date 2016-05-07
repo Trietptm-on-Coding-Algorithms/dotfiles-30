@@ -23,6 +23,7 @@ xcompmgr &
 xscreensaver &
 # mopidy &
 # urxvtd &
+nm-applet &
 
 exec awesome
 # exec i3

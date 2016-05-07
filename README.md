@@ -17,7 +17,22 @@ THIS WILL BREAK YOUR CURRENT UI AND SHELL SETUP.
 * zsh ([zim](https://github.com/Eriner/zim))
 * VIM (vim-jedi, vim-powerline)
 
+# Security
+* firewald
+* dnscrypt-proxy
+* tools/dnscrypt-autoinstall
+
+Dont forget to change /etc/resolv.conf to use localhost(127.0.0.1).  
+To prevent dhcpcd to overwrite resolv.conf, add:    
+static domain_name_servers=127.0.0.1
+
 # Settings
+
+Vim
+------
+
+##### Plugins
+The plugins can already be found in .zim/bundle/
 
 Atom
 ------
