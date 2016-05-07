@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "openvpn running at:"
+echo "-----------------------------------------"
+ps -C openvpn
+echo "-----------------------------------------"
+echo "Exiting..."
+
+if [[ -z $(ps -C openvpn -opid=) ]]; then
+    sudo openvpn --config /etc/openvpn/cstorm_linux-norway_udp.ovpn
+    echo "-Exit--------------------------------------"
+fi

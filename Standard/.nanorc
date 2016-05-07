@@ -1,0 +1,9 @@
+# .nanorc
+
+set morespace
+set nohelp
+set nowrap
+#set smooth
+
+# Color syntax
+include "/usr/share/nano/*.nanorc"
