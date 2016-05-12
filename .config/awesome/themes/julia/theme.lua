@@ -23,7 +23,8 @@ theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/the
 -- theme.font                          = "Tamsyn 10.5"
 -- theme.taglist_font                  = "Tamsyn 8"
 theme.font                          = "DejaVu Sans Mono 8"
-theme.taglist_font                  = "DejaVu Sans Mono 8"
+-- theme.taglist_font                  = "DejaVu Sans Mono 8"
+theme.taglist_font 		              = "FontAwesome 8"
 theme.topbar_path                   = "png:" .. theme.icon_dir .. "/topbar/"
 
 

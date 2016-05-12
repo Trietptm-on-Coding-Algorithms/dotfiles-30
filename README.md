@@ -24,9 +24,14 @@ THIS WILL BREAK YOUR CURRENT UI AND SHELL SETUP.
 
 Dont forget to change /etc/resolv.conf to use localhost(127.0.0.1).  
 To prevent dhcpcd to overwrite resolv.conf, add:    
-static domain_name_servers=127.0.0.1
+static domain_name_servers=127.0.0.1  
+
+Awesome-wm depends on ttf-fontawesome for tag-icons.  
+([fontawesome](http://fontawesome.io))
 
 # Settings
+
+Take a look at numix-themes
 
 Vim
 ------

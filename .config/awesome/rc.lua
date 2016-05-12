@@ -42,16 +42,17 @@ local layouts = {
     treesome
 }
 
+
 tags = {
    names = {
-     " WEB ",
-     " TERM ",
-     " DEV ",
-     " FILE ",
-     " DUMP ",
+     " " .. utf8.char(0xf269) .. " ",
+     " " .. utf8.char(0xf09b) .. " ",
+     " " .. utf8.char(0xf121) .. " ",
+     " " .. utf8.char(0xf07b) .. " ",
+     " " .. utf8.char(0xf118) .. " ",
     },
    layout = {
-     layouts[7],
+     layouts[1],
      layouts[1],
      layouts[1],
      layouts[1],

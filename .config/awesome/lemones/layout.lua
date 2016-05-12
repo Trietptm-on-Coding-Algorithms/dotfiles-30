@@ -2,7 +2,11 @@ local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local awful     = require("awful")
 local lain      = require("lain")
+local vicious   = require("vicious")
 
+-- Set tooltip colors
+beautiful.tooltip_bg_color = "#282420"
+beautiful.tooltip_fg_color = "#FFFFFF"
 
 -- {{{ Wibox
 markup = lain.util.markup
@@ -24,6 +28,28 @@ batwidget = lain.widgets.bat({
         widget:set_markup(markup(blue, bat_header) .. bat_p)
     end
 })
+
+--[=====[ TEST
+testtext = wibox.widget.textbox()
+vicious.register(testtext, function(widget,args)
+  cmd = io.popen("dig +short myip.opendns.com @resolver1.opendns.com")
+  top = cmd:read("*a")
+  return string.gsub(top,"\n$","")
+end
+  )
+testicon = wibox.widget.imagebox()
+testicon:set_image(beautiful.widget_cpu)
+testtip = awful.tooltip({
+  objects = {testicon, testtext },
+  timeout = 300000,
+  timer_function = function ()
+    cmd = io.popen("netinfo")
+    top = cmd:read("*a")
+    return string.gsub(top,"\n$","")
+  end
+})
+TEST --]=====]
+
 
 -- Clock
 mytextclock = awful.widget.textclock(markup("#FFFFFF", space3 .. "%H:%M" .. space2))
@@ -270,13 +296,14 @@ for s = 1, screen.count() do
     left_layout:add(spr_small)
     left_layout:add(mylayoutbox[s])
     left_layout:add(bigspr)
+    left_layout:add(mypromptbox[s])
 
 
 -- █▓▒░ Widgets that are aligned to the upper right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(bigspr)
 
+    right_layout:add(bigspr)
     right_layout:add(netdown_icon)
     right_layout:add(networkwidget)
     right_layout:add(netup_icon)
@@ -304,6 +331,9 @@ for s = 1, screen.count() do
     right_layout:add(clock_icon)
     right_layout:add(clockwidget)
 
+    --right_layout:add(cpu_icon)
+    --right_layout:add(testtext)
+
 
 
 -- █▓▒░  Now bring it all together (with the tasklist in the middle)
@@ -312,18 +342,15 @@ for s = 1, screen.count() do
     layout:set_right(right_layout)
     mywibox[s]:set_widget(layout)
 
+--[ Bottom wibox
     -- Create the bottom wibox
     mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, border_width = 0, height = 26 })
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
-    bottom_left_layout:add(spr_left)
-    bottom_left_layout:add(mypromptbox[s])
-
 
     -- Widgets that are aligned to the bottom right
     bottom_right_layout = wibox.layout.fixed.horizontal()
-    bottom_right_layout:add(spr_bottom_right)
 
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()
@@ -331,8 +358,9 @@ for s = 1, screen.count() do
     bottom_layout:set_middle(mytasklist[s])
     bottom_layout:set_right(bottom_right_layout)
     mybottomwibox[s]:set_widget(bottom_layout)
+--]
 
     -- Set proper backgrounds, instead of beautiful.bg_normal
     mywibox[s]:set_bg(beautiful.topbar_path .. math.floor((screen[mouse.screen].workarea.width)) .. ".png")
-    mybottomwibox[s]:set_bg("#17130d")
+--    mybottomwibox[s]:set_bg("#17130d")
 end

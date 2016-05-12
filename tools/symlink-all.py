@@ -7,9 +7,9 @@
 import os
 import shutil
 
-homedir = '/home/lemones/'
-backup_dest = '/home/lemones/Backup/'
-from_dir = '/home/lemones/Gits/dotfiles/'
+homedir = os.path.expanduser('~') + '/'
+backup_dest = homedir + 'Backup'
+from_dir = homedir + '.dotfiles/'
 exclude = ['LICENSE',
            'README.md',
            '.git',
@@ -21,11 +21,11 @@ listdir = os.listdir(from_dir)
 
 # Create backup directory if it doesn't exist.
 if not os.path.exists(backup_dest):
-    print ("Backup directory is missing. Creating: {}".format(
+    print("Backup directory is missing. Creating: {}".format(
         backup_dest))
     os.makedirs(backup_dest)
 else:
-    print ("Backup directory exists. Re-creating.")
+    print("Backup directory exists. Re-creating.")
     shutil.rmtree(backup_dest)
     os.makedirs(backup_dest)
 

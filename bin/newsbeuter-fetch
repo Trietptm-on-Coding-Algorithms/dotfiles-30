@@ -1,0 +1,24 @@
+# Stolen from:
+# https://awesome.naquadah.org/wiki/Uzsolt_newsreader_%28newsbeuter,_liferea%29_information
+
+#!/bin/bash
+LOGFILE=$HOME/.newsbeuter/newsbeuter-unread-items
+
+sqlite3 ~/.newsbeuter/cache.db "SELECT COUNT(*) FROM rss_item WHERE unread=1; \
+   SELECT
+       rss_feed.title,
+       GROUP_CONCAT(rss_item.title,'@')
+   FROM rss_item \
+   JOIN rss_feed ON rss_feed.rssurl=rss_item.feedurl \
+   WHERE unread=1
+   GROUP BY rss_feed.rssurl;" > $LOGFILE #!/bin/bash
+LOGFILE=$HOME/.newsbeuter/newsbeuter-unread-items
+
+sqlite3 ~/.newsbeuter/cache.db "SELECT COUNT(*) FROM rss_item WHERE unread=1; \
+   SELECT
+       rss_feed.title,
+       GROUP_CONCAT(rss_item.title,'@')
+   FROM rss_item \
+   JOIN rss_feed ON rss_feed.rssurl=rss_item.feedurl \
+   WHERE unread=1
+   GROUP BY rss_feed.rssurl;" > $LOGFILE
