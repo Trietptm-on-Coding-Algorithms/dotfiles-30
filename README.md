@@ -42,8 +42,8 @@ The plugins can already be found in .zim/bundle/
 Atom
 ------
 ###### Settings
-*    UI:     One Dark
-*    Syntax: An Old Hope
+*    UI:     One Dark (or Atom Material, or Nucleus Dark)
+*    Syntax: An Old Hope (or Atom Material)
 
 ###### Packages
 *    minimap

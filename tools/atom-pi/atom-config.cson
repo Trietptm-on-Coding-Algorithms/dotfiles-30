@@ -1,0 +1,23 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax-dark"
+    ]
+  editor:
+    fontSize: 12
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    tabLength: 4
+  linter:
+    showErrorPanel: false
+  minimap:
+    plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false
