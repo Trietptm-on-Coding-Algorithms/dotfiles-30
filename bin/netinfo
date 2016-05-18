@@ -1,8 +1,17 @@
 #!/bin/bash
 
 device="wlp2s0"
+ip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
-echo "dhcpcd"
-echo "------------------------------------------"
+echo "  //////////"
+echo " / dhcpcd /"
+echo "//////////"
+echo
 dhcpcd -U $device
-echo "------------------------------------------"
+echo
+echo "   ////////////"
+echo "  / nslookup /"
+echo " ////////////"
+echo
+nslookup ${ip}
+echo "WAN IP: ${ip}"
