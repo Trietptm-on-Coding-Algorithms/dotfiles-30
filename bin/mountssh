@@ -4,4 +4,4 @@
 # -o allow_other : allow non-root read/write access
 # -o follow_symlinks : Follows symlinks
 # -p : Port
-sudo sshfs -o allow_other -o follow_symlinks -C -p 8090 lemones@192.168.1.132:/home/lemones/ /home/lemones/Server/
+sudo sshfs -o allow_other -o follow_symlinks -C -p $bigbnka_port $bigbnka_user@$bigbnka_ip:/home/$bigbnka_user/ $HOME/Server/

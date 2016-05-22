@@ -19,7 +19,8 @@ sh history -c &
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 
 # dropbox start &
-xcompmgr &
+# xcompmgr &
+compton &
 xscreensaver &
 # mopidy &
 # urxvtd &
@@ -27,3 +28,4 @@ xscreensaver &
 
 exec awesome
 # exec i3
+# exec 2bwm
