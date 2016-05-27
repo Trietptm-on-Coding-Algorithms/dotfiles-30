@@ -16,14 +16,10 @@ def check_if_up(ip, port):
         s.close
     except OSError as e:
         return("Error: %s" % e)
-
-
-def if_down(port):
-    pass
-
-
-def if_up(port):
-    pass
+    except KeyboardInterrupt:
+        print("Canceled")
+    except:
+        print("Unknown error")
 
 
 def download_file(ip, port, file, dest):

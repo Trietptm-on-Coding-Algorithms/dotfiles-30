@@ -24,6 +24,10 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
+" More natural splitting
+set splitbelow
+set splitright
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -24,8 +24,9 @@ compton &
 xscreensaver &
 # mopidy &
 # urxvtd &
-# nm-applet &
+nm-applet &
 
 exec awesome
 # exec i3
 # exec 2bwm
+# exec xmonad

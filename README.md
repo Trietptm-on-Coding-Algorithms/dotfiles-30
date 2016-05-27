@@ -26,6 +26,17 @@ Dont forget to change /etc/resolv.conf to use localhost(127.0.0.1).
 To prevent dhcpcd to overwrite resolv.conf, add:    
 static domain_name_servers=127.0.0.1  
 
+Easy manual configuration 
+$ sudo systemctl edit dnscrypt-proxy   
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dnscrypt-proxy -R cs-de   
+$ sudo systemctl restart dnscrypt-proxy   
+
+Disable WebRTC   
+about:config   
+media.peerconnection.enabled = False
+
 Awesome-wm depends on ttf-fontawesome for tag-icons.  
 ([fontawesome](http://fontawesome.io))
 
