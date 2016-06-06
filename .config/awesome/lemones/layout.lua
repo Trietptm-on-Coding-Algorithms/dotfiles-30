@@ -289,56 +289,45 @@ for s = 1, screen.count() do
 -- █▓▒░  Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, height = 26 })
 
--- █▓▒░  Widgets that are aligned to the upper left
+-- Left
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(first)
-    left_layout:add(mytaglist[s])
-    left_layout:add(spr_small)
-    left_layout:add(mylayoutbox[s])
-    left_layout:add(bigspr)
+--    left_layout:add(mytaglist[s])
+--    left_layout:add(bigspr)
     left_layout:add(mypromptbox[s])
 
+-- Middle
+    local middle_layout = wibox.layout.fixed.horizontal()
+    middle_layout:add(mytaglist[s])
+    middle_layout:add(mylayoutbox[s])
 
--- █▓▒░ Widgets that are aligned to the upper right
+
+
+-- Right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-
-    right_layout:add(bigspr)
-    right_layout:add(netdown_icon)
-    right_layout:add(networkwidget)
-    right_layout:add(netup_icon)
---  right_layout:add(bottom_bar)
-    right_layout:add(spr_very_small)
-    right_layout:add(cpu_icon)
-    right_layout:add(cpuwidget)
-    right_layout:add(batwidget)
-
-    right_layout:add(bigspr)
-    right_layout:add(prev_icon)
-    right_layout:add(next_icon)
-    right_layout:add(stop_icon)
-    right_layout:add(play_pause_icon)
-    right_layout:add(bar)
+--    right_layout:add(bigspr)
+--    right_layout:add(bigspr)
+--    right_layout:add(prev_icon)
+--    right_layout:add(next_icon)
+--    right_layout:add(stop_icon)
+--    right_layout:add(play_pause_icon)
+--    right_layout:add(bar)
 --  right_layout:add(mpd_icon)
 --  right_layout:add(musicwidget)
 --  right_layout:add(bar)
---  right_layout:add(spr_very_small)
 --  right_layout:add(volumewidget)
-
-    right_layout:add(bigspr)
-    right_layout:add(calendar_icon)
-    right_layout:add(calendarwidget)
-    right_layout:add(clock_icon)
-    right_layout:add(clockwidget)
-
-    --right_layout:add(cpu_icon)
-    --right_layout:add(testtext)
-
+--    right_layout:add(bigspr)
+--    right_layout:add(calendar_icon)
+--    right_layout:add(calendarwidget)
+--    right_layout:add(clock_icon)
+--    right_layout:add(clockwidget)
 
 
 -- █▓▒░  Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
+    layout:set_middle(middle_layout)
     layout:set_right(right_layout)
     mywibox[s]:set_widget(layout)
 
@@ -346,11 +335,24 @@ for s = 1, screen.count() do
     -- Create the bottom wibox
     mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, border_width = 0, height = 26 })
 
-    -- Widgets that are aligned to the bottom left
+    -- Left
     bottom_left_layout = wibox.layout.fixed.horizontal()
+    bottom_left_layout:add(calendar_icon)
+    bottom_left_layout:add(calendarwidget)
+    bottom_left_layout:add(clock_icon)
+    bottom_left_layout:add(clockwidget)
+    bottom_left_layout:add(bigspr)
 
-    -- Widgets that are aligned to the bottom right
+    -- Right
     bottom_right_layout = wibox.layout.fixed.horizontal()
+    bottom_right_layout:add(bigspr)
+    bottom_right_layout:add(netdown_icon)
+    bottom_right_layout:add(networkwidget)
+    bottom_right_layout:add(netup_icon)
+    bottom_right_layout:add(spr_very_small)
+    bottom_right_layout:add(cpu_icon)
+    bottom_right_layout:add(cpuwidget)
+    bottom_right_layout:add(batwidget)
 
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()

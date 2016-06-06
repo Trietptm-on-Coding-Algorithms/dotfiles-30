@@ -9,7 +9,6 @@ sudo pip install flake8
 apm i linter
 # apm linter-python-pep8
 apm i linter-pep8
-apm i linter-python-flake8
 apm i autocomplete-python
 apm i python-autopep8
 apm i python-tools
@@ -34,5 +33,5 @@ if [ -f ~/.atom/config.cson ]; then
     mv ~/.atom/config.cson ~/.atom/config.cson.old
 fi
 echo "Installing Atom config as ~/.atom/config.cson"
-cp ~/.atom/config.cson ~/.atom/config.cson.old
-n
+cp atom-config.cson ~/.atom/config.cson
+

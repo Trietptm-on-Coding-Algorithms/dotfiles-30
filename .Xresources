@@ -1,20 +1,23 @@
 ! .Xresources - Graybean
 
   Xft.rgba:             rgb
-! Xft.rgba:			        none
+! Xft.rgba:             none
   Xft.antialias:        true
   Xft.hinting:          true
-  Xft.lcdfilter:			  lcddefault
+  Xft.lcdfilter:        lcddefault
   Xft.hintstyle:        hintfull
-  Xft.dpi:			        96
+  Xft.dpi:              96
 
 
 ! URxvt Settings-----------------------------------------------------------------------
 
   Rxvt*depth:       32
 ! URxvt*background: rgba:0000/0000/0200/a300
-  URxvt*background: [90]#17130d
-  URxvt*foreground: #c6a57b
+  URxvt*background: [90]#1d0c00
+! URxvt*background: [90]#17130d
+  URxvt*foreground: #c3a071
+
+
 
   URxvt.perl-ext-common: default,matcher
   URxvt.urlLauncher:     /usr/bin/firefox
@@ -53,19 +56,19 @@
 
 ! Fonts-----------------------------------------------------------------------
 
-! Bistream Vera Sans Mono - 12px
+! Bistream Vera Sans Mono
 !  URxvt.font:       xft:Bitstream Vera Sans Mono:pixelsize=12:Regular
 !  URxvt.boldFont:   xft:Bitstream Vera Sans Mono:pixelsize=12:Bold
 
-! DejaVu Sans Mono - 12px
-  URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
-  URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12
-!
-! Use letterSpace to fix spacing bugg
+! DejaVu Sans Mono
+URxvt*font:      xft:DejaVu Sans Mono:pixelsize=12:Regular
+URxvt*boldFont:  xft:DejaVu Sans Mono:pixelsize=12:Bold
+
+! Use letterSpace to fix spacing bug
 ! URxvt.letterSpace: -1
 
 
-!xcalc-----------------------------------------------------------------------
+! xcalc-----------------------------------------------------------------------
 
 xcalc*geometry:                        200x275
 xcalc.ti.bevel.background:             #111111
