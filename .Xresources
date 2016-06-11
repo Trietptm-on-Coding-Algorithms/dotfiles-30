@@ -17,9 +17,14 @@
 ! URxvt*background: [90]#17130d
   URxvt*foreground: #c3a071
 
+  URxvt*scrollTtyOutput: false
+  URxvt*scrollWithBuffer: true
+  URxvt*scrollTtyKeypress: true
 
+!  URxvt.perl-ext-common: default,matcher
+  URxvt.perl-ext:
+  URxvt.perl-ext-common:
 
-  URxvt.perl-ext-common: default,matcher
   URxvt.urlLauncher:     /usr/bin/firefox
   URxvt.matcher.button:  1
   URxvt*saveLines:       12000

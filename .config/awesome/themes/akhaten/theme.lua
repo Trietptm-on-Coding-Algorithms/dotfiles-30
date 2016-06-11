@@ -55,6 +55,13 @@ tooltip_bg_color                    = col1
 tooltip_border_width                = "1"
 tooltip_border_color                = col5
 
+theme_menu_bg_color                       = col1
+theme_menu_fg_color                       = col7
+theme_menu_bg_focus                       = col1
+theme_menu_fg_focus                       = col5
+theme_menu_border_color                   = col5
+theme_menu_border_size                    = 1
+
 -- theme.widget_bg                     = theme.icon_dir .. "/bg_focus_noline.png"
 theme.awesome_icon                  = theme.icon_dir .. "/awesome_icon.png"
 theme.vol_bg                        = theme.icon_dir .. "/vol_bg.png"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Akhatem-dark
+Comment=Inspired by the Doctor Who - Rings of Akhatem episode.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Oo-mox
+MetacityTheme=Oo-mox
+ButtonLayout=close,minimize:
