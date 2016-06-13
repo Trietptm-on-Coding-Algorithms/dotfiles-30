@@ -41,5 +41,6 @@ class external_check(object):
 ext = external_check()
 print("--- Checking open ports to %s" % extern_ip)
 ext.check_ports(extern_ip)
+
 print("--- Checking open ports to lemones.sytes.net")
 ext.check_ports('lemones.sytes.net')
