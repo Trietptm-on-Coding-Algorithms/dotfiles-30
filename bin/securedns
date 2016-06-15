@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$(id -u)" != "0" ]; then
+	echo "Forgot to sudo..."
+	exit
+fi
+
+if pgrep "dnscrypt-proxy" > /dev/null
+
+then
+	echo "dnscrypt-proxy already running..."
+	exit
+else
+	echo "Starting dnscrypt-proxy..."
+	# Pregress messages and detatch from terminal
+	nohup systemctl start dnscrypt-proxy &>$HOME/.dnssec-proxy.log &
+	sleep 2
+	echo "dnscrypt-proxy running..."
+	wait %1
+	sleep 2
+	echo "Exiting dnscrypt-proxy..."
+fi

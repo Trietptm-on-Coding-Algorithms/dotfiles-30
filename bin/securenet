@@ -1,12 +1,13 @@
 #!/bin/bash
 
-echo "openvpn running at:"
-echo "-----------------------------------------"
-ps -C openvpn
-echo "-----------------------------------------"
-echo "Exiting..."
-
-if [[ -z $(ps -C openvpn -opid=) ]]; then
-    sudo openvpn --config /etc/openvpn/cstorm_linux-norway_udp.ovpn &
-    echo "-Exit--------------------------------------"
+if pgrep "openvpn" > /dev/null
+then
+	echo "openvpn already running..."
+else
+	echo "starting openvpn..."
+	nohup openvpn --config /etc/openvpn/cstorm_linux-norway_udp.ovpn &>$HOME/.openvpn.log $
+	echo "openvpn running..."
+	wait
+	sleep 2
+	echo "Exiting openvpn..."
 fi
