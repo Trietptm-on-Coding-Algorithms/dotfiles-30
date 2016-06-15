@@ -1,7 +1,7 @@
 
 --[[ The rings of Akhaten --]]
 
-col0 = '#00000000'
+col0 = '#00000030'
 col1 = '#331E2F'
 col2 = '#7C2A0D'
 col3 = '#571107'
@@ -9,6 +9,7 @@ col4 = '#4D0E16'
 col5 = '#ED5F03'
 col6 = '#FCEF71'
 col7 = '#e8e8e8'
+col8 = '#00000070'
 
 
 theme                               = {}

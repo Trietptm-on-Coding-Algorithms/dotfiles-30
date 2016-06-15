@@ -4,20 +4,30 @@ local awful     = require("awful")
 local lain      = require("lain")
 local vicious   = require("vicious")
 
+-- Settings
+
+show_infotext           = true
+show_cpu_percent        = true
+show_battery_percent    = true
+show_net_up_down        = true
+show_calendar           = true
+show_clock              = true
+show_alsabuttons        = false
+
 -- Set tooltip colors
-beautiful.tooltip_bg_color = "#282420"
-beautiful.tooltip_fg_color = "#FFFFFF"
+beautiful.tooltip_bg_color = col8
+beautiful.tooltip_fg_color = col7
 
 -- {{{ Wibox
 markup = lain.util.markup
-blue   = "#c6a57b"
+blue   = col7
 space3 = markup.font("Tamsyn 3", " ")
 space2 = markup.font("Tamsyn 2", " ")
 
 -- Battery
 batwidget = lain.widgets.bat({
     settings = function()
-        bat_header = " Bat: "
+        bat_header = utf8.char(0xf240) .. " "
         bat_p      = bat_now.perc .. "%"
 
         if bat_now.status == "Not present" then
@@ -29,30 +39,68 @@ batwidget = lain.widgets.bat({
     end
 })
 
---[=====[ TEST
-testtext = wibox.widget.textbox()
-vicious.register(testtext, function(widget,args)
-  cmd = io.popen("dig +short myip.opendns.com @resolver1.opendns.com")
-  top = cmd:read("*a")
-  return string.gsub(top,"\n$","")
-end
-  )
-testicon = wibox.widget.imagebox()
-testicon:set_image(beautiful.widget_cpu)
-testtip = awful.tooltip({
-  objects = {testicon, testtext },
-  timeout = 300000,
-  timer_function = function ()
-    cmd = io.popen("netinfo")
-    top = cmd:read("*a")
-    return string.gsub(top,"\n$","")
-  end
-})
-TEST --]=====]
+--[ Battery Widget
 
+function bat_percent(bat)
+    file = io.open("/sys/class/power_supply/" .. bat .. "/capacity", "r")
+    bat_percent = file:read()
+    file:close()
+    if bat_percent > '80' then
+    	return( utf8.char(0xf240) .. bat_percent .. "%" )
+    elseif bat_percent < '80' then
+    	return( utf8.char(0xf242) .. bat_percent .. "%" )
+    elseif bat_percent < '20' then
+    	return( utf8.char(0xf243) .. bat_percent .. "%" )
+    end
+end
+
+
+--] Battery Widget end
+
+--[ Read from file if exists
+
+homedir = os.getenv ( "HOME" )
+confdir = "/.config/awesome/infotext/"
+alldir = homedir .. confdir
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+if file_exists(alldir .. "info.text") == true then
+
+    -- set enable_infotext to true to enable
+    enable_infotext = true
+
+    infotext = wibox.widget.textbox()
+    vicious.register(infotext, function(widget,args)
+      cmd = io.popen("cat " .. alldir .. "info.text")
+      top = cmd:read("*a")
+      return "   " .. utf8.char(0xf1eb) .. string.gsub(top,"\n$","")
+    end
+      )
+    testicon = wibox.widget.imagebox()
+    testicon:set_image(beautiful.clock)
+    testtip = awful.tooltip({
+      objects = {testicon, infotext },
+      timeout = 300000,
+      timer_function = function ()
+        cmd = io.popen("cat " .. alldir .. "tooltip.text")
+        top = cmd:read("*a")
+        return string.gsub(top,"\n$","")
+      end
+    })
+end
+--] Read from file
+
+
+
+
+-- Battery end
 
 -- Clock
-mytextclock = awful.widget.textclock(markup("#FFFFFF", space3 .. "%H:%M" .. space2))
+mytextclock = awful.widget.textclock(markup(col7, space3 .. "%H:%M" .. space2))
 clock_icon = wibox.widget.imagebox()
 clock_icon:set_image(beautiful.clock)
 clockwidget = wibox.widget.background()
@@ -66,7 +114,7 @@ calendar_icon:set_image(beautiful.calendar)
 calendarwidget = wibox.widget.background()
 calendarwidget:set_widget(mytextcalendar)
 calendarwidget:set_bgimage(beautiful.widget_bg)
-lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "bottom_right" })
+lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "bottom_left" })
 
 
 -- MPD
@@ -333,6 +381,11 @@ for s = 1, screen.count() do
     bottom_right_layout:add(cpu_icon)
     bottom_right_layout:add(cpuwidget)
     bottom_right_layout:add(batwidget)
+
+    if enable_infotext == true then
+        bottom_right_layout:add(infotext)
+    end
+
 
 --{ Show }--
     bottom_layout = wibox.layout.align.horizontal()

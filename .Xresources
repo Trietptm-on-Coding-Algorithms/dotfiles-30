@@ -70,7 +70,7 @@ URxvt*font:      xft:DejaVu Sans Mono:pixelsize=12:Regular
 URxvt*boldFont:  xft:DejaVu Sans Mono:pixelsize=12:Bold
 
 ! Use letterSpace to fix spacing bug
-! URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 
 ! xcalc-----------------------------------------------------------------------
