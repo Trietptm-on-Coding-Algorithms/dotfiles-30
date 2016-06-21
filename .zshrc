@@ -3,9 +3,11 @@
 #
 
 # Source zim
-if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
-  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-fi
+#if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
+#  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+#fi
+
+source "$HOME/.zsh/themes/akhaten.zsh"
 
 for file in $HOME/.zsh/plugins/*; do
  source "$file"

@@ -3,6 +3,21 @@
 # https://github.com/S1cK94/minimal
 #
 
+short_pwd() {
+
+    local current_dir="${PWD/#${HOME}/~}"
+    local return_dir='~'
+
+    # if we aren't in ~
+    if [[ ${current_dir} != '~' ]]; then
+      return_dir="${${${${(@j:/:M)${(@s:/:)current_dir}##.#?}:h}%/}//\%/%%}/${${current_dir:t}//\%/%%}"
+    fi
+
+    print ${return_dir}
+    
+}
+
+
 minimal_user() {
   #print "%(!.$on_color.$off_color)$prompt_char%f"
 }
@@ -79,8 +94,12 @@ prompt_minimal_precmd() {
   zle -N zle-keymap-select
   zle -N zle-line-finish
 
-  PROMPT='$(minimal_user)$(minimal_jobs)$(minimal_vimode)$(minimal_status) '
-  RPROMPT='$(minimal_path)$(minimal_git)'
+#  PROMPT='$(minimal_user)$(minimal_jobs)$(minimal_vimode)$(minimal_status) '
+  PROMPT="$(minimal_user)$(minimal_jobs)$(minimal_vimode)$(minimal_status) "
+
+#  RPROMPT='$(minimal_path)$(minimal_git)'
+  RPROMPT="$(minimal_path)$(minimal_git)"
+
 }
 
 prompt_minimal_setup() {

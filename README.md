@@ -35,7 +35,12 @@ $ sudo systemctl restart dnscrypt-proxy
 
 Disable WebRTC   
 about:config   
-media.peerconnection.enabled = False
+media.peerconnection.enabled = False   
+
+Start Xorg as regular user for security reasons.  
+touch /etc/X11/Xwrapper.config  
+echo "needs_root_rights = no" > /etc/X11/Xwrapper.config   
+Become member of 'video' and 'input' groups
 
 Awesome-wm depends on ttf-fontawesome for tag-icons.  
 ([fontawesome](http://fontawesome.io))
