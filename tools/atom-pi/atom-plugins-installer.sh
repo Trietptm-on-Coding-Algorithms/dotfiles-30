@@ -14,7 +14,7 @@ apm i python-autopep8
 apm i python-tools
 
 apm i color-picker
-apm i file-icons
+# apm i file-icons
 apm i file-type-icons
 apm i language-lua
 apm i minimap

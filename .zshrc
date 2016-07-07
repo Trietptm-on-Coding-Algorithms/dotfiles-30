@@ -25,3 +25,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Make use of the VDPAU Driver
 # export VDPAU_DRIVER=r600
+
+# Autocompletion
+autoload -U compinit
+compinit
+setopt correctall
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Advanced prompt
+autoload -U promptinit
+promptinit
