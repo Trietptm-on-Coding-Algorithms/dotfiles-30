@@ -1,3 +1,9 @@
+if [[ -n "$SSH_CLIENT" ]]; then
+	prompt_host="$(hostname) "
+else
+	prompt_host=""
+fi
+
 # %n = User
 # %m = host
 # %{$fg[magenta]%}%
@@ -51,5 +57,5 @@ function path_prompt()
     echo "$ON_COLOR ${PWD/#$HOME/~}$OFF_COLOR"
 }
 
-PROMPT='$(user_prompt) '
+PROMPT='$prompt_host$(user_prompt) '
 RPROMPT='$(path_prompt) $(vcs_info_wrapper) '
