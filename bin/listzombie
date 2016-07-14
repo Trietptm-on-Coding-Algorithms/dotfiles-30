@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+# List process marked as DEFUNCED (zombie)
+for i in $(ps aux | awk '{ print $8 " " $2 }' | grep -w Z | cut -c3-30); do
+	echo "Zombie: $(pstree -p -s $i)"
+done

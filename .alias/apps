@@ -1,3 +1,4 @@
 alias R='ranger'
 # Prevent ranger from loading defalt config
 export RANGER_LOAD_DEFAULT_RC=False
+alias firefox='/usr/local/bin/firefox'

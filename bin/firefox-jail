@@ -1,0 +1,3 @@
+notify-send -i '/usr/share/icons/Numix-Circle/48x48/apps/firefox-3.5.svg' 'Firefox' 'Firefox started in private firejail\nDownloads and new settings will be removed when closing!'
+firejail --private --seccomp /bin/firefox $@
+

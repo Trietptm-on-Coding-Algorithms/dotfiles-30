@@ -36,3 +36,18 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # Advanced prompt
 autoload -U promptinit
 promptinit
+
+# Functional dynamic title change for rxvt
+case $TERM in
+  (rxvt*)
+
+    function precmd {
+      print -Pn "\e]0;[zsh] %(1j,%j job%(2j|s|); ,)%~\a"
+    }
+
+    function preexec {
+      printf "\033]0;[zsh] %s\a" "$1"
+    }
+
+  ;;
+esac

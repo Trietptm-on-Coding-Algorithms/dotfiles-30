@@ -1,11 +1,12 @@
 #!/bin/bash
 
+
 if pgrep "openvpn" > /dev/null
 then
 	echo "openvpn already running..."
 else
 	echo "starting openvpn..."
-	nohup openvpn --config /etc/openvpn/cstorm_linux-norway_udp.ovpn &>$HOME/.openvpn.log $
+	nohup sudo openvpn --config /etc/openvpn/frankfurt.ovpn &>$HOME/.openvpn.log $
 	echo "openvpn running..."
 	wait
 	sleep 2
