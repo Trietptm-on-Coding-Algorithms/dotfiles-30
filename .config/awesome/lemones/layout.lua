@@ -14,6 +14,11 @@ show_calendar           = true
 show_clock              = true
 show_alsabuttons        = false
 
+-- colors
+col_ok                  = "#00FF00" -- OK color
+col_no                  = "#d6cf6b" -- Not OK color
+col_wa                  = "#FF0000" -- Warning color
+
 -- Set tooltip colors
 beautiful.tooltip_bg_color = col8
 beautiful.tooltip_fg_color = col7
@@ -27,8 +32,20 @@ space2 = markup.font("Tamsyn 2", " ")
 -- Battery
 batwidget = lain.widgets.bat({
     settings = function()
-        bat_header = utf8.char(0xf240) .. " "
-        bat_p      = bat_now.perc .. "%"
+
+        if bat_now.status == "Charging" then
+            bat_p = bat_now.perc .. "^"
+        else
+            bat_p = bat_now.perc .. "%"
+        end
+
+        if bat_now.perc > '60' then
+            bat_header = " <span color='" .. col_ok .. "'>" .. utf8.char(0xf240) .. "</span> "
+        elseif bat_now.perc < '60' then
+            bat_header = " <span color='" .. col_no .. "'>" .. utf8.char(0xf242) .. "</span> "
+        elseif bat_now.perc < '20' then
+            bat_header = " <span color='" .. col_wa .. "'>" .. utf8.char(0xf243) .. "</span> "
+        end
 
         if bat_now.status == "Not present" then
             bat_header = ""
@@ -39,26 +56,60 @@ batwidget = lain.widgets.bat({
     end
 })
 
---[ Battery Widget
+--] VPN Widget Start
+vpnwidget = wibox.widget.textbox()
+vpnwidget:set_text(" VPN: N/A ")
+vpnwidgettimer = timer({ timeout = 5 })
+vpnwidgettimer:connect_signal("timeout",
+  function()
+    status = io.popen("ls /var/run | grep 'openvpn'", "r")
+    if status:read() == nil then
+        vpnwidget:set_markup(" <span color='" .. col_wa .. "'>VPN</span> ")
+    else
+        vpnwidget:set_markup(" <span color='" .. col_ok .. "'>VPN</span> ")
+    end
+    status:close()
+  end
+)
+vpnwidgettimer:start()
+--] VPN Widget End
 
+--] DNScrypt Widget Start
+dnscryptwidget = wibox.widget.textbox()
+dnscryptwidget:set_text(" DNScrypt: N/A ")
+dnscryptwidgettimer = timer({ timeout = 5 })
+dnscryptwidgettimer:connect_signal("timeout",
+  function()
+    status = io.popen("ps -u dnscrypt | grep 'dnscrypt-proxy'", "r")
+    if status:read() == nil then
+        dnscryptwidget:set_markup(" <span color='#FF0000'>DNScrypt</span> ")
+    else
+        dnscryptwidget:set_markup(" <span color='#00FF00'>DNScrypt</span> ")
+    end
+    status:close()
+  end
+)
+dnscryptwidgettimer:start()
+--] DNScrypt Widget End
+
+
+--[ Battery Widget
 function bat_percent(bat)
     file = io.open("/sys/class/power_supply/" .. bat .. "/capacity", "r")
     bat_percent = file:read()
     file:close()
     if bat_percent > '80' then
-    	return( utf8.char(0xf240) .. bat_percent .. "%" )
+    	return( utf8.char(" <span color='#00FF00'>" .. 0xf240) .. bat_percent .. "%" .. "</span> ")
     elseif bat_percent < '80' then
-    	return( utf8.char(0xf242) .. bat_percent .. "%" )
+    	return( utf8.char(" <span color='#00FF00'>" .. 0xf242) .. bat_percent .. "%" .. "</span> ")
     elseif bat_percent < '20' then
-    	return( utf8.char(0xf243) .. bat_percent .. "%" )
+    	return( utf8.char(" <span color='#FF0000'>" .. 0xf243) .. bat_percent .. "%" .."</span> ")
     end
 end
-
-
 --] Battery Widget end
 
+--[[
 --[ Read from file if exists
-
 homedir = os.getenv ( "HOME" )
 confdir = "/.config/awesome/infotext/"
 alldir = homedir .. confdir
@@ -93,9 +144,7 @@ if file_exists(alldir .. "info.text") == true then
     })
 end
 --] Read from file
-
-
-
+--]]
 
 -- Battery end
 
@@ -381,11 +430,14 @@ for s = 1, screen.count() do
     bottom_right_layout:add(cpu_icon)
     bottom_right_layout:add(cpuwidget)
     bottom_right_layout:add(batwidget)
+    bottom_right_layout:add(vpnwidget)
+    bottom_right_layout:add(dnscryptwidget)
 
+    --[[
     if enable_infotext == true then
         bottom_right_layout:add(infotext)
     end
-
+    --]]
 
 --{ Show }--
     bottom_layout = wibox.layout.align.horizontal()

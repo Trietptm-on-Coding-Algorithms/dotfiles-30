@@ -18,7 +18,7 @@ for file in $HOME/.alias/*; do
 done
 
 # Export bin/ path
-export PATH=$HOME/bin:${PATH}
+export PATH=$HOME/bin:$HOME/.local/bin:${PATH}
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

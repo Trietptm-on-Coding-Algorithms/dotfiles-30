@@ -3,6 +3,8 @@ alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
+alias logread='journalctl -f | ccze'
+
 alias cat='ccat'
 alias cp='cp -v'
 alias mv='mv -vi'

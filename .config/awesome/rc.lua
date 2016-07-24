@@ -12,10 +12,10 @@ local drop      = require("scratchdrop")
 local lain      = require("lain")
 local treesome  = require("treesome")
 
+local alttab = require("alttab")
+
 require("lemones/debug")
 require("lemones/autostart")
-
-
 
 
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/akhaten/theme.lua")
@@ -159,7 +159,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx( -1)    end),
 
-
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
@@ -170,6 +169,20 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
+
+    -- alttab
+    awful.key({ "Mod1", }, "Tab",
+        function ()
+            alttab.switch(1, "Alt_L", "Tab", "ISO_Left_Tab")
+        end
+    ),
+
+    awful.key({ "Mod1", "Shift"   }, "Tab",
+        function ()
+            alttab.switch(-1, "Alt_L", "Tab", "ISO_Left_Tab")
+        end
+    ),
+
     awful.key({ modkey,           }, "+",      function () awful.tag.incmwfact( 0.05)     end),
     awful.key({ altkey, "Shift"   }, "h",      function () awful.tag.incmwfact(-0.05)     end),
     awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
@@ -281,6 +294,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "v", treesome.vertical),
     awful.key({ modkey }, "h", treesome.horizontal)
 )
+
+
 
 -- Bind all key numbers to tags.
 -- be careful: we use keycodes to make it works on any keyboard layout.

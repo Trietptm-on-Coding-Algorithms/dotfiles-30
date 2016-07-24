@@ -1,7 +1,5 @@
-# Stolen from:
-# https://awesome.naquadah.org/wiki/Uzsolt_newsreader_%28newsbeuter,_liferea%29_information
-
 #!/bin/bash
+
 LOGFILE=$HOME/.newsbeuter/newsbeuter-unread-items
 
 sqlite3 ~/.newsbeuter/cache.db "SELECT COUNT(*) FROM rss_item WHERE unread=1; \

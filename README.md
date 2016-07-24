@@ -33,6 +33,9 @@ ExecStart=
 ExecStart=/usr/bin/dnscrypt-proxy -R cs-de   
 $ sudo systemctl restart dnscrypt-proxy   
 
+NOTE: dnscrypt-loader   
+Cant get easier (https://github.com/gortcodex/dnscrypt-loader)
+
 Disable WebRTC   
 about:config   
 media.peerconnection.enabled = False   
