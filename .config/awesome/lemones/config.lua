@@ -1,10 +1,9 @@
--- █▓▒░ interface settings
+-- Interface
 modkey                  = "Mod4"
 altkey                  = "Mod1"
 bar_position            = "bottom"
 
--- █▓▒░ preffered apps
+-- Apps
 terminal 		= "urxvtc"
-filegui 		= "thunar"
-
+filegui 		= "nautilus"
 iptraf 			= terminal.." -g -e sudo iptraf-ng -i all"

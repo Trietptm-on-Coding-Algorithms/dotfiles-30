@@ -5,6 +5,7 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias logread='journalctl -f | ccze'
 
+alias rms='shred -v -z -u'
 alias cat='ccat'
 alias cp='cp -v'
 alias mv='mv -vi'
