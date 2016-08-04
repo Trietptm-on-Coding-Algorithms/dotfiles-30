@@ -1,2 +1,2 @@
 # Server lemones@bnka
-alias sshbnka="ssh lemones@192.168.1.138 -p 8090"
+alias sshbnka="ssh lemones@192.168.1.136 -p 8090"

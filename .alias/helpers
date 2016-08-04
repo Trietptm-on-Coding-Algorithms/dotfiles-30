@@ -5,18 +5,21 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias logread='journalctl -f | ccze'
 
-alias rms='shred -v -z -u'
 alias cat='ccat'
 alias cp='cp -v'
+alias cpf='cp -avr'
 alias mv='mv -vi'
 alias rm='rm -vI'
-alias cpf='cp -avr'
+alias rms='shred -v -z -u'
+alias psa='ps aux | grep '
+alias snano='sudo nano'
+
 alias l='ls -CF --group-directories-first'
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls++'
-
-alias psa='ps aux | grep '
-alias snano='sudo nano'
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
 
 alias e='exit'
 alias c='clear'
