@@ -1,4 +1,5 @@
-  Rxvt*depth                : 32
+#include "colors/akhaten"
+
 
   URxvt*scrollTtyOutput     : false
   URxvt*scrollWithBuffer    : true
@@ -14,36 +15,12 @@
   URxvt*scrollBar           : false
   URxvt*cursorBlink         : true
   URxvt*cursorUnderline     : true
+  Rxvt*depth                : 32
 
-  URxvt*font                : xft:DejaVu Sans Mono:pixelsize=12:Regular
-  URxvt*boldFont            : xft:DejaVu Sans Mono:pixelsize=12:Bold
+  !  URxvt*font         : xft:DejaVu Sans Mono:pixelsize=12:Regular
+  !  URxvt*boldFont     : xft:DejaVu Sans Mono:pixelsize=12:Bold
+
+  URxvt*font		    : xft:Liberation Mono:pixelsize=12
+  URxvt*boldFont	    : xft:Liberation Mono:pixelsize=12:Bold
+
   URxvt.letterSpace         : -1
-
-  URxvt*background          : [90]#1d0c00
-  URxvt*foreground          : #c3a071
-
-  URxvt*colorUL             : #86a2b0
-
-  URxvt*color0              : #101010
-  URxvt*color8              : #404040
-
-  URxvt*color1              : #953331
-  URxvt*color9              : #8D4A48
-
-  URxvt*color2              : #546A29
-  URxvt*color10             : #7E9960
-
-  URxvt*color3              : #909737
-  URxvt*color11             : #9CA554
-
-  URxvt*color4              : #385E6B
-  URxvt*color12             : #5C737C
-
-  URxvt*color5              : #7F355E
-  URxvt*color13             : #95618B
-
-  URxvt*color6              : #34676F
-  URxvt*color14             : #5D858A
-
-  URxvt*color7              : #dddddd
-  URxvt*color15             : #dddddd

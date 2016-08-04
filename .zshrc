@@ -1,12 +1,3 @@
-#
-# User configuration sourced by interactive shells
-#
-
-# Source zim
-#if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
-#  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-#fi
-
 source "$HOME/.zsh/themes/akhaten.zsh"
 
 for file in $HOME/.zsh/plugins/*; do
@@ -40,14 +31,14 @@ promptinit
 # Functional dynamic title change for rxvt
 case $TERM in
   (rxvt*)
-
     function precmd {
       print -Pn "\e]0;[zsh] %(1j,%j job%(2j|s|); ,)%~\a"
     }
-
     function preexec {
       printf "\033]0;[zsh] %s\a" "$1"
     }
-
   ;;
 esac
+
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
