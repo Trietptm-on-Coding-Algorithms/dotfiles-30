@@ -17,10 +17,13 @@
   URxvt*cursorUnderline     : true
   Rxvt*depth                : 32
 
-  !  URxvt*font         : xft:DejaVu Sans Mono:pixelsize=12:Regular
-  !  URxvt*boldFont     : xft:DejaVu Sans Mono:pixelsize=12:Bold
+  ! URxvt*font		    : xft:Inconsolata:pixelsize=11:Regular
+  ! URxvt*boldFont	    : xft:Inconsolata:pixelsize=12:Bold
 
-  URxvt*font		    : xft:Liberation Mono:pixelsize=12
-  URxvt*boldFont	    : xft:Liberation Mono:pixelsize=12:Bold
+  ! URxvt*font              : xft:DejaVu Sans Mono:pixelsize=12:Regular
+  ! URxvt*boldFont          : xft:DejaVu Sans Mono:pixelsize=12:Bold
 
-  URxvt.letterSpace         : -1
+  URxvt*font		    : xft:Liberation Mono:pixelsize=11:Regular
+  URxvt*boldFont	    : xft:Liberation Mono:pixelsize=11:Bold
+
+  ! URxvt.letterSpace         : -1

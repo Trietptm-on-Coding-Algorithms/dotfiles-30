@@ -3,8 +3,6 @@ alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-alias logread='journalctl -f | ccze'
-
 alias cat='ccat'
 alias cp='cp -v'
 alias cpf='cp -avr'
@@ -24,3 +22,7 @@ alias '....'='cd ../../..'
 alias e='exit'
 alias c='clear'
 alias grep='grep --color=auto'
+
+alias R='ranger'
+alias firefox='/usr/local/bin/firefox'
+alias chromium='firejail chromium'

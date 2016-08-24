@@ -15,8 +15,11 @@ autoload -U colors && colors
 
 setopt prompt_subst
 
-PROMPT_CHAR="➜"
-GIT_CHAR="❤"
+#PROMPT_CHAR="➜"
+# Liberation Mono font
+PROMPT_CHAR="♥"
+GIT_CHAR="→"
+# GIT_CHAR="❤"
 
 ON_COLOR="%{$fg[green]%}"
 OFF_COLOR="%{$reset_color%}"

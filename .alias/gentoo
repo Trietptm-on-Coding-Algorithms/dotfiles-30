@@ -1,0 +1,4 @@
+alias emerge='sudo emerge'
+alias suspend2ram='sudo s2ram'
+alias logread='echo su for log; sudo tail -f /var/log/messages | ccze'
+alias startx='startx -- vt1'

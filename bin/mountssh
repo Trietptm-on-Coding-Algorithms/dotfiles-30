@@ -4,4 +4,5 @@
 # -o allow_other : allow non-root read/write access
 # -o follow_symlinks : Follows symlinks
 # -p : Port
-sudo sshfs -o IdentityFile=$HOME/.ssh/id_rsa.pub -o allow_other -o follow_symlinks -C -p $bigbnka_port $bigbnka_user@$bigbnka_ip:/home/$bigbnka_user/ $HOME/Server/
+sudo sshfs -o Compression=no -o IdentityFile=$HOME/.ssh/id_rsa -o allow_other -o follow_symlinks -C -p $bigbnka_port $bigbnka_user@$bigbnka_ip:/home/$bigbnka_user/ $HOME/Mounts/server/
+

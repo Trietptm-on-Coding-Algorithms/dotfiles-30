@@ -1,32 +1,35 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# For Swedish keyboard layout
+# Set keyboard layout to Swedish (åäö)
 setxkbmap se
 
-# Fix bugg screen not updating in awesome
+# Fix bugg screen not updating in awesome-wm
 # hsetroot -solid "#000000"
 
-# Clean
+# Clean history
 rm ~/.bash_history &
 rm ~/.zhistory &
 sh history -c &
 
-# Fixes white-window-bugg in Qt applications
+# Disable beep
+xset -b &
+
+# Fixes white-window-bug in Qt applications (Avaible options: native, raster, opengl)
 # export QT_GRAPHICSSYSTEM=native
-# native, raster, opengl
 
-# Gnome polkit agent
-/usr/libexec/polkit-gnome-authentication-agent-1 &
+# Gnome polkit agent (Can't remmember what it's good for. But it was)
+# /usr/libexec/polkit-gnome-authentication-agent-1 &
 
-# dropbox start &
-# xcompmgr &
+# Autostarts
 compton &
 xscreensaver &
 # mopidy &
 # urxvtd &
-nm-applet &
+# nm-applet &
 
+# Choose you'r WM
 exec awesome
+# exec /usr/bin/startkde
 # exec xmonad
 # exec i3
 # exec 2bwm
