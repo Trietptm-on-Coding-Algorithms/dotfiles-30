@@ -30,6 +30,7 @@ space3 = markup.font("Tamsyn 3", " ")
 space2 = markup.font("Tamsyn 2", " ")
 
 -- Battery
+-- 
 batwidget = lain.widgets.bat({
     settings = function()
 
@@ -39,12 +40,12 @@ batwidget = lain.widgets.bat({
             bat_p = bat_now.perc .. "%"
         end
 
-        if bat_now.perc > '60' then
-            bat_header = " <span color='" .. col_ok .. "'>" .. utf8.char(0xf240) .. "</span> "
+        if bat_now.perc > '80' then
+            bat_header = " <span color='" .. col_ok .. "'>" .. "" .. "</span> "
         elseif bat_now.perc < '60' then
-            bat_header = " <span color='" .. col_no .. "'>" .. utf8.char(0xf242) .. "</span> "
+            bat_header = " <span color='" .. col_no .. "'>" .. "" .. "</span> "
         elseif bat_now.perc < '20' then
-            bat_header = " <span color='" .. col_wa .. "'>" .. utf8.char(0xf243) .. "</span> "
+            bat_header = " <span color='" .. col_wa .. "'>" .. "" .. "</span> "
         end
 
         if bat_now.status == "Not present" then
@@ -94,16 +95,17 @@ dnscryptwidgettimer:start()
 
 
 --[ Battery Widget
+-- 
 function bat_percent(bat)
     file = io.open("/sys/class/power_supply/" .. bat .. "/capacity", "r")
     bat_percent = file:read()
     file:close()
     if bat_percent > '80' then
-    	return( utf8.char(" <span color='#00FF00'>" .. 0xf240) .. bat_percent .. "%" .. "</span> ")
+    	return( " <span color='#00FF00'>" .. "a" .. bat_percent .. "%" .. "</span> ")
     elseif bat_percent < '80' then
-    	return( utf8.char(" <span color='#00FF00'>" .. 0xf242) .. bat_percent .. "%" .. "</span> ")
+    	return( " <span color='#00FF00'>" .. "b" .. bat_percent .. "%" .. "</span> ")
     elseif bat_percent < '20' then
-    	return( utf8.char(" <span color='#FF0000'>" .. 0xf243) .. bat_percent .. "%" .."</span> ")
+    	return( " <span color='#FF0000'>" .. "c" .. bat_percent .. "%" .. "</span> ")
     end
 end
 --] Battery Widget end
@@ -430,6 +432,7 @@ for s = 1, screen.count() do
     bottom_right_layout:add(cpu_icon)
     bottom_right_layout:add(cpuwidget)
     bottom_right_layout:add(batwidget)
+    -- bottom_right_layout:add(bat_percent("BAT0"))
     bottom_right_layout:add(vpnwidget)
     bottom_right_layout:add(dnscryptwidget)
 
