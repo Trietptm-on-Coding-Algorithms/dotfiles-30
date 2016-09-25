@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Prints wifi link quality..
+
+# Needs update; should be {quality * 10 / x}
+# See iwconfig for CURRENT/MAX values and change x to MAX
+# E.g 70/70 is printed as 70% when it should be 100%
+#     Corrected if multiply by 10 and divide by MAX (7)
+#     70 * 10 / 7 = 100 = 100%
+
+awk 'NR==3 {print $3 "%"}' /proc/net/wireless | tr -d '.'

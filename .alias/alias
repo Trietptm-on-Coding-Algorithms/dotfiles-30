@@ -3,13 +3,14 @@ alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-alias cat='ccat'
+alias cat='ccat'                # Improved cat
 alias cp='cp -v'
-alias cpf='cp -avr'
+alias cpf='cp -avr'             # Copy folder
 alias mv='mv -vi'
 alias rm='rm -vI'
 alias rms='shred -v -z -u'
-alias psa='ps aux | grep '
+alias psa='ps aux | grep'
+alias spsa='sudo ps aux | grep'
 alias snano='sudo nano'
 
 alias l='ls -CF --group-directories-first'
@@ -29,3 +30,15 @@ alias chromium='firejail chromium'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
+
+# Colors
+alias tund=$(tput sgr 0 1)      # Underline
+alias tbold=$(tput bold)        # Bold
+alias tred=$(tput setaf 1)      # Red
+alias tgreen=$(tput setaf 2)    # Green
+alias tyellow=$(tput setaf 3)   # Yellow
+alias tblue=$(tput setaf 4)     # Blue
+alias tpurple=$(tput setaf 5)   # Purple
+alias tcyan=$(tput setaf 6)     # Cyan
+alias twhite=$(tput setaf 7)    # White
+alias tclear=$(tput sgr0)       # Text reset

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-
-echo "[*] Removing Trash folder"
+echo "[$(tput setaf 2)*$(tput sgr0)] Removing Trash folder"
 rm -rf ~/.local/share/Trash/
 
-echo "[*] Removing browser cache"
+echo "[$(tput setaf 2)*$(tput sgr0)] Removing browser cache"
 rm -rf ~/.cache/google-chrome/
 rm -rf ~/.cache/chromium/
 rm -rf ~/.cache/mozilla/firefox/
@@ -12,13 +11,13 @@ rm -rf ~/.cache/vivaldi/
 rm -rf ~/.cache/vivaldi-snapshot/
 rm -rf ~/.cache/opera/
 
-echo "[*] Removing other cache files"
+echo "[$(tput setaf 2)*$(tput sgr0)] Removing other cache files"
 rm -rf ~/.cache/shotwell/
 rm -rf ~/.cache/media-art/
 rm -rf ~/.cache/thumbnails/
 rm -rf ~/.cache/vlc/
 
-echo "[*] Removing shell history files"
+echo "[$(tput setaf 2)*$(tput sgr0)] Removing shell history files"
 if [ -f ~/.zhistory ]; then rm ~/.zhistory ; fi
 if [ -f ~/.bash_history ]; then rm ~/.bash_history ; fi
 sh -c "history -c"
