@@ -3,29 +3,26 @@
 # Set keyboard layout to Swedish (åäö)
 setxkbmap se
 
-# Fix bugg screen not updating in awesome-wm
+# Fix bug where screen not updating in awesome-wm (NOT WORKING)
 # hsetroot -solid "#000000"
 
-# Clean history
+# Clean terminal history
 rm ~/.bash_history &
 rm ~/.zhistory &
-sh history -c &
+sh history -c & # Just to be sure
 
 # Disable beep
 xset -b &
 
-# Fixes white-window-bug in Qt applications (Avaible options: native, raster, opengl)
+# Fixes white-window-bug in Qt applications (native, raster, opengl)
 # export QT_GRAPHICSSYSTEM=native
-
-# Gnome polkit agent (Can't remmember what it's good for. But it was)
-# /usr/libexec/polkit-gnome-authentication-agent-1 &
 
 # Autostarts
 compton &
 xscreensaver &
-# mopidy &
-# urxvtd &
-# nm-applet &
+# mopidy &      # Running mpd as system-service instead.
+# urxvtd &      # Starts within awesome-wm. No need for it here.
+# nm-applet &   # NetworkManager <--- Avoid at all cost
 
 # Choose you'r WM
 exec awesome

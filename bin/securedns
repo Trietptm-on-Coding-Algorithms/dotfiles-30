@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# Start systemd service dnscrypt-proxy if not running.
+
 if [ "$(id -u)" != "0" ]; then
-	echo "Forgot to sudo..."
+	echo "[EE] sudo or su is requried."
 	exit
 fi
 
 if pgrep "dnscrypt-proxy" > /dev/null
-
 then
 	echo "dnscrypt-proxy already running..."
 	exit

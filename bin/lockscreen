@@ -1,4 +1,4 @@
 #!/bin/bash
 
 xscreensaver-command -lock
-echo "[Running] xscreensaver-command -lock"
+echo "[*] xscreensaver-command -lock"

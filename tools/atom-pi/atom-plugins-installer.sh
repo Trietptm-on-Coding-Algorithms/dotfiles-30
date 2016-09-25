@@ -7,14 +7,12 @@ sudo pip install flake8
 
 # Python
 apm i linter
-# apm linter-python-pep8
 apm i linter-pep8
 apm i autocomplete-python
 apm i python-autopep8
 apm i python-tools
 
 apm i color-picker
-# apm i file-icons
 apm i file-type-icons
 apm i language-lua
 apm i minimap
@@ -29,9 +27,8 @@ apm i atom-material-ui
 
 # Installing the config file
 if [ -f ~/.atom/config.cson ]; then
-    echo "Saving config.cson as config.cson.old"
+    echo "[*] Creating backup of old Atom config file."
     mv ~/.atom/config.cson ~/.atom/config.cson.old
 fi
-echo "Installing Atom config as ~/.atom/config.cson"
+echo "[*] Installing Atom config."
 cp atom-config.cson ~/.atom/config.cson
-

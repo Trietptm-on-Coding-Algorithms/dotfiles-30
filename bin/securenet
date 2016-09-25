@@ -3,12 +3,12 @@
 
 if pgrep "openvpn" > /dev/null
 then
-	echo "openvpn already running..."
+	echo "[EE] openvpn already running..."
 else
-	echo "starting openvpn..."
+	echo "[*] starting openvpn..."
 	nohup sudo openvpn --config /etc/openvpn/frankfurt.ovpn &>$HOME/.openvpn.log $
-	echo "openvpn running..."
+	echo "[*] openvpn running..."
 	wait
 	sleep 2
-	echo "Exiting openvpn..."
+	echo "[*] Exiting openvpn..."
 fi

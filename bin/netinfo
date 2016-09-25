@@ -1,17 +1,17 @@
 #!/bin/bash
 
-device="wlp2s0"
+device="wlp3s0"
 ip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
-echo "  //////////"
-echo " / dhcpcd /"
-echo "//////////"
-echo
-dhcpcd -U $device
-echo
-echo "   ////////////"
-echo "  / nslookup /"
-echo " ////////////"
-echo
-nslookup ${ip}
-echo "WAN IP: ${ip}"
+if [ ! -f /usr/bin/dhcpcd ]; then
+    echo "[EE] dhcpcd not installed. Skipping"
+else
+    echo "[*] Running dhcpcd info of $device"
+    dhcpcd -U $device
+fi
+if [ ! -f /usr/bin/nslookup ]; then
+    echo "[EE] nslookup not installed. Skipping"
+else
+    echo "[*] Running nslookup of $ip"
+    nslookup $ip
+fi

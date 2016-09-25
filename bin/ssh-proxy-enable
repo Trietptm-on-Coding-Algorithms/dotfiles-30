@@ -1,3 +1,4 @@
 #!/bin/bash
 
-ssh -vv -ND 8080 192.168.1.132 -p 8090
+echo "[*] Enabling SSH-proxy to port 8080"
+ssh -vv -ND 8080 $bigbnka_ip -p $bigbnka_port

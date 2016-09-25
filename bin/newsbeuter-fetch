@@ -2,6 +2,7 @@
 
 LOGFILE=$HOME/.newsbeuter/newsbeuter-unread-items
 
+echo "[*] Newsbeuter: Fetching items"
 sqlite3 ~/.newsbeuter/cache.db "SELECT COUNT(*) FROM rss_item WHERE unread=1; \
    SELECT
        rss_feed.title,
@@ -20,3 +21,4 @@ sqlite3 ~/.newsbeuter/cache.db "SELECT COUNT(*) FROM rss_item WHERE unread=1; \
    JOIN rss_feed ON rss_feed.rssurl=rss_item.feedurl \
    WHERE unread=1
    GROUP BY rss_feed.rssurl;" > $LOGFILE
+echo "[*] Done..."
