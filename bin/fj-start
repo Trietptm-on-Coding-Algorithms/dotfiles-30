@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Usage:
+# fj-start [icon-name] [application]
+
+notify-send -i '/usr/share/icons/Numix-Circle/48x48/apps/'$1 \
+               $2' started in private firejail'
+firejail --seccomp /usr/bin/$2
