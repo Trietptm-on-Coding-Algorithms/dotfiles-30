@@ -1,0 +1,12 @@
+# Compiled C
+*.o
+*.so
+
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+
+*.log
+._*
+*~
