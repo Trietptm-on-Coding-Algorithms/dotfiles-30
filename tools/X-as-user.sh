@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# This enables regular user to start an Xsession for security reasons.
-
-
+# This enables non-root users to start Xorg
+# (Tested with success on Fedora 23,24)
 
 if [ ! -f /etc/X11/Xwrapper.config ]; then
 	echo "[*] Creating config file with settings"
