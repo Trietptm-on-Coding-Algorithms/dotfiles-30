@@ -7,7 +7,7 @@
 if [ ! -f /etc/X11/Xwrapper.config ]; then
 	echo "[*] Creating config file with settings"
 	sudo touch /etc/X11/Xwrapper.config
-	echo "needs_root_rights = no" > /etc/X11/Xwrapper.config
+	sudo echo "needs_root_rights = no" > /etc/X11/Xwrapper.config
 	echo "[*] $USERNAME: Becoming member of video and input group"
 	sudo usermod -a -G video,input $USERNAME
 else
