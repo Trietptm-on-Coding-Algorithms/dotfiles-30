@@ -4,20 +4,33 @@ echo "[$(tput setaf 2)*$(tput sgr0)] Removing Trash folder"
 rm -rf ~/.local/share/Trash/
 
 echo "[$(tput setaf 2)*$(tput sgr0)] Removing browser cache"
-rm -rf ~/.cache/google-chrome/
-rm -rf ~/.cache/chromium/
-rm -rf ~/.cache/mozilla/firefox/
-rm -rf ~/.cache/vivaldi/
-rm -rf ~/.cache/vivaldi-snapshot/
-rm -rf ~/.cache/opera/
+rm -rf ~/.cache/{google-chrome/,\
+chromium/,\
+mozilla/firefox/,\
+vivaldi/,\
+vivaldi-snapshot/,\
+opera/}
 
 echo "[$(tput setaf 2)*$(tput sgr0)] Removing other cache files"
-rm -rf ~/.cache/shotwell/
-rm -rf ~/.cache/media-art/
-rm -rf ~/.cache/thumbnails/
-rm -rf ~/.cache/vlc/
+rm -rf ~/.cache/{shotwell/,\
+media-art/,\
+thumbnails/, \
+vlc/}
 
 echo "[$(tput setaf 2)*$(tput sgr0)] Removing shell history files"
 if [ -f ~/.zhistory ]; then rm ~/.zhistory ; fi
 if [ -f ~/.bash_history ]; then rm ~/.bash_history ; fi
 sh -c "history -c"
+
+echo "[$(tput setaf 2)*$(tput sgr0)] Deleting clipboard"
+if [ -f "/usr/bin/xclip" ]; then
+	xclip -i /dev/null
+	if [-f ~/.empty_file]; then rm ~/.empty_file fi
+	touch ~/.empty_file
+	xclip -selection clipboard ~/.empty_file
+else echo " ... xclip not fount. Skipping" fi
+
+echo "[$(tput setaf 2)*$(tput sgr0)] Deleting file history"
+if [-f ~/.local/share/recently-used.xbel ]; then
+	echo " recently files usage history"
+	rm ~/.local/share/recently-used.xbel
