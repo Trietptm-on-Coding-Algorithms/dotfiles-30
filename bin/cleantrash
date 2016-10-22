@@ -31,6 +31,7 @@ if [ -f "/usr/bin/xclip" ]; then
 else echo " ... xclip not fount. Skipping" fi
 
 echo "[$(tput setaf 2)*$(tput sgr0)] Deleting file history"
-if [-f ~/.local/share/recently-used.xbel ]; then
+if [ -f "~/.local/share/recently-used.xbel" ]; then
 	echo " recently files usage history"
 	rm ~/.local/share/recently-used.xbel
+fi

@@ -3,6 +3,9 @@ alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
+alias env-active='source venv/bin/activate'
+alias env-create='virtualenv venv --distribute'
+
 alias cat='ccat'                # Improved cat
 alias cp='cp -v'
 alias cpf='cp -avr'             # Copy folder
@@ -34,6 +37,8 @@ alias vlc='fj-start vlc qvlc'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
+
+alias lockscreen="xscreensaver-command -lock"
 
 # Colors
 alias tund=$(tput sgr 0 1)      # Underline
