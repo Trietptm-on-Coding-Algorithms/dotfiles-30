@@ -6,6 +6,8 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias env-active='source venv/bin/activate'
 alias env-create='virtualenv venv --distribute'
 
+alias cleanup='~/github/cleanup/cleanup.py'
+
 alias cat='ccat'                # Improved cat
 alias cp='cp -v'
 alias cpf='cp -avr'             # Copy folder
