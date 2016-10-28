@@ -44,7 +44,7 @@ theme.border_normal                 = col1
 
 theme.textbox_widget_margin_top     = 1
 theme.awful_widget_height           = 14
-theme.awful_widget_margin_top       = 2 -- 2
+theme.awful_widget_margin_top       = 2
 theme.menu_height                   = "20"
 theme.menu_width                    = "400"
 
@@ -87,7 +87,7 @@ theme.nex                           = theme.icon_dir .. "/next.png"
 theme.stop                          = theme.icon_dir .. "/stop.png"
 theme.pause                         = theme.icon_dir .. "/pause.png"
 theme.play                          = theme.icon_dir .. "/play.png"
-theme.clock                         = theme.icon_dir .. "/clock.png"
+theme.clock                         = theme.icon_dir .. "/new/clock.png"
 theme.calendar                      = theme.icon_dir .. "/cal.png"
 theme.cpu                           = theme.icon_dir .. "/cpu.png"
 theme.net_up                        = theme.icon_dir .. "/net_up.png"
@@ -111,8 +111,8 @@ theme.layout_centerwork             = theme.icon_dir .. "/centerwork.png"
 
 theme.tasklist_disable_icon         = true
 theme.tasklist_floating             = ""
-theme.tasklist_maximized_horizontal = ""
-theme.tasklist_maximized_vertical   = ""
+theme.tasklist_maximized_horizontal = false
+theme.tasklist_maximized_vertical   = true
 
 -- lain related
 theme.useless_gap_width             = 10

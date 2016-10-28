@@ -5,5 +5,5 @@ bar_position            = "bottom"
 
 -- Apps
 terminal 		= "urxvtc"
-filegui 		= "nautilus"
+filegui 		= "thunar"
 iptraf 			= terminal.." -g -e sudo iptraf-ng -i all"

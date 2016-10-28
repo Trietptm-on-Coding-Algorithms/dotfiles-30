@@ -45,11 +45,6 @@ local layouts = {
 
 tags = {
    names = {
-     -- " " .. utf8.char(0xf269) .. " ",
-     -- " " .. utf8.char(0xf09b) .. " ",
-     -- " " .. utf8.char(0xf121) .. " ",
-     -- " " .. utf8.char(0xf07b) .. " ",
-     -- " " .. utf8.char(0xf118) .. " ",
 	"",
 	"",
 	"",
@@ -59,7 +54,7 @@ tags = {
    layout = {
      layouts[1],
      layouts[1],
-     layouts[1],
+     layouts[4],
      layouts[1],
      layouts[3]
   }

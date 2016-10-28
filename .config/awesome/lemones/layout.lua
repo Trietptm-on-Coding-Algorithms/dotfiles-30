@@ -13,6 +13,7 @@ show_net_up_down        = true
 show_calendar           = true
 show_clock              = true
 show_alsabuttons        = false
+show_systray            = false
 
 -- colors
 col_ok                  = "#00FF00" -- OK color
@@ -30,7 +31,7 @@ space3 = markup.font("Tamsyn 3", " ")
 space2 = markup.font("Tamsyn 2", " ")
 
 -- Battery
--- 
+-- 
 batwidget = lain.widgets.bat({
     settings = function()
 
@@ -40,11 +41,16 @@ batwidget = lain.widgets.bat({
             bat_p = bat_now.perc .. "%"
         end
 
-        if bat_now.perc > '80' then
+        if bat_now.perc >= '100' then
             bat_header = " <span color='" .. col_ok .. "'>" .. "" .. "</span> "
-        elseif bat_now.perc < '60' then
-            bat_header = " <span color='" .. col_no .. "'>" .. "" .. "</span> "
-        elseif bat_now.perc < '20' then
+        end
+        if bat_now.perc <= '99' then
+            bat_header = " <span color='" .. col_ok .. "'>" .. "" .. "</span> "
+        end
+        if bat_now.perc <= '60' then
+            bat_header = " <span color='" .. col_no .. "'>" .. "" .. "</span> "
+        end
+        if bat_now.perc <= '20' then
             bat_header = " <span color='" .. col_wa .. "'>" .. "" .. "</span> "
         end
 
@@ -93,63 +99,6 @@ dnscryptwidgettimer:connect_signal("timeout",
 dnscryptwidgettimer:start()
 --] DNScrypt Widget End
 
-
---[ Battery Widget
--- 
-function bat_percent(bat)
-    file = io.open("/sys/class/power_supply/" .. bat .. "/capacity", "r")
-    bat_percent = file:read()
-    file:close()
-    if bat_percent > '80' then
-    	return( " <span color='#00FF00'>" .. "a" .. bat_percent .. "%" .. "</span> ")
-    elseif bat_percent < '80' then
-    	return( " <span color='#00FF00'>" .. "b" .. bat_percent .. "%" .. "</span> ")
-    elseif bat_percent < '20' then
-    	return( " <span color='#FF0000'>" .. "c" .. bat_percent .. "%" .. "</span> ")
-    end
-end
---] Battery Widget end
-
---[[
---[ Read from file if exists
-homedir = os.getenv ( "HOME" )
-confdir = "/.config/awesome/infotext/"
-alldir = homedir .. confdir
-
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
-
-if file_exists(alldir .. "info.text") == true then
-
-    -- set enable_infotext to true to enable
-    enable_infotext = true
-
-    infotext = wibox.widget.textbox()
-    vicious.register(infotext, function(widget,args)
-      cmd = io.popen("cat " .. alldir .. "info.text")
-      top = cmd:read("*a")
-      return "   " .. utf8.char(0xf1eb) .. string.gsub(top,"\n$","")
-    end
-      )
-    testicon = wibox.widget.imagebox()
-    testicon:set_image(beautiful.clock)
-    testtip = awful.tooltip({
-      objects = {testicon, infotext },
-      timeout = 300000,
-      timer_function = function ()
-        cmd = io.popen("cat " .. alldir .. "tooltip.text")
-        top = cmd:read("*a")
-        return string.gsub(top,"\n$","")
-      end
-    })
-end
---] Read from file
---]]
-
--- Battery end
-
 -- Clock
 mytextclock = awful.widget.textclock(markup(col7, space3 .. "%H:%M" .. space2))
 clock_icon = wibox.widget.imagebox()
@@ -166,7 +115,6 @@ calendarwidget = wibox.widget.background()
 calendarwidget:set_widget(mytextcalendar)
 calendarwidget:set_bgimage(beautiful.widget_bg)
 lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "bottom_left" })
-
 
 -- MPD
 mpd_icon = wibox.widget.imagebox()
@@ -236,35 +184,10 @@ function ()
 end)))
 
 
--- ALSA volume bar
-myvolumebar = lain.widgets.alsabar({
-    card   = "0",
-    ticks  = true,
-    width  = 80,
-    height = 10,
-    colors = {
-        background = "#2D292E",
-        unmute     = "#FF476A",
-        mute       = "#FF9F9F"
-    },
-    notifications = {
-        font      = "Tamsyn",
-        font_size = "12",
-        bar_size  = 32
-    }
-})
-alsamargin = wibox.layout.margin(myvolumebar.bar, 5, 8, 80)
-wibox.layout.margin.set_top(alsamargin, 12)
-wibox.layout.margin.set_bottom(alsamargin, 12)
-volumewidget = wibox.widget.background()
-volumewidget:set_widget(alsamargin)
-volumewidget:set_bgimage(beautiful.widget_bg)
-
 -- █▓▒░  CPU
 cpu_widget = lain.widgets.cpu({
     settings = function()
-        widget:set_markup(space2 .. "CPU " .. cpu_now.usage
-                          .. "%" .. markup.font("Tamsyn 5", " "))
+        widget:set_markup(cpu_now.usage .. "%" .. markup.font("Tamsyn 5", " "))
     end
 })
 cpuwidget = wibox.widget.background()
@@ -280,8 +203,8 @@ netup_icon = wibox.widget.imagebox()
 netup_icon:set_image(beautiful.net_up)
 netwidget = lain.widgets.net({
     settings = function()
-        widget:set_markup(markup.font("Tamsyn 1", " ") .. net_now.received .. " / "
-                          .. net_now.sent .. space2)
+        widget:set_markup("<span color='#00FF00'>" .. net_now.received .. "</span> "
+                          .. "<span color='#FF476A'>" .. net_now.sent .. "</span>")
     end
 })
 networkwidget = wibox.widget.background()
@@ -291,11 +214,8 @@ networkwidget:set_bgimage(beautiful.widget_bg)
 
 -- █▓▒░  Weather
 myweather = lain.widgets.weather({
-    city_id = 2680977 -- placeholder (Rydaholm)
+    city_id = 2673730 -- placeholder (Stockholm)
 })
-
-
-
 
 -- █▓▒░  Separators
 first = wibox.widget.textbox('<span font="Tamsyn 4"> </span>')
@@ -379,30 +299,36 @@ for s = 1, screen.count() do
                            awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
--- █▓▒░ Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
--- █▓▒░  Create a tasklist widget
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
--- █▓▒░  Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 26 })
 
---{ Top right }--
+--[ Top wibox
+-------------
+    mywibox[s] = awful.wibox({ position = "top", screen = s, border_width = 0, height = 26 })
+
+--{ Top left }--
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(first)
---    left_layout:add(mytaglist[s])
---    left_layout:add(bigspr)
+    -- left_layout:add(calendar_icon)
+    left_layout:add(clock_icon)
+    left_layout:add(calendarwidget)
+    left_layout:add(spr_very_small)
+    left_layout:add(clockwidget)
+    left_layout:add(bigspr)
     left_layout:add(mypromptbox[s])
 
 --{ Top middle }--
     local middle_layout = wibox.layout.fixed.horizontal()
     middle_layout:add(mytaglist[s])
+    middle_layout:add(spr_very_small)
     middle_layout:add(mylayoutbox[s])
 
 --{ Top right }--
     local right_layout = wibox.layout.fixed.horizontal()
---    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(vpnwidget)
+    right_layout:add(dnscryptwidget)
+    if show_systray == 1 then right_layout:add(wibox.widget.systray()) end
 
 --{ Show }--
     local layout = wibox.layout.align.horizontal()
@@ -412,14 +338,11 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
 --[ Bottom wibox
+----------------
     mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, border_width = 0, height = 26 })
 
 --{ Bottom left }--
     bottom_left_layout = wibox.layout.fixed.horizontal()
-    bottom_left_layout:add(calendar_icon)
-    bottom_left_layout:add(calendarwidget)
-    bottom_left_layout:add(clock_icon)
-    bottom_left_layout:add(clockwidget)
     bottom_left_layout:add(bigspr)
 
 --{ Bottom right }--
@@ -431,16 +354,8 @@ for s = 1, screen.count() do
     bottom_right_layout:add(spr_very_small)
     bottom_right_layout:add(cpu_icon)
     bottom_right_layout:add(cpuwidget)
+    bottom_right_layout:add(spr_very_small)
     bottom_right_layout:add(batwidget)
-    -- bottom_right_layout:add(bat_percent("BAT0"))
-    bottom_right_layout:add(vpnwidget)
-    bottom_right_layout:add(dnscryptwidget)
-
-    --[[
-    if enable_infotext == true then
-        bottom_right_layout:add(infotext)
-    end
-    --]]
 
 --{ Show }--
     bottom_layout = wibox.layout.align.horizontal()
@@ -451,6 +366,6 @@ for s = 1, screen.count() do
 --]
 
     -- Set proper backgrounds, instead of beautiful.bg_normal
-    mywibox[s]:set_bg(beautiful.topbar_path .. math.floor((screen[mouse.screen].workarea.width)) .. ".png")
+    --mywibox[s]:set_bg(beautiful.topbar_path .. math.floor((screen[mouse.screen].workarea.width)) .. ".png")
 --    mybottomwibox[s]:set_bg("#17130d")
 end
