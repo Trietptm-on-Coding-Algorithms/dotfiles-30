@@ -1,0 +1,9 @@
+#!/bin/env python
+
+path = "/sys/class/power_supply/BAT0/"
+pn = open(path + "charge_now").readline()
+pf = open(path + "charge_full").readline()
+
+percent = float(pn) / float(pf) * 100
+
+print ("%i%%" % (percent))
