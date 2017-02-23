@@ -58,7 +58,7 @@ set wildignore+=.git\*,.hg\*,.svn\*
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -96,6 +96,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Toggle/untoggle line number
+nmap <C-N><C-N> :set invnumber
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
