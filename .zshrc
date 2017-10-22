@@ -6,7 +6,7 @@ done
 source "$HOME/.zsh/themes/akhaten.zsh"
 source "$HOME/.alias/alias"
 source "$HOME/.alias/scripts"
-source "$HOME/.alias/gentoo" # {gentoo, fedora, arch}
+source "$HOME/.alias/fedora" # {gentoo, fedora, arch}
 
 export PATH=$HOME/bin:$HOME/.local/bin:${PATH}
 # colored GCC warnings and errors

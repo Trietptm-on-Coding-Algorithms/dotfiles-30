@@ -44,6 +44,9 @@ alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
 
 alias lockscreen="xscreensaver-command -lock"
+alias weather_today="curl wttr.in/Stockholm?0"
+alias wather_all_narrow="curl wttr.in/Stockholm?n"
+alias weather_img="wget wttr.in/Stockholm_tqp0.png"
 
 # Colors
 alias tund=$(tput sgr 0 1)      # Underline

@@ -311,7 +311,8 @@ for s = 1, screen.count() do
 --{ Top left }--
     local left_layout = wibox.layout.fixed.horizontal()
     -- left_layout:add(calendar_icon)
-    left_layout:add(clock_icon)
+    -- left_layout:add(clock_icon)
+    left_layout:add(spr_very_small)
     left_layout:add(calendarwidget)
     left_layout:add(spr_very_small)
     left_layout:add(clockwidget)
