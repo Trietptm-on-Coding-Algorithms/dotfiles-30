@@ -195,7 +195,7 @@ cpuwidget:set_widget(cpu_widget)
 cpuwidget:set_bgimage(beautiful.widget_bg)
 cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_image(beautiful.cpu)
-
+cpu_icon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvt -e --hold echo hi") end)))
 -- Net
 netdown_icon = wibox.widget.imagebox()
 netdown_icon:set_image(beautiful.net_down)

@@ -30,11 +30,18 @@ export RANGER_LOAD_DEFAULT_RC=False
 # export VDPAU_DRIVER=r600
 
 # Autocompletion
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
 setopt correctall
+setopt glob_complete # complete *.blabla
 zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors # Show colors on menu completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Better completion for kilalll
+zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+# when new programs is installed, auto update autocomplete without reloading shell
+zstyle ':completion:*' rehash true
+
 
 # Advanced prompt
 autoload -U promptinit
@@ -54,3 +61,4 @@ esac
 
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
+

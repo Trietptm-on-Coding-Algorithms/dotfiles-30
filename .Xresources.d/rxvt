@@ -15,7 +15,7 @@
   URxvt*scrollBar           : false
   URxvt*cursorBlink         : true
   URxvt*cursorUnderline     : true
-  Rxvt*depth                : 32
+  URxvt*depth               : 32
 
   ! URxvt*font		    : xft:Inconsolata:pixelsize=11:Regular
   ! URxvt*boldFont	    : xft:Inconsolata:pixelsize=12:Bold
@@ -26,4 +26,10 @@
   URxvt*font		    : xft:Liberation Mono:pixelsize=11:Regular
   URxvt*boldFont	    : xft:Liberation Mono:pixelsize=11:Bold
 
-  ! URxvt.letterSpace         : -1
+  ! URxvt*font		    : xft:Iosevka Term:pixelsize=12
+  ! URxvt*font		    : xft:Iosevka-term:pixelsize=10:Bols
+
+  ! URxvt*font              : xft:Tewi:pixelsize=12
+
+  URxvt.letterSpace         : -1
+

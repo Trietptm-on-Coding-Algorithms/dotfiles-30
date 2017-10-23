@@ -1,0 +1,3 @@
+fotboll=watch -n10 --no-title "w3m http://www.livescores.com/ |awk '/live [0-9H]+[^ ]/,/red cards/'" 
+fotboll-sve=watch -n10 --no-title "w3m http://www.livescores.com/sweden/ |awk '/live [0-9H]+[^ ]/,/red cards/'"
+
