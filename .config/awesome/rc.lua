@@ -70,19 +70,20 @@ if beautiful.wallpaper then
     end
 end
 
-mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
-                              theme = {
-                              height = 16,
-                              width = 130,
-                              bg_normal = theme_menu_bg_color,
-                              fg_normal = theme_menu_fg_color,
-                              bg_focus = theme_menu_bg_focus,
-                              fg_focus = theme_menu_fg_focus,
-                              border_color = theme_menu_border_color,
-                              border_width = theme_menu_border_size
-                          }})
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+-- MENU (disabled due to errors)
+-- mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+--                              theme = {
+--                              height = 16,
+--                              width = 130,
+--                              bg_normal = theme_menu_bg_color,
+--                              fg_normal = theme_menu_fg_color,
+--                              bg_focus = theme_menu_bg_focus,
+--                              fg_focus = theme_menu_fg_focus,
+--                              border_color = theme_menu_border_color,
+--                              border_width = theme_menu_border_size
+--                          }})
+--mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+--                                     menu = mymainmenu })
 
 -- Include keybindings
 --require "lemones/keybindings"
