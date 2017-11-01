@@ -1,3 +1,8 @@
+# trace with geoloc
+mtrg() {
+  sudo mtr -lnc 1 "$1" | awk 'function geo(ip) {s="geoiplookup "ip; s|&getline; s|&getline; split($0, a, "[,:] "); return a[3]","a[4]","a[5]","a[6]}; $1=="h" { print "h "$2" "$3" "geo($3)}'
+}
+
 # Upload file to transfer.sh (10Gb max, stored 14 days)
 transfer() {
   echo "Uploading $1...";
