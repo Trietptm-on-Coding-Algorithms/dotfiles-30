@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ ifconfig tun0 &> /dev/null && echo -e "\033[1;32m" "-- VPN is active --" "\033[0m"

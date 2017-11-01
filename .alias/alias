@@ -16,6 +16,7 @@ alias cp='cp -v'
 alias cpf='cp -avr'             # Copy folder
 alias mv='mv -vi'
 alias rm='rm -vI'
+alias rmf='rm -rf'
 alias rms='shred -v -z -u'
 alias psa='ps aux | grep'
 alias spsa='sudo ps aux | grep'

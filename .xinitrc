@@ -26,6 +26,8 @@ xscreensaver &
 
 # Choose you'r WM
 exec awesome
+# exec /home/lemones/.dwm/dwm
+# exec dwm-user
 # exec /usr/bin/startkde
 # exec xmonad
 # exec i3

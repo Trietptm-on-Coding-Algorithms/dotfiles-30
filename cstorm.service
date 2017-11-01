@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenVPN Robust And Highly Flexible Tunneling Application On %I
+After=network.target
+
+[Service]
+PrivateTmp=true
+Type=forking
+PIDFile=/var/run/openvpn/%i.pid
+ExecStart=/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/%i.pid --config /etc/openvpn/cstorm.conf --up '/bin/vpnstatus 1' --down 'vpnstatus 0' --up-restart
+
+[Install]
+WantedBy=multi-user.target
