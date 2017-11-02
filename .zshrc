@@ -9,9 +9,14 @@ source "$HOME/.alias/scripts"
 source "$HOME/.alias/fun"
 source "$HOME/.alias/fedora" # {gentoo, fedora, arch}
 
+# PATH's
 export PATH=$HOME/bin:$HOME/.local/bin:${PATH}
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Filetype color output
+eval $(dircolors -b $HOME/.LS_COLORS)
 
 # SSH fast connect
 export bigbnka_ip="192.168.1.132"
@@ -30,6 +35,13 @@ export RANGER_LOAD_DEFAULT_RC=False
 # Make use of the VDPAU Driver (May break things)
 # export VDPAU_DRIVER=r600
 
+# auto-fu
+zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+zstyle ':completion:*' completer _oldlist _complete
+zle -N zle-keymap-select auto-fu-zle-keymap-select
+zstyle ':auto-fu:var' postdisplay $''
+zstyle ':auto-fu:var' track-keymap-skip opp
+
 # Autocompletion
 autoload -U compinit && compinit
 setopt correctall
@@ -42,7 +54,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 # when new programs is installed, auto update autocomplete without reloading shell
 zstyle ':completion:*' rehash true
-
 
 # Advanced prompt
 autoload -U promptinit
@@ -63,7 +74,7 @@ esac
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
 
-
+# Perl PATH's
 PATH="/home/lemones/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/lemones/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/lemones/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;

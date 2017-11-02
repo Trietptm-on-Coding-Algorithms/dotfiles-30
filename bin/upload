@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -F "uploaded_file=@$1" http://cirrus.badanka.org/u444.php

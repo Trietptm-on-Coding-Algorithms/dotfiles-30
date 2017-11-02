@@ -1,3 +1,10 @@
+# SELinux
+selstatus() {
+ local stat=`sestatus | grep 'SELinux status' | awk '{ print $3 }'`;
+ local mode=`sestatus | grep 'Current mode' | awk '{ print $3 }'`;
+ echo "Status\t\tMode\n-------------------------\n$stat\t\t$mode"
+}
+
 # trace with geoloc
 mtrg() {
   sudo mtr -lnc 1 "$1" | awk 'function geo(ip) {s="geoiplookup "ip; s|&getline; s|&getline; split($0, a, "[,:] "); return a[3]","a[4]","a[5]","a[6]}; $1=="h" { print "h "$2" "$3" "geo($3)}'

@@ -15,3 +15,8 @@ alias dnfgr="sudo dnf groupremove"          # Remove package group
 alias dnfc="sudo dnf clean all"             # Clean cache
 
 alias logread='journalctl -f | ccze'
+
+alias b++='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 100'
+alias b+='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 50'
+alias b-='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 30'
+alias b--='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 10'
