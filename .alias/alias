@@ -2,14 +2,19 @@ alias oports='netstat -atun'
 alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias logread='journalctl -f | ccze'
+
+# Controling monitor backlight
+alias b++='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 100'
+alias b+='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 50'
+alias b-='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 30'
+alias b--='sudo tee /sys/class/backlight/nv_backlight/brightness <<< 10'
 
 alias env-active='source venv/bin/activate'
 alias env-create='virtualenv venv --distribute'
 
 alias cleanup='~/github/cleanup/cleanup.py'
-
 alias cputemp="sensors | grep -oP 'CPU.*?\+\K[0-9.]+'"
-
 
 alias cat='ccat'                # Improved cat
 alias cp='cp -v'
@@ -43,8 +48,8 @@ alias vlc='fj-start vlc qvlc'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
-
 alias lockscreen="xscreensaver-command -lock"
+
 alias weather_today="curl wttr.in/Stockholm?0"
 alias wather_all_narrow="curl wttr.in/Stockholm?n"
 alias weather_img="wget wttr.in/Stockholm_tqp0.png"

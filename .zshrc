@@ -5,9 +5,9 @@ done
 
 source "$HOME/.zsh/themes/akhaten.zsh"
 source "$HOME/.alias/alias"
-source "$HOME/.alias/scripts"
+source "$HOME/.alias/functions"
 source "$HOME/.alias/fun"
-source "$HOME/.alias/fedora" # {gentoo, fedora, arch}
+source "$HOME/.alias/arch" # {gentoo, fedora, arch}
 
 # PATH's
 export PATH=$HOME/bin:$HOME/.local/bin:${PATH}
@@ -36,11 +36,12 @@ export RANGER_LOAD_DEFAULT_RC=False
 # export VDPAU_DRIVER=r600
 
 # auto-fu
-zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-zstyle ':completion:*' completer _oldlist _complete
-zle -N zle-keymap-select auto-fu-zle-keymap-select
-zstyle ':auto-fu:var' postdisplay $''
-zstyle ':auto-fu:var' track-keymap-skip opp
+#
+# zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+# zstyle ':completion:*' completer _oldlist _complete
+# zle -N zle-keymap-select auto-fu-zle-keymap-select
+# zstyle ':auto-fu:var' postdisplay $''
+# zstyle ':auto-fu:var' track-keymap-skip opp
 
 # Autocompletion
 autoload -U compinit && compinit
