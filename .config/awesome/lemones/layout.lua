@@ -16,9 +16,9 @@ show_alsabuttons        = false
 show_systray            = false
 
 -- colors
-col_ok                  = "#00FF00" -- OK color
+col_ok                  = "#559363" -- OK color
 col_no                  = "#d6cf6b" -- Not OK color
-col_wa                  = "#FF0000" -- Warning color
+col_wa                  = "#783232" -- Warning color
 
 -- Set tooltip colors
 beautiful.tooltip_bg_color = col8
@@ -58,7 +58,6 @@ batwidget = lain.widgets.bat({
             bat_header = ""
             bat_p      = ""
         end
-
         widget:set_markup(markup(blue, bat_header) .. bat_p)
     end
 })
@@ -89,9 +88,9 @@ dnscryptwidgettimer:connect_signal("timeout",
   function()
     status = io.popen("ps -u dnscrypt | grep 'dnscrypt-proxy'", "r")
     if status:read() == nil then
-        dnscryptwidget:set_markup(" <span color='#FF0000'>DNScrypt</span> ")
+        dnscryptwidget:set_markup(" <span color='" .. col_wa .. "'>DNScrypt</span> ")
     else
-        dnscryptwidget:set_markup(" <span color='#00FF00'>DNScrypt</span> ")
+        dnscryptwidget:set_markup(" <span color='" ..col_ok .. "'>DNScrypt</span> ")
     end
     status:close()
   end
@@ -195,7 +194,8 @@ cpuwidget:set_widget(cpu_widget)
 cpuwidget:set_bgimage(beautiful.widget_bg)
 cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_image(beautiful.cpu)
-cpu_icon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvt -e --hold echo hi") end)))
+cpu_icon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("termite -e 'htop'") end)))
+
 -- Net
 netdown_icon = wibox.widget.imagebox()
 netdown_icon:set_image(beautiful.net_down)
@@ -203,8 +203,8 @@ netup_icon = wibox.widget.imagebox()
 netup_icon:set_image(beautiful.net_up)
 netwidget = lain.widgets.net({
     settings = function()
-        widget:set_markup("<span color='#00FF00'>" .. net_now.received .. "</span> "
-                          .. "<span color='#FF476A'>" .. net_now.sent .. "</span>")
+        widget:set_markup("<span color='" .. col_ok .. "'>" .. net_now.received .. "</span> "
+                          .. "<span color='" .. col_wa .. "'>" .. net_now.sent .. "</span>")
     end
 })
 networkwidget = wibox.widget.background()

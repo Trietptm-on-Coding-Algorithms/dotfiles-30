@@ -3,6 +3,9 @@ alias pacs="pacman -sS" # Search
 alias pacr="sudo pacman -R" # Remove
 alias pacu="sudo pacman -Syu" # Update
 
+alias aurls="echo -n '\e[1;32mListing Installed AUR packages:\e[0m '| pv -qL 20 && pacman -Qqm" #list installed AUR packages
+
+
 alias start="sudo systemctl start"
 alias stop="sudo systemctl stop"
 alias restart="sudo systemctl restart"

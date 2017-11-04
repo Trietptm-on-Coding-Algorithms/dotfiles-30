@@ -37,11 +37,11 @@ export RANGER_LOAD_DEFAULT_RC=False
 
 # auto-fu
 #
-# zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-# zstyle ':completion:*' completer _oldlist _complete
-# zle -N zle-keymap-select auto-fu-zle-keymap-select
-# zstyle ':auto-fu:var' postdisplay $''
-# zstyle ':auto-fu:var' track-keymap-skip opp
+zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+zstyle ':completion:*' completer _oldlist _complete
+zle -N zle-keymap-select auto-fu-zle-keymap-select
+zstyle ':auto-fu:var' postdisplay $''
+zstyle ':auto-fu:var' track-keymap-skip opp
 
 # Autocompletion
 autoload -U compinit && compinit
@@ -71,6 +71,19 @@ case $TERM in
     }
   ;;
 esac
+
+# Same for xterm*(termite)      (Could probl fork ^ and v togheter)
+case $TERM in
+  (xterm*)
+    function precmd {
+      print -Pn "\e]0;[zsh] %(1j,%j job%(2j|s|); ,)%~\a"
+    }
+    function preexec {
+      printf "\033]0;[zsh] %s\a" "$1"
+    }
+  ;;
+esac
+
 
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
