@@ -34,7 +34,7 @@ cd ~/temp/
 cd ~
 
 # Harden FF user.js
-sudo wget https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js /etc/firefox/
+sudo wget https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js /etc/firefox/firefox.js
 
 
 # Security settings

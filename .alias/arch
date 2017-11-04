@@ -1,3 +1,9 @@
 alias paci="sudo pacman -S" # Install
 alias pacs="pacman -sS" # Search
 alias pacr="sudo pacman -R" # Remove
+alias pacu="sudo pacman -Syu" # Update
+
+alias start="sudo systemctl start"
+alias stop="sudo systemctl stop"
+alias restart="sudo systemctl restart"
+alias status="systemctl status"

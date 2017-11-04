@@ -2,28 +2,18 @@
 # Automate installation of Atom plugins
 
 # Needed for linter and autopep8
-sudo pip install pep8
-sudo pip install flake8
+# (for security, use --user to install as user)
+pip install pep8 --user
+pip install flake8 --user
 
-# Python
-apm i linter
-apm i linter-pep8
-apm i autocomplete-python
-apm i python-autopep8
-apm i python-tools
+# Python Plugins
+apm i linter linter-pep8 autocomplete-python python-autopep8 python-tools
 
-apm i color-picker
-apm i file-type-icons
-apm i language-lua
-apm i minimap
-apm i minimap-cursorline
-apm i minimap-pigments
-apm i pigments
+# Misc Plugins
+apm i color-picker file-type-icons language-lua minimap minimap-cursorline minimap-pigments pigments
 
 # Themes
-apm i atom-materials-syntax
-apm i atom-material-syntax-dark
-apm i atom-material-ui
+apm i atom-materials-syntax atom-material-syntax-dark atom-material-ui
 
 # Installing the config file
 if [ -f ~/.atom/config.cson ]; then
