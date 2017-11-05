@@ -1,6 +1,5 @@
 #include "colors/akhaten"
 
-
   URxvt*scrollTtyOutput     : false
   URxvt*scrollWithBuffer    : true
   URxvt*scrollTtyKeypress   : true
@@ -15,10 +14,14 @@
   URxvt*scrollBar           : false
   URxvt*cursorBlink         : true
   URxvt*cursorUnderline     : true
+  URxvt.cursorColor         : #559363
   URxvt*depth               : 32
 
-  ! URxvt*font		    : xft:Inconsolata:pixelsize=11:Regular
-  ! URxvt*boldFont	    : xft:Inconsolata:pixelsize=12:Bold
+  URxvt*font  		    : xft:Monospace:pixelsize=10
+  URxvt*boldFont 	    : xft:Monospace:pixelsize=10
+
+  ! URxvt*font		    : xft:Inconsolata:pixelsize=10:Regular
+  ! URxvt*boldFont	    : xft:Inconsolata:pixelsize=10:Bold
 
   ! URxvt*font              : xft:DejaVu Sans Mono:pixelsize=12:Regular
   ! URxvt*boldFont          : xft:DejaVu Sans Mono:pixelsize=12:Bold
@@ -26,8 +29,8 @@
   ! URxvt*font		    : xft:Liberation Mono:pixelsize=12:Regular
   ! URxvt*boldFont	    : xft:Liberation Mono:pixelsize=12:Bold
 
-  URxvt*font		    : xft:Fira Code:pixelsize=10
-  URxvt*boldFont	    : xft:Fira Code:pixelsize=10:Bold
+  ! URxvt*font		    : xft:Fira Code:pixelsize=10
+  ! URxvt*boldFont	    : xft:Fira Code:pixelsize=10:Bold
 
   ! URxvt*font              : xft:Iosevka Term:pixelsize=12
   ! URxvt*boldFont          : xft:Iosevka Term:pixelsize=12:Bold

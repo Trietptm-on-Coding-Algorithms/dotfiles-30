@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Print colors and their ANSI codes
+
+for (( i = 30; i <= 37; i++ ));
+do 
+ echo -e "\e[0;"$i"m  0;$i";
+done
