@@ -21,7 +21,7 @@ require("lemones/autostart")
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/akhaten/theme.lua")
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "termite" or "xterm"
+terminal   = "urxvtc" or "xterm"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 

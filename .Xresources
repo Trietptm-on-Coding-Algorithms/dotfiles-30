@@ -4,6 +4,7 @@ Xft.hinting:          true
 Xft.lcdfilter:        lcddefault
 Xft.hintstyle:        hintfull
 Xft.dpi:              96
+Xft.autohint:	      0
 
 ! Xcursor.theme: ~/.icons/cursor/
 

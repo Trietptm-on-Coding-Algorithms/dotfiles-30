@@ -5,8 +5,8 @@
   URxvt*scrollWithBuffer    : true
   URxvt*scrollTtyKeypress   : true
 
-  URxvt.perl-ext            :
-  URxvt.perl-ext-common     :
+  ! URxvt.perl-ext            :
+  ! URxvt.perl-ext-common     :
 
   URxvt.urlLauncher         : /usr/bin/firefox
   URxvt.matcher.button      : 1
@@ -23,13 +23,21 @@
   ! URxvt*font              : xft:DejaVu Sans Mono:pixelsize=12:Regular
   ! URxvt*boldFont          : xft:DejaVu Sans Mono:pixelsize=12:Bold
 
-  URxvt*font		    : xft:Liberation Mono:pixelsize=11:Regular
-  URxvt*boldFont	    : xft:Liberation Mono:pixelsize=11:Bold
+  ! URxvt*font		    : xft:Liberation Mono:pixelsize=12:Regular
+  ! URxvt*boldFont	    : xft:Liberation Mono:pixelsize=12:Bold
+
+  URxvt*font		    : xft:Fira Code:pixelsize=10
+  URxvt*boldFont	    : xft:Fira Code:pixelsize=10:Bold
+
+  ! URxvt*font              : xft:Iosevka Term:pixelsize=12
+  ! URxvt*boldFont          : xft:Iosevka Term:pixelsize=12:Bold
 
   ! URxvt*font		    : xft:Iosevka Term:pixelsize=12
-  ! URxvt*font		    : xft:Iosevka-term:pixelsize=10:Bols
+  ! URxvt*font		    : xft:Iosevka-term:pixelsize=10:Bold
 
   ! URxvt*font              : xft:Tewi:pixelsize=12
+
+  ! URxvt*font		    : xft:Hack:pixelsize=12
 
   URxvt.letterSpace         : -1
 
