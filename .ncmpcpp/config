@@ -64,7 +64,7 @@ progressbar_look = "▪▪▫"
 default_place_to_search_in = "database"
 user_interface = "classic"
 default_find_mode = "wrapped"
-default_space_mode = "add"
+#default_space_mode = "add"
 default_tag_editor_pattern = "%n - %t"
 
 header_visibility = "no"

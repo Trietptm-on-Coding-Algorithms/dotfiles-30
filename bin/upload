@@ -1,4 +1,4 @@
 #!/bin/bash
-
-scp $1 lemones@badanka.org:public_html/cirrus/misc
-echo "Uploaded $1: \n http://cirrus.badanka.org/misc/$1"
+if [ ! -f $1 ]; then echo -e "\033[31m::::>\033[34m $1 \033[31mnot found.\033[39m"; exit; fi
+scp $1 lemones@badanka.org:public_html/cirrus/misc > /dev/null
+echo -e "\033[32m::::> \033[34m http://cirrus.badanka.org/misc/$1\033[39m"
