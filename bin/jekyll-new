@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ ! -f _config.yml ]; then echo "Not in valid jekyll folder. Based on missing _config.yml"; exit; fi
+if [ -z ${1+x} ]; then echo "Post must have a name."; exit; fi
+
+date_now=`date +"%Y-%m-%d"`
+time_now=`date +"%H:%M:%S"`
+
+if [ -f _posts/$date_now-$1.md ]; then echo "Post file exists. Choose another name."; exit; fi
+
+echo "---
+layout: post
+title: \"$1\"
+date: $date_now $time_now
+tags: jekyll
+description: Standard description
+---
+
+Standard content
+" > _posts/$date_now-$1.md
+
+cat _posts/$date_now-$1.md

@@ -1,3 +1,4 @@
 #!/bin/bash
 
-curl -F "uploaded_file=@$1" http://cirrus.badanka.org/u444.php
+scp $1 lemones@badanka.org:public_html/cirrus/misc
+echo "Uploaded $1: \n http://cirrus.badanka.org/misc/$1"

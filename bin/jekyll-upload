@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -f _config.yml ]; then
+    echo "Not in valid jekyll folder. Based on missing _config.yml"
+    exit
+fi
+
+jekyll build; rsync -avr --rsh='ssh -p22' _site/ badanka.org:www/blog/"
