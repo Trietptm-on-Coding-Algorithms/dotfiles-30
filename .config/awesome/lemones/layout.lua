@@ -4,63 +4,13 @@ local awful     = require("awful")
 local lain      = require("lain")
 local vicious   = require("vicious")
 
--- Settings
+require("req.battery")
+require("req.clock")
 
-show_infotext           = true
-show_cpu_percent        = true
-show_battery_percent    = true
-show_net_up_down        = true
-show_calendar           = true
-show_clock              = true
-show_alsabuttons        = false
-show_systray            = false
+-- ] Default Separator
+sprtr = wibox.widget.textbox()
+sprtr:set_markup("<span color='" .. col_sprtr .. "'> : </span>")
 
--- colors
-col_ok                  = "#559363" -- OK color
-col_no                  = "#d6cf6b" -- Not OK color
-col_wa                  = "#783232" -- Warning color
-
--- Set tooltip colors
-beautiful.tooltip_bg_color = col8
-beautiful.tooltip_fg_color = col7
-
--- {{{ Wibox
-markup = lain.util.markup
-blue   = col7
-space3 = markup.font("Tamsyn 3", " ")
-space2 = markup.font("Tamsyn 2", " ")
-
--- Battery
--- 
-batwidget = lain.widgets.bat({
-    settings = function()
-
-        if bat_now.status == "Charging" then
-            bat_p = bat_now.perc .. "^"
-        else
-            bat_p = bat_now.perc .. "%"
-        end
-
-        if bat_now.perc >= '100' then
-            bat_header = " <span color='" .. col_ok .. "'>" .. "" .. "</span> "
-        end
-        if bat_now.perc <= '99' then
-            bat_header = " <span color='" .. col_ok .. "'>" .. "" .. "</span> "
-        end
-        if bat_now.perc <= '60' then
-            bat_header = " <span color='" .. col_no .. "'>" .. "" .. "</span> "
-        end
-        if bat_now.perc <= '20' then
-            bat_header = " <span color='" .. col_wa .. "'>" .. "" .. "</span> "
-        end
-
-        if bat_now.status == "Not present" then
-            bat_header = ""
-            bat_p      = ""
-        end
-        widget:set_markup(markup(blue, bat_header) .. bat_p)
-    end
-})
 
 --] VPN Widget Start
 vpnwidget = wibox.widget.textbox()
@@ -70,9 +20,9 @@ vpnwidgettimer:connect_signal("timeout",
   function()
     status = io.popen("ls /var/run | grep 'openvpn'", "r")
     if status:read() == nil then
-        vpnwidget:set_markup(" <span color='" .. col_wa .. "'>VPN</span> ")
+        vpnwidget:set_markup("<span color='" .. col_wa .. "'>VPN</span>")
     else
-        vpnwidget:set_markup(" <span color='" .. col_ok .. "'>VPN</span> ")
+        vpnwidget:set_markup("<span color='" .. col_ok .. "'>VPN</span>")
     end
     status:close()
   end
@@ -88,9 +38,9 @@ dnscryptwidgettimer:connect_signal("timeout",
   function()
     status = io.popen("ps -u dnscrypt | grep 'dnscrypt-proxy'", "r")
     if status:read() == nil then
-        dnscryptwidget:set_markup(" <span color='" .. col_wa .. "'>DNScrypt</span> ")
+        dnscryptwidget:set_markup("<span color='" .. col_wa .. "'>DNScrypt</span>")
     else
-        dnscryptwidget:set_markup(" <span color='" ..col_ok .. "'>DNScrypt</span> ")
+        dnscryptwidget:set_markup("<span color='" ..col_ok .. "'>DNScrypt</span>")
     end
     status:close()
   end
@@ -99,21 +49,14 @@ dnscryptwidgettimer:start()
 --] DNScrypt Widget End
 
 -- Clock
+--[[
 mytextclock = awful.widget.textclock(markup(col7, space3 .. "%H:%M" .. space2))
 clock_icon = wibox.widget.imagebox()
 clock_icon:set_image(beautiful.clock)
 clockwidget = wibox.widget.background()
 clockwidget:set_widget(mytextclock)
 clockwidget:set_bgimage(beautiful.widget_bg)
-
--- Calendar
-mytextcalendar = awful.widget.textclock(markup("#FFFFFF", space3 .. "%d %b<span font='DejaVu Sans Mono 8'> </span>"))
-calendar_icon = wibox.widget.imagebox()
-calendar_icon:set_image(beautiful.calendar)
-calendarwidget = wibox.widget.background()
-calendarwidget:set_widget(mytextcalendar)
-calendarwidget:set_bgimage(beautiful.widget_bg)
-lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "bottom_left" })
+]]--
 
 -- MPD
 mpd_icon = wibox.widget.imagebox()
@@ -194,7 +137,7 @@ cpuwidget:set_widget(cpu_widget)
 cpuwidget:set_bgimage(beautiful.widget_bg)
 cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_image(beautiful.cpu)
-cpu_icon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("termite -e 'htop'") end)))
+cpu_icon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvtc -e 'htop'") end)))
 
 -- Net
 netdown_icon = wibox.widget.imagebox()
@@ -310,25 +253,25 @@ for s = 1, screen.count() do
 
 --{ Top left }--
     local left_layout = wibox.layout.fixed.horizontal()
-    -- left_layout:add(calendar_icon)
-    -- left_layout:add(clock_icon)
     left_layout:add(spr_very_small)
-    left_layout:add(calendarwidget)
     left_layout:add(spr_very_small)
-    left_layout:add(clockwidget)
-    left_layout:add(bigspr)
     left_layout:add(mypromptbox[s])
 
 --{ Top middle }--
     local middle_layout = wibox.layout.fixed.horizontal()
     middle_layout:add(mytaglist[s])
-    middle_layout:add(spr_very_small)
+    middle_layout:add(sprtr)
     middle_layout:add(mylayoutbox[s])
 
 --{ Top right }--
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(vpnwidget)
+    right_layout:add(sprtr)
     right_layout:add(dnscryptwidget)
+    right_layout:add(sprtr)
+    right_layout:add(batwidget)
+    right_layout:add(sprtr)
+    right_layout:add(mytextclock)
     if show_systray == 1 then right_layout:add(wibox.widget.systray()) end
 
 --{ Show }--
@@ -356,7 +299,7 @@ for s = 1, screen.count() do
     bottom_right_layout:add(cpu_icon)
     bottom_right_layout:add(cpuwidget)
     bottom_right_layout:add(spr_very_small)
-    bottom_right_layout:add(batwidget)
+
 
 --{ Show }--
     bottom_layout = wibox.layout.align.horizontal()

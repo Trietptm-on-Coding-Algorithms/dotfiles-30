@@ -63,6 +63,13 @@ theme_menu_fg_focus                       = col5
 theme_menu_border_color                   = col5
 theme_menu_border_size                    = 1
 
+theme.taglist_fg_focus    = "#FFFFFF"
+theme.taglist_fg_occupied = "#828282"
+theme.taglist_fg_urgent   = "#ED7572"
+theme.taglist_fg_empty    = "#828282"
+theme.taglist_spacing     = 2
+
+
 -- theme.widget_bg                     = theme.icon_dir .. "/bg_focus_noline.png"
 theme.awesome_icon                  = theme.icon_dir .. "/awesome_icon.png"
 theme.vol_bg                        = theme.icon_dir .. "/vol_bg.png"

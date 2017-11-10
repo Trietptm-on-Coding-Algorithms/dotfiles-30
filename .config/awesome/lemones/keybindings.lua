@@ -1,14 +1,4 @@
-local gears     =       require("gears")
-local awful     =       require("awful")
-awful.rules     =       require("awful.rules")
-                                require("awful.autofocus")
-local wibox     = require("wibox")
-local beautiful = require("beautiful")
-local naughty   = require("naughty")
-local drop      = require("scratchdrop")
-local lain      = require("lain")
-
-local treesome = require("treesome")
+local awful     = require("awful")
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
@@ -80,7 +70,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx( -1)    end),
 
-
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
@@ -91,8 +80,22 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
+
+    -- alttab
+    awful.key({ "Mod1", }, "Tab",
+        function ()
+            alttab.switch(1, "Alt_L", "Tab", "ISO_Left_Tab")
+        end
+    ),
+
+    awful.key({ "Mod1", "Shift"   }, "Tab",
+        function ()
+            alttab.switch(-1, "Alt_L", "Tab", "ISO_Left_Tab")
+        end
+    ),
+
     awful.key({ modkey,           }, "+",      function () awful.tag.incmwfact( 0.05)     end),
-    awful.key({ altkey, "Shift"   }, "h",      function () awful.tag.incmwfact(-0.05)     end),
+    awful.key({ modkey,           }, "-",      function () awful.tag.incmwfact(-0.05)     end),
     awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
     awful.key({ modkey, "Shift"   }, "h",      function () awful.tag.incnmaster( 1)       end),
     awful.key({ modkey, "Control" }, "l",      function () awful.tag.incncol(-1)          end),
@@ -165,10 +168,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "i", function () awful.util.spawn(browser2) end),
     awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
     awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
-    awful.key({ modkey }, "e", function () awful.util.spawn(filegui) end),
 
     -- Prompt
-    awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
+--    awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey }, "r", function () os.execute("dmenu_run -b -nf white -sb '#2D292E' -nb '#2D292E' -sf '#FF476A' -p Run: -l 5") end),
+
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
@@ -185,7 +190,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "d",
+    awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
@@ -200,6 +205,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey }, "v", treesome.vertical),
     awful.key({ modkey }, "h", treesome.horizontal)
 )
+
 
 
 -- Bind all key numbers to tags.

@@ -1,8 +1,6 @@
 local awful     = require("awful")
 local beautiful = require("beautiful")
 
-
---------------- FIX
 -- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.

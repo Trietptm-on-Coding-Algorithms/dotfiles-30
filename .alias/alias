@@ -1,3 +1,8 @@
+alias jekylupload="jekyll build; rsync -avr --rsh='ssh -p22' _site/ badanka.org:www/blog/" # Fix a bin/ to valuate folder plz!
+
+alias initrunning='systemctl --no-page --no-legend --plain -t service --state=running'
+alias randpass='openssl rand -base64 $1'
+
 alias oports='netstat -atun'
 alias soports='sudo netstat -tulpn'
 alias wports='lsof -n -i4TCP:$1'

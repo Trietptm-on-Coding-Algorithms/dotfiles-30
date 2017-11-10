@@ -6,7 +6,7 @@ Xft.hintstyle:        hintfull
 Xft.dpi:              96
 Xft.autohint:	      0
 
-! Xcursor.theme: ~/.icons/cursor/
+Xcursor.theme: ~/.icons/ComixCursors-White/
 
 #include ".Xresources.d/rxvt"
 #include ".Xresources.d/xcalc"
