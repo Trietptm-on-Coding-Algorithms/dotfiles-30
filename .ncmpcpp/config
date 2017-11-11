@@ -1,8 +1,6 @@
-##
-## Graybean ncmpcpp config Version 1.0-COPYCATED
-##
 
-### connection settings
+#--{ connection settings
+#
 # mpd_host = "192.168.1.27"
 mpd_host = "localhost"
 mpd_port = "6600"
@@ -10,15 +8,18 @@ mpd_port = "6600"
 mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 
-# How long messages is visible
-message_delay_time = "3"
+#--{ Delays
+#
+message_delay_time = "1"
+playlist_disable_highlight_delay = "1"
 
-### columns settings
+
+#--{ Display
 song_list_format = "{$5 %a$9 $1│$9 $8%t$9 }|{ $8%f$9}$R{$5%b $7}"
 song_columns_list_format = "(40)[magenta]{t|f} (25)[blue]{a} (25)[cyan]{b} (25)[white]{l}"
 song_status_format = "{{{$3%a$9}} $8-$9 {$8%t$9}|{$8%f$9}{ $8-$9 $6%b$9{ $8-$9 $7%y$9}}}"
 song_library_format = "{%n $8-$9 }{%t}|{%f}"
-# tag_editor_album_format = "{%y $8-$9 }{%b}"
+#tag_editor_album_format = "{%y $8-$9 }{%b}"
 alternative_header_first_line_format = "$1$aqqu$/a$9 {$8%t$9}|{$8%f$9} $1$atqq$/a$9"
 alternative_header_second_line_format = "{{$6%a$9}{ $8-$9 $4%b$9 $8-$9 $7%y$9}}|{%D}"
 now_playing_prefix = "$b"
@@ -52,13 +53,14 @@ centered_cursor = "yes"
 #progressbar_look = "─➞─"
 #progressbar_look = "─┅─"
 #progressbar_look = "▪▪▪"
-progressbar_look = "▪▪▫"
+#progressbar_look = "▪▪▫"
 #progressbar_look = "───"
 #progressbar_look = "▁▁▁"
 #progressbar_look = "‒‒‒"
 #progressbar_look = "■◣ "
 #progressbar_look = "◈◆◇"
 #progressbar_look = "██ "
+progressbar_look = "━━─"
 
 
 default_place_to_search_in = "database"
@@ -99,7 +101,7 @@ visualizer_in_stereo = "yes"
 
 ### lyrics support
 external_editor = "vim"
-use_console_editor = "yes" (set to yes, if your editor is console app)
+use_console_editor = "yes" # (set to yes, if your editor is console app)
 
 colors_enabled = "yes"
 empty_tag_color = "white"

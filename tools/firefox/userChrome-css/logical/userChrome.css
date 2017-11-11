@@ -1,0 +1,24 @@
+/* logicalincrements.com/firefoxguide */
+
+/* No Firefox Button */
+#appmenu-button{display:none !important;}
+
+/* No load progress indicator */
+.tab-throbber{display:none !important;}
+
+/* No horizontal scrollbar */
+#content browser{margin-right:-14px !important;
+overflow-y:scroll; overflow-x:hidden;}
+
+/* No site favicon */
+.tab-icon-image{display:none !important;}
+
+/* No "X" button to close tab */
+.tab-close-button{display:none !important;}
+
+/* No auto-complete arrow on location bar */
+.autocomplete-history-dropmarker{display: none !important;}
+
+/* See http://p.pomf.se/483 for Menu Context removals */
+
+/* To make your own userChrome.css tweaks, find elements using the DOM Inspector on "chrome://browser/content/browser.xul" */

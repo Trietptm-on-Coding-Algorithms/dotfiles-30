@@ -1,0 +1,3 @@
+# Fixes a bug in FF-5.0=> giving error messages
+# when colors are loaded. (Remove when official fixed)
+source ~/.vimperator/colors/liberator.css

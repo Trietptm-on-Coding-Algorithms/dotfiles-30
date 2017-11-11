@@ -1,5 +1,7 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
+cd $HOME
+
 # Set keyboard layout to Swedish (åäö)
 setxkbmap se
 
