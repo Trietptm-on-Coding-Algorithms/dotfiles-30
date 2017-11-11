@@ -2,15 +2,16 @@
 
 # -C                 : uses compression transfer (sometimes slower)
 # -o allow_other     : allow non-root read/write access
+#                    : Might beed to allow in /etc/fuse.conf
 # -o follow_symlinks : Speaks for itself
 # -p                 : Port
 
-echo "[*] Mounting SSH to $HOME/Mounts/server/"
-sudo sshfs -o Compression=no                                \
+echo "[*] Mounting SSH to $HOME/mount/bnka/"
+sshfs -o Compression=no                                \
            -o IdentityFile=$HOME/.ssh/id_rsa                \
            -o allow_other                                   \
            -o follow_symlinks                               \
            -C                                               \
-           -p $bigbnka_port                                 \
-           $bigbnka_user@$bigbnka_ip:/home/$bigbnka_user/   \
-           $HOME/Mounts/server/
+           -p 22                                            \
+           lemones@badanka.org:www/                         \
+           $HOME/mount/bnka/

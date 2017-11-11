@@ -6,3 +6,4 @@ if [ ! -f _config.yml ]; then
 fi
 
 jekyll build; rsync -avr --rsh='ssh -p22' _site/ badanka.org:www/blog/"
+hr -; echo "[*] Done..."

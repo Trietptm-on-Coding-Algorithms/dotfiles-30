@@ -19,9 +19,9 @@ alias env-create='virtualenv venv --distribute'
 alias cleanup='~/github/cleanup/cleanup.py'
 alias cputemp="sensors | grep -oP 'CPU.*?\+\K[0-9.]+'"
 
-alias cat='ccat'                # Improved cat
+alias cat='ccat'
 alias cp='cp -v'
-alias cpf='cp -avr'             # Copy folder
+alias cpf='cp -avr'
 alias mv='mv -vi'
 alias rm='rm -vI'
 alias rmf='rm -rf'
@@ -43,11 +43,11 @@ alias grep='grep --color=always -n'
 
 alias R='ranger'
 
-alias firefox='fj-start firefox firefox'
-alias chromium='fj-start chromium chromium'
-alias google-chrome='fj-start google-chrome google-chrome'
-alias chrome='fj-start chrome chrome'
-alias vlc='fj-start vlc qvlc'
+alias firefox='jail web-browser firefox'
+alias chromium='jail web-browser chromium'
+alias google-chrome='jail web-browser google-chrome'
+alias chrome='jail web-browser chrome'
+alias vlc='jail vlc qvlc'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
