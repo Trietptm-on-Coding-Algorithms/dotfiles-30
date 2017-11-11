@@ -5,7 +5,7 @@ set constantshow
 # set linenumbers
 set matchbrackets "(<[{)>]}"
 set morespace
-set mouse
+# set mouse
 set nohelp
 set nowrap
 # set quickblank

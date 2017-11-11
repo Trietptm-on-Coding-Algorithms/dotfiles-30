@@ -1,0 +1,19 @@
+#!/bin/sh
+
+tput setaf 6
+echo "
+░█▀▄░█▀█░█▀▄░█▀█░█▀█░█░█░█▀█░░░░█▀█░█▀▄░█▀▀
+░█▀▄░█▀█░█░█░█▀█░█░█░█▀▄░█▀█░░░░█░█░█▀▄░█░█
+░▀▀░░▀░▀░▀▀░░▀░▀░▀░▀░▀░▀░▀░▀░▀░░▀▀▀░▀░▀░▀▀▀
+$(tput sgr0)
+          Wallpaper browser.
+
+This will change your wallpaper!"
+read -n 1 -s -r -p "ctrl-c to abort or when happyface...."
+
+WP="$HOME/Pictures/wallpapers/*"
+
+for file in $WP; do
+	feh --bg-fill $file
+	read -n 1 -s -r -p ""
+done

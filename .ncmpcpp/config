@@ -1,7 +1,7 @@
+#!/bin/sh <-- for highlightning
 
 #--{ connection settings
 #
-# mpd_host = "192.168.1.27"
 mpd_host = "localhost"
 mpd_port = "6600"
 #mpd_music_dir = "~/Music"
@@ -15,19 +15,21 @@ playlist_disable_highlight_delay = "1"
 
 
 #--{ Display
-song_list_format = "{$5 %a$9 $1│$9 $8%t$9 }|{ $8%f$9}$R{$5%b $7}"
-song_columns_list_format = "(40)[magenta]{t|f} (25)[blue]{a} (25)[cyan]{b} (25)[white]{l}"
-song_status_format = "{{{$3%a$9}} $8-$9 {$8%t$9}|{$8%f$9}{ $8-$9 $6%b$9{ $8-$9 $7%y$9}}}"
+song_list_format = " $8%a • %t"
+song_status_format = "{$3%a$9 $2-$9 {$8%t$9}|{$8%f$9} $5($9$2%b$5)$9} "
+song_columns_list_format = "(1f)[black]{l}  (30)[red]{t|f} - (40)[blue]{aE:Right}"
+song_window_title_format = "[mpd] {%t}|{%f} - {%a}"
 song_library_format = "{%n $8-$9 }{%t}|{%f}"
-#tag_editor_album_format = "{%y $8-$9 }{%b}"
-alternative_header_first_line_format = "$1$aqqu$/a$9 {$8%t$9}|{$8%f$9} $1$atqq$/a$9"
-alternative_header_second_line_format = "{{$6%a$9}{ $8-$9 $4%b$9 $8-$9 $7%y$9}}|{%D}"
-now_playing_prefix = "$b"
-now_playing_suffix = "$/b"
+
+now_playing_prefix = "$b$2 ▶ "
+now_playing_suffix = "$8$/b"
+
+selected_item_prefix = "$b  $5"
+selected_item_suffix = "$9$/b"
+
+
+
 browser_playlist_prefix = "playlist"
-selected_item_prefix = "$5"
-selected_item_suffix = "$9"
-song_window_title_format = "{%t}|{%f} - {%a}"
 
 ### various settings
 #execute_on_song_change = ""
@@ -42,7 +44,6 @@ incremental_seeking = "yes"
 seek_time = "4"
 autocenter_mode = "yes"
 centered_cursor = "yes"
-
 
 #progressbar_look = "-|-"
 #progressbar_look = "=>"
@@ -62,7 +63,6 @@ centered_cursor = "yes"
 #progressbar_look = "██ "
 progressbar_look = "━━─"
 
-
 default_place_to_search_in = "database"
 user_interface = "classic"
 default_find_mode = "wrapped"
@@ -70,7 +70,7 @@ default_find_mode = "wrapped"
 default_tag_editor_pattern = "%n - %t"
 
 header_visibility = "no"
-statusbar_visibility = "yes"
+statusbar_visibility = "no"
 titles_visibility = "no"
 
 header_text_scrolling = "yes"
@@ -81,7 +81,7 @@ show_hidden_files_in_local_browser = "no"
 jump_to_now_playing_song_at_start = "yes"
 clock_display_seconds = "no"
 display_volume_level = "yes"
-display_bitrate = "yes"
+display_bitrate = "no"
 display_remaining_time = "no"
 regular_expressions = "extended" (basic/extended)
 ignore_leading_the = "no"
@@ -93,10 +93,11 @@ mouse_list_scroll_whole_page = "yes"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "FIFO"
 visualizer_sync_interval = "30"
-visualizer_type = "spectrum"
-visualizer_look = "●▮"
+visualizer_type = "spectrum" (spectrum / wave)
+#visualizer_look = "●▮"
+visualizer_look = "▋▋"
 #visualizer_look = "◆▋"
-visualizer_in_stereo = "yes"
+visualizer_in_stereo = "no"
 #visualizer_sample_multipler = 1
 
 ### lyrics support
@@ -110,8 +111,8 @@ volume_color = "yellow"
 state_line_color = "black"
 state_flags_color = "black"
 main_window_color = "white"
-color1 = "magenta"
-color2 = "blue"
+color1 = "white"
+color2 = "black"
 main_window_highlight_color = "blue"
 progressbar_color = "black"
 statusbar_color = "blue"

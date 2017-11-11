@@ -1,0 +1,3 @@
+#!/bin/sh
+
+aria2c --dir="${HOME}/Downloads/torrent/" --file-allocation=none --max-upload-limit=10K --on-download-complete="exit" $1
