@@ -1,20 +1,30 @@
 
---[[ The rings of Akhaten --]]
+--[[ bnka --]]
 
-col0 = '#00000030'
-col1 = '#331E2F'
-col2 = '#7C2A0D'
-col3 = '#571107'
-col4 = '#4D0E16'
-col5 = '#ED5F03'
-col6 = '#FCEF71'
-col7 = '#e8e8e8'
-col8 = '#00000070'
+col0  = '#0e1425'
+col1  = '#d9e6f2'
+col2  = '#242a5b'
+col3  = '#3b4072'
+col4  = '#a45959'
+col5  = '#dbbdbd'
+col6  = '#59a459'
+col7  = '#bddbbd'
+col8  = '#a4a459'
+col9  = '#dbdbbd'
+col10 = '#5959a4'
+col11 = '#bdbddb'
+col12 = '#a459a4'
+col13 = '#dbbddb'
+col14 = '#59a4a4'
+col15 = '#bddbdb'
+col16 = '#aab0e1'
+col17 = '#bbc0f2'
+
 
 
 theme                               = {}
-theme.icon_dir                      = os.getenv("HOME") .. "/.config/awesome/themes/akhaten/icons"
-theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/themes/akhaten/wall.png"
+theme.icon_dir                      = os.getenv("HOME") .. "/.config/awesome/themes/bnka/icons"
+theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/themes/bnka/wall.png"
 theme.font                          = "DejaVu Sans Mono 8"
 theme.taglist_font  	            = "FontAwesome 8"
 theme.topbar_path                   = "png:" .. theme.icon_dir .. "/topbar/"
@@ -30,29 +40,29 @@ theme.taglist_fg_focus              = col7
 theme.tasklist_fg_focus             = col7
 
 -- Background
-theme.bg_normal                     = col0
+theme.bg_normal                     = col0 .. "40" -- Taskbar background
 theme.bg_urgent                     = col0
-theme.tasklist_bg_normal            = col0
+theme.tasklist_bg_normal            = col0 .. "00"
 
 -- Focus
 theme.taglist_bg_focus              = "png:" .. theme.icon_dir .. "/taglist_bg_focus.png"
-theme.tasklist_bg_focus             = "png:" .. theme.icon_dir .. "/bg_focus.png"
+theme.tasklist_bg_focus             = col2 .. "70"-- "png:" .. theme.icon_dir .. "/bg_focus.png"
 
-theme.border_focus                  = col5
+theme.border_focus                  = col1
 theme.border_width                  = "1"
 theme.border_normal                 = col1
 
 theme.textbox_widget_margin_top     = 1
 theme.awful_widget_height           = 14
 theme.awful_widget_margin_top       = 2
-theme.menu_height                   = "20"
-theme.menu_width                    = "400"
+--theme.menu_height                   = "20"
+--theme.menu_width                    = "400"
 
 -- tooltip
 tooltip_font                        = "DejaVu Sans Mono 8"
--- tooltip_opacity =
+--tooltip_opacity                     = "1"
 tooltip_fg_color                    = col7
-tooltip_bg_color                    = col1
+tooltip_bg_color                    = col1 .. "90"
 tooltip_border_width                = "1"
 tooltip_border_color                = col5
 
@@ -63,10 +73,10 @@ theme_menu_fg_focus                       = col5
 theme_menu_border_color                   = col5
 theme_menu_border_size                    = 1
 
-theme.taglist_fg_focus    = "#FFFFFF"
-theme.taglist_fg_occupied = "#828282"
+theme.taglist_fg_focus    = col13
+theme.taglist_fg_occupied = col11
 theme.taglist_fg_urgent   = "#ED7572"
-theme.taglist_fg_empty    = "#828282"
+theme.taglist_fg_empty    = col11
 theme.taglist_spacing     = 2
 
 
@@ -78,15 +88,6 @@ theme.submenu_icon                  = theme.icon_dir .. "/submenu.png"
 theme.taglist_squares_sel           = theme.icon_dir .. "/square_sel.png"
 theme.taglist_squares_unsel         = theme.icon_dir .. "/square_unsel.png"
 
-theme.last                          = theme.icon_dir .. "/last.png"
-theme.spr                           = theme.icon_dir .. "/spr.png"
--- theme.spr_small                     = theme.icon_dir .. "/spr_small.png"
-theme.spr_very_small                = theme.icon_dir .. "/spr_very_small.png"
--- theme.spr_right                     = theme.icon_dir .. "/spr_right.png"
--- theme.spr_bottom_right              = theme.icon_dir .. "/spr_bottom_right.png"
--- theme.spr_left                      = theme.icon_dir .. "/spr_left.png"
--- theme.bar                           = theme.icon_dir .. "/bar.png"
--- theme.bottom_bar                    = theme.icon_dir .. "/bottom_bar.png"
 theme.mpd                           = theme.icon_dir .. "/mpd.png"
 theme.mpd_on                        = theme.icon_dir .. "/mpd_on.png"
 theme.prev                          = theme.icon_dir .. "/prev.png"
@@ -122,7 +123,7 @@ theme.tasklist_maximized_horizontal = false
 theme.tasklist_maximized_vertical   = true
 
 -- lain related
-theme.useless_gap_width             = 10
+theme.useless_gap_width             = 5
 theme.layout_uselesstile            = theme.icon_dir .. "/uselesstile.png"
 theme.layout_uselesstileleft        = theme.icon_dir .. "/uselesstileleft.png"
 theme.layout_uselesstiletop         = theme.icon_dir .. "/uselesstiletop.png"

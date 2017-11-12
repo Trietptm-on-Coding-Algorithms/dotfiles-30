@@ -16,4 +16,5 @@ WP="$HOME/Pictures/wallpapers/*"
 for file in $WP; do
 	feh --bg-fill $file
 	read -n 1 -s -r -p ""
+	echo -e "$file"
 done
