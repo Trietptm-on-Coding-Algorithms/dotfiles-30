@@ -3,8 +3,19 @@
 
 local wibox = require("wibox")
 local awful = require("awful")
-local lain  = require("lain")
 local naughty = require("naughty")
+
+local noisy = [['/home/lemones/bin/batpercent']]
+
+awful.spawn.easy_async(noisy, function(stdout, stderr, reason, exit_code)
+    naughty.notify { text = stdout }
+end)
+
+batwidget = wibox.widget.textbox()
+batwidget:set_markup("<span color='" .. col_sprtr .. "'> : </span>")
+
+
+--[[
 
 batwidget = lain.widgets.bat({
     settings = function()
@@ -15,7 +26,7 @@ batwidget = lain.widgets.bat({
         else
             bat_p = bat_now.perc .. "%"
         end
-        ]]--
+
 
         if (bat_now.perc > '0' and bat_now.perc < '15') then
             bat_header = " <span color='" .. col_wa .. "'>" .. "" .. "</span> "
@@ -42,6 +53,7 @@ batwidget = lain.widgets.bat({
 local bat_notification
 function battery_status()
     awful.spawn.easy_async([[bash -c 'acpi']],
+--[[
         function(stdout, _, _, _)
             bat_notification = naughty.notify{
                 text =  stdout,
@@ -57,3 +69,4 @@ function battery_status()
 end
 batwidget:connect_signal("mouse::enter", function() battery_status() end)
 batwidget:connect_signal("mouse::leave", function() naughty.destroy(bat_notification) end)
+--]]

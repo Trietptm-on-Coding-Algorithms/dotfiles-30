@@ -11,7 +11,7 @@ local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
 local lain      = require("lain")
--- local battery   = require("req.battery")
+-- require("req.battery")
 require("req.clock")
 
 --[[       ]]--
@@ -55,9 +55,23 @@ run_once("unclutter -root")
 --[[ Config ]]--
 --[[        ]]--
 -- Set theme
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/akhaten/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/bnka/theme.lua")
 
-dmenu_preg = "dmenu_run -b -nf white -sb '#2D292E' -nb '#2D292E' -sf '#FF476A' -p Run: -l 5"
+-- colors
+col_ok                  = "#559363" -- OK color
+col_no                  = "#d6cf6b" -- Not OK color
+col_wa                  = "#783232" -- Warning color
+col_sprtr               = "#b3b3b3" -- Separator color
+
+dmenu_nb                = "#2D292E" -- Background color
+dmenu_nf                = "#2D292E" -- Normal color
+dmenu_nb                = "#FF476A" -- Selected color
+dmenu_sb                = "#FFFFFF" -- Selected background color
+
+-- Set tooltip colors
+beautiful.tooltip_bg_color = col8
+beautiful.tooltip_fg_color = col7
+dmenu_preg = "dmenu_run -b -nf '#FFFFFF' -sb '#2D292E' -nb '#2D292E' -sf '#FF476A' -p Run: -l 5"
 modkey     = "Mod4"
 altkey     = "Mod1"
 terminal   = "urxvtc" or "xterm"
@@ -79,15 +93,6 @@ show_clock              = true
 show_alsabuttons        = false
 show_systray            = false
 
--- colors
-col_ok                  = "#559363" -- OK color
-col_no                  = "#d6cf6b" -- Not OK color
-col_wa                  = "#783232" -- Warning color
-col_sprtr               = "#b3b3b3" -- Separator color
-
--- Set tooltip colors
-beautiful.tooltip_bg_color = col8
-beautiful.tooltip_fg_color = col7
 
 -- {{{ Wibox
 markup = lain.util.markup
@@ -99,13 +104,14 @@ space2 = markup.font("Tamsyn 2", " ")
 --[[ Layout ]]--
 --[[        ]]--
 local layouts = {
-    awful.layout.suit.floating,
-    lain.layout.uselesstile,
-    awful.layout.suit.fair,
-    lain.layout.uselesstile.left,
-    lain.layout.uselesstile.top,
-    lain.layout.centerwork,
-    lain.layout.uselesstile.top
+    awful.layout.suit.floating,   -- 1
+    lain.layout.uselesstile,      -- 2
+    awful.layout.suit.fair,       -- 3
+    lain.layout.uselesstile.left, -- 4
+    lain.layout.uselesstile.top,  -- 5
+    lain.layout.centerwork,       -- 6
+    lain.layout.centerworkd,      -- 7
+    lain.layout.uselesspiral      -- 8
 }
 
 tags = {
@@ -120,8 +126,8 @@ tags = {
      layouts[1],
      layouts[1],
      layouts[4],
-     layouts[1],
-     layouts[3]
+     layouts[6],
+     layouts[7]
   }
 }
 
@@ -335,6 +341,16 @@ dnscryptwidgettimer:connect_signal("timeout",
 )
 dnscryptwidgettimer:start()
 
+--] Battery test
+batwidget = wibox.widget.textbox()
+batwidget:set_text("-")
+local noisy = [['/home/lemones/bin/batpercent']]
+awful.spawn.easy_async(noisy, function(stdout, stderr, reason, exit_code)
+    naughty.notify { text = stdout }
+    batwidget.set:text(stdout)
+end)
+
+
 mywibox = {}
 mybottomwibox = {}
 mypromptbox = {}
@@ -401,6 +417,7 @@ for s = 1, screen.count() do
 
 --{ Top middle }--
     local middle_layout = wibox.layout.fixed.horizontal()
+    middle_layout:add(sprtr_hidden)
     middle_layout:add(mytaglist[s])
     middle_layout:add(sprtr)
     middle_layout:add(mylayoutbox[s])
@@ -411,7 +428,7 @@ for s = 1, screen.count() do
     right_layout:add(sprtr)
     right_layout:add(dnscryptwidget)
     -- right_layout:add(sprtr)
-    --right_layout:add(battery.batwidget)
+    right_layout:add(batwidget)
     right_layout:add(sprtr)
     right_layout:add(mytextclock)
     right_layout:add(sprtr_hidden)

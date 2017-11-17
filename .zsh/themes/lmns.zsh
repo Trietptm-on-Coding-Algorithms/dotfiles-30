@@ -1,8 +1,3 @@
-#
-# Minimal theme
-# https://github.com/S1cK94/minimal
-#
-
 short_pwd() {
 
     local current_dir="${PWD/#${HOME}/~}"
@@ -14,7 +9,7 @@ short_pwd() {
     fi
 
     print ${return_dir}
-    
+
 }
 
 
@@ -52,7 +47,7 @@ minimal_path() {
   local rsc="%f"
   local sep="$rsc/$path_color"
 
-  print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
+  print "$path_color$(sed s_/_${sep}_g) <<< $(short_pwd)$rsc"
 }
 
 git_branch_name() {

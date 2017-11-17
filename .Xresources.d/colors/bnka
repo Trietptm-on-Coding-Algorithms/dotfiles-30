@@ -1,6 +1,6 @@
-URxvt.cursorColor         : #559363
+URxvt.cursorColor         : #9b69cf
 
-URxvt*background          : [90]#1d0c00
+URxvt*background          : [90]#120918
 URxvt*foreground          : #c3a071
 
 URxvt*colorUL             : #86a2b0

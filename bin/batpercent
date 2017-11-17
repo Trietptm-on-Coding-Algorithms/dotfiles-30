@@ -1,12 +1,17 @@
 #!/bin/env python
 
-path = "/sys/class/power_supply/BAT0/"
+# ░█▀▄░█▀█░█▀▄░█▀█░█▀█░█░█░█▀█░░░░█▀█░█▀▄░█▀▀
+# ░█▀▄░█▀█░█░█░█▀█░█░█░█▀▄░█▀█░░░░█░█░█▀▄░█░█
+# ░▀▀░░▀░▀░▀▀░░▀░▀░▀░▀░▀░▀░▀░▀░▀░░▀▀▀░▀░▀░▀▀▀
+#                         lemones.badanka.org
+#
 
-# rate  = current_now
-# ratev = voltage_now
-# rem   = charge_now
-# tot   = charge_full
-# bat_now = bat_status
+# Set True to print Charging/Discharching
+print_status = False
+# Set True to print % after number
+print_percent = True
+# Set path to power_supply/BAT#
+path = "/sys/class/power_supply/BAT0/"
 
 current_now = open(path + "current_now").readline()
 rate_now = open(path + "voltage_now").readline()
@@ -14,18 +19,23 @@ charge_now = open(path + "charge_now").readline()
 charge_full = open(path + "charge_full").readline()
 bat_status = open(path + "status", 'r').read()
 
-if bat_status == 'Charging':
-    time_rat = (charge_full - charge_now) / current_now
-    print (time_rat)
-elif bat_status == "Discharging":
-    time_rat = charge_now / current_now
-    print (time_rat)
-else:
-    print (bat_status, "#")
+if print_status == True:
+    if bat_status == 'Charging':
+        time_rat = (charge_full - charge_now) / current_now
+        print (time_rat)
+    elif bat_status == "Discharging":
+        time_rat = charge_now / current_now
+        print (time_rat)
+    else:
+       print (bat_status, "#")
 
 pn = open(path + "charge_now").readline()
 pf = open(path + "charge_full").readline()
 
 percent = float(pn) / float(pf) * 100
 
-print ("%i%%" % (percent))
+if print_percent == True:
+    print ("%i%%" % (percent))
+else:
+    print ("%i" % (percent)
+)
