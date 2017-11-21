@@ -1,6 +1,6 @@
 #!/bin/bash
 
-device="wlp3s0"
+device="wlp2s0"
 ip="$(dig +short myip.opendns.com @resolver1.opendns.com)"
 
 if [ ! -f /usr/bin/dhcpcd ]; then
