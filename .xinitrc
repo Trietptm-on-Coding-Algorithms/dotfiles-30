@@ -1,9 +1,13 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
+# Set dit to $HOME, else all urxvc will start from $PWD
 cd $HOME
 
 # Set keyboard layout to Swedish (åäö)
 setxkbmap se
+
+# Bindings to restart X
+setxkbmap -option terminate:ctrl_alt_bksp
 
 # Fix bug where screen not updating in awesome-wm (NOT WORKING)
 # hsetroot -solid "#000000"
@@ -22,9 +26,13 @@ xset -b &
 # Autostarts
 compton &
 xscreensaver &
-# mopidy &      # Running mpd as system-service instead.
-# urxvtd &      # Starts within awesome-wm. No need for it here.
+mpd &
+urxvtd -q -o -f &
 # nm-applet &   # NetworkManager <--- Avoid at all cost
+
+# Fonts
+xset +fp ~/.local/share/fonts &
+xset fp rehash &
 
 # Choose you'r WM
 exec awesome
@@ -34,4 +42,3 @@ exec awesome
 # exec xmonad
 # exec i3
 # exec 2bwm
-# exec xmonad

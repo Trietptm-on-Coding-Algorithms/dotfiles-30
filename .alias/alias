@@ -18,6 +18,7 @@ alias env-create='virtualenv venv --distribute'
 
 alias cleanup='~/github/cleanup/cleanup.py'
 alias cputemp="sensors | grep -oP 'CPU.*?\+\K[0-9.]+'"
+alias sublime="subl"
 
 alias cat='ccat'
 alias cp='cp -v'

@@ -19,23 +19,34 @@ charge_now = open(path + "charge_now").readline()
 charge_full = open(path + "charge_full").readline()
 bat_status = open(path + "status", 'r').read()
 
-if print_status == True:
+if print_status is True:
     if bat_status == 'Charging':
         time_rat = (charge_full - charge_now) / current_now
-        print (time_rat)
+        print(time_rat)
     elif bat_status == "Discharging":
         time_rat = charge_now / current_now
-        print (time_rat)
+        print(time_rat)
     else:
-       print (bat_status, "#")
+        print(bat_status, "#")
 
 pn = open(path + "charge_now").readline()
 pf = open(path + "charge_full").readline()
 
 percent = float(pn) / float(pf) * 100
 
-if print_percent == True:
-    print ("%i%%" % (percent))
+# 
+if percent >= 0 and percent <= 15:
+    print("")
+elif percent >= 15 and percent <= 30:
+    print("")
+elif percent >= 30 and percent <= 60:
+    print("")
+elif percent >= 60 and percent <= 90:
+    print("")
+elif percent >= 90 and percent <= 100:
+    print("")
+
+if print_percent is True:
+    print("%i%%" % (percent), end='')
 else:
-    print ("%i" % (percent)
-)
+    print("%i" % (percent), end='')

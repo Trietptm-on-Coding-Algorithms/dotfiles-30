@@ -1,3 +1,3 @@
 #!/bin/bash
-
- ifconfig tun0 &> /dev/null && echo -e "\033[1;32m" "-- VPN is active --" "\033[0m"
+if ! /sbin/ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
+then echo 0; else echo 1; fi

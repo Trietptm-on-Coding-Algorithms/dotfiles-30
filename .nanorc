@@ -3,11 +3,10 @@ include ~/.nano/ALL.nanorc
 set brackets ""')>]}"
 set constantshow
 # set linenumbers
-set matchbrackets "(<[{)>]}"
+set matchbrackets "(<[{)>]})"
 set morespace
 # set mouse
 set nohelp
 set nowrap
 # set quickblank
 set smooth
-
