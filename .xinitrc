@@ -9,6 +9,9 @@ setxkbmap se
 # Bindings to restart X
 setxkbmap -option terminate:ctrl_alt_bksp
 
+# Export user $PATH to systemd
+systemctl --user set-environment PATH=$PATH
+
 # Fix bug where screen not updating in awesome-wm (NOT WORKING)
 # hsetroot -solid "#000000"
 

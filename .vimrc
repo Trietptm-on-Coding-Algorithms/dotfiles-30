@@ -1,10 +1,145 @@
 " Start pathogen plugin manager
-execute pathogen#infect()
+" execute pathogen#infect()
 
-"""""""
-" => Python
-"""""""
+" Requried for Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter' " Shows Git diff in opened file
+Plugin 'ajh17/VimCompletesMe'
+Plugin 'scrooloose/syntastic' " Syntax error checking
+Plugin 'lilydjwg/colorizer' " Look for color syntax and colorize it
+Plugin 'itchyny/lightline.vim' " Statusbar
+Plugin 'xero/sourcerer.vim'
+
+call vundle#end()
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+
+" vimcompletesme https://git.io/XLcB1A
+" use omni-complete
+let b:vcm_tab_complete = 'omni'
+set omnifunc=syntaxcomplete#Complete
+" select the completion with enter
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" close preview on completion complete
+autocmd CompleteDone * pclose
+" or disable previews completely
+" set completeopt-=preview
+
+" syntatic http://git.io/syntastic.vim
+" linters: (from aur) nodejs-jshint, nodejs-jsonlint, csslint, checkbashisms
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" color overrides
+highlight SyntasticErrorSign ctermfg=red ctermbg=237
+highlight SyntasticWarningSign ctermfg=yellow ctermbg=237
+highlight SyntasticStyleErrorSign ctermfg=red ctermbg=237
+highlight SyntasticStyleWarningSign ctermfg=yellow ctermbg=237
+
+" disable folding
+let g:vim_json_syntax_conceal = 0
+
+" git-gutter http://git.io/vimgitgutter
+" speed optimizations
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+let g:gitgutter_max_signs = 1500
+let g:gitgutter_diff_args = '-w'
+" custom symbols
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = ':'
+" color overrrides
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=green ctermbg=237
+highlight GitGutterChange ctermfg=yellow ctermbg=237
+highlight GitGutterDelete ctermfg=red ctermbg=237
+highlight GitGutterChangeDelete ctermfg=red ctermbg=237
+
+" █▓▒░ wizard status line
+set laststatus=2
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'filename' ],
+  \             [ 'readonly', 'fugitive' ] ],
+  \   'right': [ [ 'percent', 'lineinfo' ],
+  \              [ 'fileencoding', 'filetype' ],
+  \              [ 'fileformat', 'syntastic' ] ]
+  \ },
+  \ 'component_function': {
+  \   'modified': 'WizMod',
+  \   'readonly': 'WizRO',
+  \   'fugitive': 'WizGit',
+  \   'filename': 'WizName',
+  \   'filetype': 'WizType',
+  \   'fileformat' : 'WizFormat',
+  \   'fileencoding': 'WizEncoding',
+  \   'mode': 'WizMode',
+  \ },
+  \ 'component_expand': {
+  \   'syntastic': 'SyntasticStatuslineFlag',
+  \ },
+  \ 'component_type': {
+  \   'syntastic': 'error',
+  \ },
+  \ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
+  \ 'subseparator': { 'left': '▒', 'right': '░' }
+  \ }
+
+function! WizMod()
+  return &ft =~ 'help\|vimfiler' ? '' : &modified ? '»' : &modifiable ? '' : ''
+endfunction
+
+function! WizRO()
+  return &ft !~? 'help\|vimfiler' && &readonly ? 'x' : ''
+endfunction
+
+function! WizGit()
+  if &ft !~? 'help\|vimfiler' && exists("*fugitive#head")
+    return fugitive#head()
+  endif
+  return ''
+endfunction
+
+function! WizName()
+  return ('' != WizMod() ? WizMod() . ' ' : '') .
+        \ ('' != expand('%:t') ? expand('%:t') : '[none]')
+endfunction
+
+function! WizType()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
+endfunction
+
+function! WizFormat()
+  return ''
+endfunction
+
+function! WizEncoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &enc : &enc) : ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp,*.go,*.js,*.php,*.css,*.scss,*.sh,*.rb call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -106,7 +241,8 @@ nmap <C-N><C-N> :set invnumber
 syntax enable
 
 try
-    colorscheme wwdc16
+   " colorscheme wwdc16
+   colorscheme sourcerer
 catch
 endtry
 
@@ -191,7 +327,7 @@ map <leader>h :bprevious<cr>
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
+map <leader>tw :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
@@ -358,7 +494,7 @@ endfunction
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
-        return 'PASTE MODE  '
+        return 'PASTA MODE  '
     endif
     return ''
 endfunction
