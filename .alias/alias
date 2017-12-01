@@ -49,6 +49,7 @@ alias chromium='jail web-browser chromium'
 alias google-chrome='jail web-browser google-chrome'
 alias chrome='jail web-browser chrome'
 alias vlc='jail vlc qvlc'
+alias transmission-gtk='jail transmission transmission-gtk'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
