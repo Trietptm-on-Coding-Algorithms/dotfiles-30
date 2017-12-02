@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# -C                 : uses compression transfer (sometimes slower)
+# -o allow_other     : allow non-root read/write access
+#                    : Might beed to allow in /etc/fuse.conf
+# -o follow_symlinks : Speaks for itself
+# -p                 : Port
+
+echo "[*] Mounting SSH to $HOME/mount/bnka/"
+sshfs -o Compression=no                                     \
+           -o IdentityFile=$HOME/.ssh/id_rsa                \
+           -o allow_other                                   \
+           -o follow_symlinks                               \
+           -C                                               \
+           -p 8022                                          \
+           lemones@192.168.0.104:/home/lemones              \
+           $HOME/mount/srv/
