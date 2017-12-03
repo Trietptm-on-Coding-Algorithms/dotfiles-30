@@ -11,7 +11,6 @@ local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
 local lain      = require("lain")
--- require("req.battery")
 require("req.clock")
 
 --[[       ]]--
@@ -55,7 +54,7 @@ run_once("unclutter -root")
 --[[ Config ]]--
 --[[        ]]--
 -- Set theme
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/bnka/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/stationary/theme.lua")
 
 -- colors
 col_ok                  = "#559363" -- OK color
