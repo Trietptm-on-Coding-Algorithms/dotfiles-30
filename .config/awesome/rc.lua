@@ -341,40 +341,6 @@ dnscryptwidgettimer:connect_signal("timeout",
 )
 dnscryptwidgettimer:start()
 
---] Battery test
-batwidget = wibox.widget.textbox()
-batwidget:set_text("")
-local noisy = [['/home/lemones/bin/batpercent']]
---awful.widget.watch(noisy, 60, function(widget, stdout, stderr, reason, exit_code)
-gears.timer {
-    timeout   = 60,
-    call_now  = true,
-    autostart = true,
-    callback  = function()
-    awful.spawn.easy_async(noisy, function(stdout, stderr, reason, exit_code)
-        --naughty.notify { text = stdout }
-        batwidget:set_markup("<span color='" ..col_ok .. "'>" .. stdout .. "</span>")
-    end)
-end
-}
-
-local notification
-function show_battery_status()
-    awful.spawn.easy_async([[bash -c 'acpi']],
-        function(stdout, _, _, _)
-            notification = naughty.notify{
-                text =  stdout,
-                title = "Battery status",
-                timeout = 5, hover_timeout = 0.5,
-                width = 200,
-            }
-        end
-    )
-end
-batwidget:connect_signal("mouse::enter", function() show_battery_status() end)
-batwidget:connect_signal("mouse::leave", function() naughty.destroy(notification) end)
-
-
 mywibox = {}
 mybottomwibox = {}
 mypromptbox = {}
@@ -451,8 +417,6 @@ for s = 1, screen.count() do
     right_layout:add(vpnwidget)
     right_layout:add(sprtr)
     right_layout:add(dnscryptwidget)
-    right_layout:add(sprtr)
-    right_layout:add(batwidget)
     right_layout:add(sprtr)
     right_layout:add(mytextclock)
     right_layout:add(sprtr_hidden)
