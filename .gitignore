@@ -12,4 +12,6 @@ __pycache__/
 *~
 
 .tmux/resurrect/*
-.vim/bundle/YouCompleteMe/*
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.ssh/known_hosts

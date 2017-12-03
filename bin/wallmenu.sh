@@ -22,11 +22,11 @@ function show_menu {
 
 function check_file {
     filen_check=`ls -1 $HOME/.wallpaper{.jpg,.png,.JPG,.PNG,.jpeg,.JPEG} 2>/dev/null | wc -l`
-    filen=`ls -1 $HOME/.wallpaper{.jpg,.png,.JPG,.PNG,.jpeg,.JPEG} 2>/dev/null`
+    fileb=`ls -1 $HOME/.wallpaper{.jpg,.png,.JPG,.PNG,.jpeg,.JPEG} 2>/dev/null`
     if [ $filen_check != 0 ]; then
-        echo "Saving old wallpaper as $filen-backup..."
-        mv $filen $filen-backup
-        backup_fil=$filen
+        echo "[*] Saving old wallpaper as $fileb-backup..."
+        mv $fileb $fileb-backup
+        backup_fil=$fileb
         backup_done=True
     else
         backup_done=False
@@ -36,26 +36,27 @@ function check_file {
 function change_w {
     WP="$HOME/Pictures/wallpapers/*"
     for file in $WP; do
+        feh --bg-scale $file
+        filen=$file
         read -rsn1 key
         if [ "$key" = 's' ]; then
-            echo "Setting $file as bg..."
-            cp $file $HOME/.wallpaper.png
+            echo "[*] Setting $filen as bg..."
+            cp $filen $HOME/.wallpaper.png
             feh --bg-scale $HOME/.wallpaper.png
             exit
         elif [ "$key" = 'q' ]; then
             if [ -e "$backup_fil-backup" ]; then
-                echo "Reverting to last known wallpaper..."
+                echo "[*] Reverting to last known wallpaper..."
                 mv $backup_fil-backup $backup_fil
                 feh --bg-scale $backup_fil
             else
-                echo "No backup file found...Sorry :("
+                echo "[*] No backup file found. Can't revert..."
             fi
             exit
         elif [ "$key" = 'n' ]; then
-            feh --bg-scale $file
-            continue
+            feh --bg-scale $filen
         else
-            echo -e "s - Set | q - quit | n - next"
+            show_menu
         fi
     done
 }
