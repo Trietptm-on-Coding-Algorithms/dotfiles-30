@@ -37,11 +37,11 @@ export RANGER_LOAD_DEFAULT_RC=False
 
 # auto-fu
 #
-zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-zstyle ':completion:*' completer _oldlist _complete
-zle -N zle-keymap-select auto-fu-zle-keymap-select
-zstyle ':auto-fu:var' postdisplay $''
-zstyle ':auto-fu:var' track-keymap-skip opp
+#zle-line-init () {auto-fu-init;}; zle -N zle-line-init
+#zstyle ':completion:*' completer _oldlist _complete
+#zle -N zle-keymap-select auto-fu-zle-keymap-select
+#zstyle ':auto-fu:var' postdisplay $''
+#zstyle ':auto-fu:var' track-keymap-skip opp
 
 # Autocompletion
 autoload -U compinit && compinit

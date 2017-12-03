@@ -16,8 +16,8 @@ URxvt*cursorBlink         : true
 URxvt*cursorUnderline     : true
 URxvt*depth               : 32
 
-URxvt*font  		: xft:Monospace:pixelsize=10:Regular
-Uxvt*boldFont 	    : xft:Monospace:pixelsize=10:Bold
+URxvt*font  		: xft:Monospace:pixelsize=12:Regular
+Uxvt*boldFont 	    : xft:Monospace:pixelsize=12:Bold
 
 !URxvt*font		    : xft:Inconsolata:pixelsize=12:Regular
 !URxvt*boldFont	    : xft:Inconsolata:pixelsize=12:Bold
