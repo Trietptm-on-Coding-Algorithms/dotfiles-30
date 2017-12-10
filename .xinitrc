@@ -38,8 +38,8 @@ xset +fp ~/.local/share/fonts &
 xset fp rehash &
 
 # Choose you'r WM
-exec awesome
-# exec /home/lemones/.dwm/dwm
+# exec awesome
+exec /home/lemones/.dwm/dwm-start
 # exec dwm-user
 # exec /usr/bin/startkde
 # exec xmonad

@@ -1,52 +1,75 @@
-#!/bin/env python
+#!/bin/python
+"""
+Displays battery information with icon
+(icons depends on fontawesome font)
 
-# ░█▀▄░█▀█░█▀▄░█▀█░█▀█░█░█░█▀█░░░░█▀█░█▀▄░█▀▀
-# ░█▀▄░█▀█░█░█░█▀█░█░█░█▀▄░█▀█░░░░█░█░█▀▄░█░█
-# ░▀▀░░▀░▀░▀▀░░▀░▀░▀░▀░▀░▀░▀░▀░▀░░▀▀▀░▀░▀░▀▀▀
-#                         lemones.badanka.org
-#
+ ░█▀▄░█▀█░█▀▄░█▀█░█▀█░█░█░█▀█░░░░█▀█░█▀▄░█▀▀
+ ░█▀▄░█▀█░█░█░█▀█░█░█░█▀▄░█▀█░░░░█░█░█▀▄░█░█
+ ░▀▀░░▀░▀░▀▀░░▀░▀░▀░▀░▀░▀░▀░▀░▀░░▀▀▀░▀░▀░▀▀▀
+                         lemones.badanka.org
+"""
 
 # Set True to print Charging/Discharching
-print_status = False
+SHOWSTATUS = False
+# Set True to print charge value
+SHOWTEXT = True
+# Set True to print icon (deps: fontawesome-font)
+SHOWICON = True
 # Set True to print % after number
-print_percent = True
+SHOWPERCENT = True
+# Set True to show colours
+SHOWCOLOURS = False
 # Set path to power_supply/BAT#
-path = "/sys/class/power_supply/BAT0/"
+PATH = "/sys/class/power_supply/BAT0/"
 
-current_now = open(path + "current_now").readline()
-rate_now = open(path + "voltage_now").readline()
-charge_now = open(path + "charge_now").readline()
-charge_full = open(path + "charge_full").readline()
-bat_status = open(path + "status", 'r').read()
-
-if print_status is True:
-    if bat_status == 'Charging':
-        time_rat = (charge_full - charge_now) / current_now
-        print(time_rat)
-    elif bat_status == "Discharging":
-        time_rat = charge_now / current_now
-        print(time_rat)
-    else:
-        print(bat_status, "#")
-
-pn = open(path + "charge_now").readline()
-pf = open(path + "charge_full").readline()
-
-percent = float(pn) / float(pf) * 100
-
-# 
-if percent >= 0 and percent <= 15:
-    print("")
-elif percent >= 15 and percent <= 30:
-    print("")
-elif percent >= 30 and percent <= 60:
-    print("")
-elif percent >= 60 and percent <= 90:
-    print("")
-elif percent >= 90 and percent <= 100:
-    print("")
-
-if print_percent is True:
-    print("%i%%" % (percent), end='')
+if SHOWCOLOURS is True:
+    COL1 = "\x1b[0;32m"  # Green
+    COL2 = "\x1b[0;33m"  # Yellow
+    COL3 = "\x1b[0;31m"  # Red
+    NCOL = "\x1b[0m"  # Reset
 else:
-    print("%i" % (percent), end='')
+    COL1 = ""
+    COL2 = ""
+    COL3 = ""
+    NCOL = ""
+
+CURRENT_NOW = open(PATH + "current_now").readline()
+RATE_NOW = open(PATH + "voltage_now").readline()
+CHARGE_NOW = open(PATH + "charge_now").readline()
+CHARGE_FULL = open(PATH + "charge_full").readline()
+BAT_STATUS = open(PATH + "status", 'r').read()
+
+if SHOWSTATUS is True:
+    if BAT_STATUS == 'Charging':
+        TIME_RAT = (CHARGE_FULL - CHARGE_NOW) / CURRENT_NOW
+        print(TIME_RAT)
+    elif BAT_STATUS == "Discharging":
+        TIME_RAT = CHARGE_NOW / CURRENT_NOW
+        print(TIME_RAT)
+    else:
+        print(BAT_STATUS, "#")
+
+PN = open(PATH + "charge_now").readline()
+PF = open(PATH + "charge_full").readline()
+
+PERCENT = float(PN) / float(PF) * 100
+PERCENT = int(PERCENT)
+
+if SHOWICON is True:
+    # 
+    if PERCENT >= 0 and PERCENT <= 15:
+        print("{0}{1}".format(COL3, NCOL), end="")
+    elif PERCENT >= 15 and PERCENT <= 30:
+        print("{0}{1}".format(COL3, NCOL), end="")
+    elif PERCENT >= 30 and PERCENT <= 60:
+        print("{0}{1}".format(COL2, NCOL), end="")
+    elif PERCENT >= 60 and PERCENT <= 90:
+        print("{0}{1}".format(COL1, NCOL), end="")
+    elif PERCENT >= 90 and PERCENT <= 120:  # Sometimes charge gets above 100
+        print("{0}{1}".format(COL1, NCOL), end="")
+
+if SHOWTEXT is True:
+    if SHOWPERCENT is True:
+        print(" {0}%".format(PERCENT))
+    else:
+        print(" {0}".format(PERCENT))

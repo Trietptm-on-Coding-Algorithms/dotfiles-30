@@ -1,0 +1,9 @@
+#!/bin/sh
+
+while true; do
+    $HOME/.dwm/dwm-status
+    sleep 1m
+done &
+
+feh --bg-scale $HOME/.wallpaper.png &
+exec $HOME/.dwm/dwm

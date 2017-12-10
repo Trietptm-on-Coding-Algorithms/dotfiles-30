@@ -1,3 +1,5 @@
+alias jekyll-serve='bundle exec jekyll serve'
+
 alias initrunning='systemctl --no-page --no-legend --plain -t service --state=running'
 alias randpass='openssl rand -base64 $1'
 

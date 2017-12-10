@@ -1,0 +1,9 @@
+#!/bin/sh
+
+dateshow() {
+    thedate="$(date "+%I:%M")"
+    echo -e "$thedate"
+}
+
+# echo "$(vpnstatus) : $(batpercent) : $(dateshow)"
+xsetroot -name "$(mpc current) : $(vpnstatus) : $(batpercent) : $(dateshow)"
