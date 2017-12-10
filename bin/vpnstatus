@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Look for tun0 settings. 
+# Look for tun0 settings.
 # If True echo 1 else 0
 
 if ! /sbin/ifconfig tun0 | grep -q "00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"
 then
-    echo "VPN: Down";
+    echo " VPN"; # Off
 else
-    echo "VPN: Up";
+    echo " VPN"; # On
 fi

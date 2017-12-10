@@ -42,6 +42,7 @@ zstyle ':completion:*' completer _oldlist _complete
 zle -N zle-keymap-select auto-fu-zle-keymap-select
 zstyle ':auto-fu:var' postdisplay $''
 zstyle ':auto-fu:var' track-keymap-skip opp
+#zstyle ':auto-fu:var' disable magic-space
 
 # Autocompletion
 autoload -U compinit && compinit

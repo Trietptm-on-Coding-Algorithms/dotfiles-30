@@ -2,8 +2,8 @@
 
 dateshow() {
     thedate="$(date "+%I:%M")"
-    echo -e "$thedate"
+    echo -e " $thedate"
 }
 
 # echo "$(vpnstatus) : $(batpercent) : $(dateshow)"
-xsetroot -name "$(mpc current) : $(vpnstatus) : $(batpercent) : $(dateshow)"
+xsetroot -name "$(mpdstatus) :: $(vpnstatus) :: $(batpercent) :: $(dateshow)"

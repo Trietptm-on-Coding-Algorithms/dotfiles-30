@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Display MPD status. (Requries fontawesome-font)
+
+mpcs=`mpc status | awk 'NR > 1 {print $1}' RS='[' FS=']'`
+mpcc="$(mpc current | cut -c1-50)"
+
+if [ $mpcs = "playing" ]; then
+    echo " $mpcc"
+elif [ $mpcs = "stop" ]; then
+    echo " $mpcc "
+elif [ $mpcs = "pause" ]; then
+    echo " $mpcc "
+else
+    echo " None"
+fi

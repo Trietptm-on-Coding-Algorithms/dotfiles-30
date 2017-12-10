@@ -2,7 +2,7 @@
 
 while true; do
     $HOME/.dwm/dwm-status
-    sleep 1m
+    sleep 10s
 done &
 
 feh --bg-scale $HOME/.wallpaper.png &

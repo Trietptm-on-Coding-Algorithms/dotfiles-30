@@ -1,0 +1,1 @@
+dwm-uselessgap-bb3bd6f-20170108.diff

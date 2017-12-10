@@ -54,7 +54,8 @@ alias vlc='jail vlc qvlc'
 alias transmission-gtk='jail transmission transmission-gtk'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
-alias ncmpcpp_viz='ncmpcpp -s playlist -S visualizer'
+alias ncmpcpp-viz='ncmpcpp -s playlist -S visualizer'
+alias ncmpcpp-liv='ncmpcpp -h 192.168.0.104'
 alias lockscreen="xscreensaver-command -lock"
 
 alias weather_today="curl wttr.in/Stockholm?0"

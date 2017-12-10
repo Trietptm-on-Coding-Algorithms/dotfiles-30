@@ -1,6 +1,6 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# Set dit to $HOME, else all urxvc will start from $PWD
+# Set dir to $HOME, else all urxvc will start from $PWD
 cd $HOME
 
 # Set keyboard layout to Swedish (åäö)
@@ -29,7 +29,7 @@ xset -b &
 # Autostarts
 compton &
 xscreensaver &
-mpd &
+# mpd &  # Switched to init start... (systemd...yuck!)
 urxvtd -q -o -f &
 # nm-applet &   # NetworkManager <--- Avoid at all cost
 
