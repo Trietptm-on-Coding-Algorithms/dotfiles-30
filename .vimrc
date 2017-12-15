@@ -182,6 +182,9 @@ let g:syntastic_check_on_wq = 0
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
+" Toggle line numbers
+set number
+
 " Turn on the WiLd menu
 set wildmenu
 

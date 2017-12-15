@@ -6,7 +6,7 @@
 # -o follow_symlinks : Speaks for itself
 # -p                 : Port
 
-echo "[*] Mounting SSH to $HOME/mount/bnka/"
+echo "[*] Mounting SSH to $HOME/mount/http/"
 sshfs -o Compression=no                                \
            -o IdentityFile=$HOME/.ssh/id_rsa                \
            -o allow_other                                   \
@@ -14,4 +14,4 @@ sshfs -o Compression=no                                \
            -C                                               \
            -p 22                                            \
            lemones@badanka.org:www/                         \
-           $HOME/mount/bnka/
+           $HOME/mount/http/

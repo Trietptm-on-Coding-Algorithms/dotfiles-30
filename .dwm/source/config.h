@@ -10,11 +10,12 @@ static const char *fonts[]          = {
                                         "FontAwesome:size=8"
                                       };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#222222";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#000000";
+static const char col_gray1[]       = "#1F1F1F";
+static const char col_gray2[]       = "#1F1F1F";
+static const char col_gray3[]       = "#BBBBBB";
+static const char col_gray4[]       = "#FFFFFF";
+static const char col_cyan[]        = "#1F1F1F";
+static const char col_purple[]      = "#BD1550";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -31,20 +32,23 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
+    { "chromium", NULL,       NULL,       1 << 2,       1,           -1 },
     { "Vlc",      NULL,       NULL,       0,            1,           -1 },
+    { "mpv",      NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
+static const unsigned int gappx = 6; /* gap px between windows */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[T]",      tile },    /* first entry is default */
-	{ "[F]",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ ":: [T] ::",      tile },    /* first entry is default */
+	{ ":: [F] ::",      NULL },    /* no layout function means floating behavior */
+	{ ":: [M] ::",      monocle },
 };
 
 /* key definitions */
@@ -62,8 +66,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-nf", "#FFFFFF", "-sb", "#2D292E", "-nb", "#2D292E", "-sf", "#FF476A", "-p", "Run:", "-l", "5", NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
-static const char *alsa_vol_up[] = { "amixer", "-q", "sset", "master", "5%+", NULL };
-static const char *alsa_vol_dn[] = { "amixer", "-q", "sset", "master", "5%-", NULL };
+static const char *alsa_vol_up[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
+static const char *alsa_vol_dn[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

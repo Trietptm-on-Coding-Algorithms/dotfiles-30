@@ -14,4 +14,4 @@ sshfs -o Compression=no                                     \
            -C                                               \
            -p 8022                                          \
            lemones@192.168.0.104:/home/lemones              \
-           $HOME/mount/srv/
+           $HOME/mount/bnka/
