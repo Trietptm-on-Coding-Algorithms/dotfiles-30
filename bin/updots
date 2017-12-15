@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# rsync dotfiles to bnka srv
+
+rsync -avr --exclude='.git/' --exclude='.gitmodules' --rsh='ssh -p22' $HOME/.dotfiles/ badanka.org:www/lemones/dotfiles/
