@@ -44,11 +44,16 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "bstack.c"
+#include "gaplessgrid.c"
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ ":: [T] ::",      tile },    /* first entry is default */
 	{ ":: [F] ::",      NULL },    /* no layout function means floating behavior */
 	{ ":: [M] ::",      monocle },
+    { ":: [B] ::",      bstack },
+    { ":: [G] ::",      gaplessgrid },
 };
 
 /* key definitions */
@@ -68,12 +73,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-b", "-nf", "#FFFFFF", "-sb", "#
 static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *alsa_vol_up[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *alsa_vol_dn[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
+static const char *showcal[] = { "showcal", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_w,      togglebar,      {0} },
     { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -87,7 +93,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+    { MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
+    { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[4]} },
+    { MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -116,6 +124,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+    { ClkStatusText,        0,              Button1,        spawn,          {.v = showcal } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
