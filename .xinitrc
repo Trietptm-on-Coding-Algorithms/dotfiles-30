@@ -29,7 +29,7 @@ xset -b &
 # Autostarts
 compton &
 xscreensaver &
-mpd &
+# mpd &
 urxvtd -q -o -f &
 # nm-applet &   # NetworkManager <--- Avoid at all cost
 
