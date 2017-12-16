@@ -1,3 +1,20 @@
+weather() {
+    case $1 in
+    "-today")
+    curl "wttr.in/$2?0"
+    ;;
+    "-narrow")
+    curl "wttr.in/$2?n"
+    ;;
+    "-png")
+    wget "wttr.in/$2_tqp0.png"
+    ;;
+    *)
+    echo "-today\n-narrow\n-png"
+    ;;
+    esac
+}
+
 nmap_full () {
     sudo nmap -sS -sU -T4 -A -oX $1.xml -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -PO --script all $1;
     echo "Created $1.xml"

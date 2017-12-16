@@ -58,9 +58,7 @@ alias ncmpcpp-viz='ncmpcpp -s playlist -S visualizer'
 alias ncmpcpp-liv='ncmpcpp -h 192.168.0.104'
 alias lockscreen="xscreensaver-command -lock"
 
-alias weather_today="curl wttr.in/Stockholm?0"
-alias wather_all_narrow="curl wttr.in/Stockholm?n"
-alias weather_img="wget wttr.in/Stockholm_tqp0.png"
+alias weather_today='weather -today Stockholm'
 
 # Colors
 alias tund=$(tput sgr 0 1)      # Underline
