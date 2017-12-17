@@ -85,6 +85,17 @@ case $TERM in
   ;;
 esac
 
+case $TERM in
+  (st*)
+    function precmd {
+      print -Pn "\e]0;[zsh] %(1j,%j job%(2j|s|); ,)%~\a"
+    }
+    function preexec {
+      printf "\033]0;[zsh] %s\a" "$1"
+    }
+  ;;
+esac
+
 
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line

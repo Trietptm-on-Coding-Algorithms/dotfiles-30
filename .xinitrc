@@ -30,7 +30,7 @@ xset -b &
 compton &
 xscreensaver &
 # mpd &  # Switched to init start... (systemd...yuck!)
-urxvtd -q -o -f &
+# urxvtd -q -o -f &
 # nm-applet &   # NetworkManager <--- Avoid at all cost
 
 # Fonts
