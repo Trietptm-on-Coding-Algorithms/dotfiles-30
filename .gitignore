@@ -17,3 +17,7 @@ __pycache__/
 .ssh/known_hosts
 
 .vim/bundle/*
+
+.tmux/plugins/*
+.tmux/resurrect/*
+!.tmux/plugins/tpm/*

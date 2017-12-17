@@ -1,0 +1,5 @@
+c-a-s         : Save (resurect)
+c-a-r         : Restore (resurect)
+c-a-$         : Rename session
+c-a-,         : Rename window
+c-a-&         : Kill window

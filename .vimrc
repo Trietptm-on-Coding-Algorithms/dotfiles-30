@@ -35,7 +35,7 @@ call vundle#end()
 " vim-devicons
 " """""""""""""
 
-" Set ui-font
+" Set gui-font
 set guifont=FiraCode\ 11
 
 " loading the plugin 
@@ -48,7 +48,7 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 
 " the amount of space to use after the glyph character (default ' ')
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " Force extra padding in NERDTree so that the filetype icons line up vertically
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
@@ -102,7 +102,7 @@ highlight GitGutterChangeDelete ctermfg=red ctermbg=237
 
 """"""""""""""""""""""
 " NerdTree
-""""""""""""""""""""""
+"""""""""""""""""""""
 
 " Open NerdTree when start
 "autocmd vimenter * NERDTree
@@ -122,11 +122,11 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = '🢒'
+let g:NERDTreeDirArrowCollapsible = '🢓'
 
 " Show hidden files (bindings: upper i (I))
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 
 
 " █▓▒░ wizard status line
@@ -297,7 +297,13 @@ set tm=500
 " Toggle/untoggle line number
 nmap <C-N><C-N> :set invnumber
 
-
+if &term =~ '256color'
+        " disable Background Color Erase (BCE) so that color schemes
+        "     " render properly when inside 256-color tmux and GNU screen.
+        "         " see also http://sunaku.github.io/vim-256color-bce.html
+        "             set t_ut=
+        "             endif
+endif
 """"""""""""""""""
 " => Scroll
 """"""""""""""""""
@@ -315,6 +321,7 @@ syntax enable
 try
    " colorscheme wwdc16
    colorscheme sourcerer
+   " colorscheme solarized
 catch
 endtry
 
