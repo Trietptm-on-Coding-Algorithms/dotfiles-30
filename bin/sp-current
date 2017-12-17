@@ -1,0 +1,5 @@
+#!/bin/sh
+
+title="$(sp metadata | egrep "title" | cut -b7-)"
+artit="$(sp metadata | egrep "artist" | cut -b8-)"
+echo "$artit - $title" | cut -c1-59

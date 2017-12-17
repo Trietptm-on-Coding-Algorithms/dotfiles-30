@@ -6,15 +6,15 @@
 # HOST="192.168.0.104"
 HOST="127.0.0.1"
 
-mpcs=`mpc -h $HOST status | awk 'NR > 1 {print $1}' RS='[' FS=']'`
+mpcs=`mpc -h $HOST status | sed -n 2p | awk 'NR > 1 {print $1}' RS='[' FS=']'`
 mpcc="$(mpc current | cut -c1-50)" # Print max 49 chars
 
-if [ $mpcs = "playing" ]; then
-    echo " $mpcc"
-elif [ $mpcs = "stop" ]; then
-    echo " $mpcc "
-elif [ $mpcs = "pause" ]; then
-    echo " $mpcc "
+if [[ $mpcs = "playing" ]]; then
+    echo "$mpcc"
+elif [[ $mpcs = "stop" ]]; then
+    echo "$mpcc"
+elif [[ $mpcs = "pause" ]]; then
+    echo "$mpcc"
 else
-    echo " None"
+    exit 1
 fi

@@ -1,7 +1,5 @@
-" Start pathogen plugin manager
-" execute pathogen#infect()
 
-" Requried for Vundle
+" Vundle req
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -237,6 +235,15 @@ set tm=500
 " Toggle/untoggle line number
 nmap <C-N><C-N> :set invnumber
 
+
+""""""""""""""""""
+" => Scroll
+""""""""""""""""""
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -286,8 +293,12 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+"set wrap "Wrap lines
+set nowrap "Don't wrap lines
 
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+set linebreak    "Wrap lines at convenient points
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

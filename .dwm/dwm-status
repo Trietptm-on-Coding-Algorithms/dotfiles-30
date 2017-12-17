@@ -6,4 +6,4 @@ dateshow() {
 }
 
 # echo "$(vpnstatus) : $(batpercent) : $(dateshow)"
-xsetroot -name "$(mpdstatus) :: $(vpnstatus) :: $(batpercent) :: $(dateshow)"
+xsetroot -name " $(mpdstatus || spotify-current || echo None) :: $(vpnstatus) :: $(batpercent || echo Cord) :: $(dateshow)"
