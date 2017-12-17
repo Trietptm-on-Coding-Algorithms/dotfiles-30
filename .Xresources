@@ -10,3 +10,4 @@ Xcursor.theme: ~/.icons/ComixCursors-White/
 
 #include ".Xresources.d/rxvt"
 #include ".Xresources.d/xcalc"
+#include ".Xresources.d/st"

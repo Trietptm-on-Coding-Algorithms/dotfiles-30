@@ -15,3 +15,5 @@ __pycache__/
 .ssh/id_rsa
 .ssh/id_rsa.pub
 .ssh/known_hosts
+
+.vim/bundle/*

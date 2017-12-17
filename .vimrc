@@ -1,4 +1,9 @@
 
+" leader key
+let mapleader = ","
+
+set encoding=utf8
+
 " Vundle req
 set nocompatible
 filetype off
@@ -13,6 +18,9 @@ Plugin 'scrooloose/syntastic' " Syntax error checking
 Plugin 'lilydjwg/colorizer' " Look for color syntax and colorize it
 Plugin 'itchyny/lightline.vim' " Statusbar
 Plugin 'xero/sourcerer.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons' " Adds icons to nerdtree (req nerd-fonts)
 
 call vundle#end()
 
@@ -23,7 +31,31 @@ call vundle#end()
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 
+"""""""""""""""
+" vim-devicons
+" """""""""""""
+
+" Set ui-font
+set guifont=FiraCode\ 11
+
+" loading the plugin 
+let g:webdevicons_enable = 1
+
+" adding the flags to NERDTree 
+let g:webdevicons_enable_nerdtree = 1
+
+" whether or not to show the nerdtree brackets around flags
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
+" the amount of space to use after the glyph character (default ' ')
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+" Force extra padding in NERDTree so that the filetype icons line up vertically
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
+""""""""""""""""""""""""""""""""""""""""
 " vimcompletesme https://git.io/XLcB1A
+""""""""""""""""""""""""""""""""""""""""
 " use omni-complete
 let b:vcm_tab_complete = 'omni'
 set omnifunc=syntaxcomplete#Complete
@@ -67,6 +99,35 @@ highlight GitGutterAdd ctermfg=green ctermbg=237
 highlight GitGutterChange ctermfg=yellow ctermbg=237
 highlight GitGutterDelete ctermfg=red ctermbg=237
 highlight GitGutterChangeDelete ctermfg=red ctermbg=237
+
+""""""""""""""""""""""
+" NerdTree
+""""""""""""""""""""""
+
+" Open NerdTree when start
+"autocmd vimenter * NERDTree
+
+" open NerdTree if started empty
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Open NerdTree when open dir
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Key binding to open NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Close vim if only NerdTree is opened
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Arrows
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" Show hidden files (bindings: upper i (I))
+let NERDTreeShowHidden=1
+
 
 " █▓▒░ wizard status line
 set laststatus=2
@@ -138,6 +199,7 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -308,6 +370,12 @@ set linebreak    "Wrap lines at convenient points
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
+
+""""""""""""""""""""""
+" v/h splits
+""""""""""""""""""""""
+map <leader>sv :vsplit<cr>
+map <leader>sh :split<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers

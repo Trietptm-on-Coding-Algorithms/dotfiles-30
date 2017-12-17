@@ -70,7 +70,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-nf", "#FFFFFF", "-sb", "#2D292E", "-nb", "#2D292E", "-sf", "#FF476A", "-p", "Run:", "-l", "5", NULL };
-static const char *termcmd[]  = { "urxvtc", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *alsa_vol_up[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *alsa_vol_dn[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 static const char *showcal[] = { "showcal", NULL };

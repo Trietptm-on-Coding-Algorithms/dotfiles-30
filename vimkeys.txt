@@ -1,0 +1,17 @@
+<c-n>       : NERDTreeToggle
+<space>     : Search
+<c-space>   : Search backwards
+
+<leader>bd  : Close current buffer
+<leader>l   : bnext
+<leader>h   : bprevious
+
+<leader>tn  : tabnew
+<leader>tw  : tabclose
+<leader>t   : tabnext
+<leader>tl  : toggle between last opened tab
+<leader>te  : new tab in current buffer's path
+<leader>cd  : CWD to current buffer
+
+<c-w>n    : new vert split
+
