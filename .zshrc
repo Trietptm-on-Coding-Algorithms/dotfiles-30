@@ -12,7 +12,10 @@ source "$HOME/.alias/arch" # {gentoo, fedora, arch}
 # PATH's
 export PATH=$HOME/.gem/ruby/2.4.0/bin:$HOME/bin:$HOME/.local/bin:${PATH}
 
-# colored GCC warnings and errors
+# Use 'most' instead of 'less' (mostly for man colors)
+export PAGER='most'
+
+# Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Filetype color output

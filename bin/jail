@@ -1,8 +1,4 @@
 #!/bin/bash
 
-# Usage:
-# fj-start [icon-name] [application]
-
-notify-send -i '/usr/share/icons/Numix-Circle/48x48/apps/'$1 \
-               $2' started in private firejail'
-firejail --seccomp /usr/bin/$2
+echo "Jailed and running: $1" | dzen2 -fn "Inconsolata:pixelsize=14" -x 980 -y 15 -h 18 -w 300 -bg "#2aa198" -fg "white" -p 3
+firejail --seccomp /usr/bin/$1

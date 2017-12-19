@@ -1,5 +1,12 @@
-My personal dotfiles.  
+My personal dotfiles.
 Some files might break your legs. Be careful.
+
+Dependenciesw
+* dmenu
+* dzen2
+* fontawesome font
+* Inconsalata font
+* firejail
 
 # Notes
 dwm is my new playground. Also switched from Gentoo to Arch.

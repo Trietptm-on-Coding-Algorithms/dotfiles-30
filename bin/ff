@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This is needed because dmenu doesn't read aliases.
+
+$HOME/bin/jail firefox
