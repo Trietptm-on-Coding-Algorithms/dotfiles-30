@@ -1,6 +1,8 @@
 alias paci="sudo pacman -S" # Install
 alias pacs="pacman -sS" # Search
 alias pacr="sudo pacman -R" # Remove
+alias pacrd="sudo pacman -Rs" # Remove with dependencies
+alias pacrn="sudo pacman -Rns" # Remove with deps ignore orphan del conf
 alias pacu="sudo pacman -Syu" # Update
 
 alias aurls="echo -n '\e[1;32mListing Installed AUR packages:\e[0m '| pv -qL 20 && pacman -Qqm" #list installed AUR packages

@@ -1,3 +1,8 @@
+newwall() {
+  feh --bg-scale `ls ${HOME}/Pictures/wallpapers | shuf -n1`
+}
+
+
 weather() {
     case $1 in
     "-today")

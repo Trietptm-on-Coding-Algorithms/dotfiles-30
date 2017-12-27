@@ -1,0 +1,14 @@
+#!/bin/bash
+
+lanintf='wlp2s0'
+
+rxb=$(cat /sys/class/net/$lanintf/statistics/rx_bytes)
+txb=$(cat /sys/class/net/$lanintf/statistics/tx_bytes)
+sleep 2
+rxbn=$(cat /sys/class/net/$lanintf/statistics/rx_bytes)
+txbn=$(cat /sys/class/net/$lanintf/statistics/tx_bytes)
+
+rxdif=$(echo "(($rxbn-$rxb)/1024)/2" | bc) && rxdif=$(echo "($rxdif+0.5)/1" | bc)
+txdif=$(echo "(($txbn-$txb)/1024)/2" | bc) && txdif=$(echo "($txdif+0.5)/1" | bc)
+
+echo "$rxdif / $txdif"

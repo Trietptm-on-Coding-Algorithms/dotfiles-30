@@ -48,11 +48,11 @@ alias grep='grep --color=always -n'
 
 alias R='ranger'
 
-alias firefox='jail web-browser firefox'
-alias chromium='jail web-browser chromium'
+alias firefox='jail firefox'
+alias chromium='jail chromium'
 alias google-chrome='jail web-browser google-chrome'
-alias chrome='jail web-browser chrome'
-alias vlc='jail vlc qvlc'
+alias chrome='jail chrome'
+alias vlc='jail qvlc'
 alias transmission-gtk='jail transmission transmission-gtk'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
