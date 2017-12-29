@@ -1,3 +1,5 @@
+alias ta='tmux attach -t $1'
+
 alias spotify-current='sp metadata | egrep "title" | cut -b7- | cut -c1-50'
 
 alias jekyll-serve='bundle exec jekyll serve'

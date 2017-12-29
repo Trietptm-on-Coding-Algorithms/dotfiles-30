@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# This is needed because dmenu doesn't read aliases.
+
+echo "Jailed and running: Chromium" | dzen2 -fn "Inconsolata:pixelsize=14" -x 980 -y 15 -h 18 -w 300 -bg "#2aa198" -fg "white" -p 3
+/usr/bin/firejail chromium

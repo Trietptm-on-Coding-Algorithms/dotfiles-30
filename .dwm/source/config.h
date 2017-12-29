@@ -80,7 +80,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      togglebar,      {0} },
-    { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
+        { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -93,9 +93,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-    { MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
-    { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[4]} },
-    { MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -103,12 +103,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-    { 0,                     XF86XK_AudioRaiseVolume, spawn,   {.v = alsa_vol_up } },
-    { 0,                     XF86XK_AudioLowerVolume, spawn,   {.v = alsa_vol_dn } },
-	TAGKEYS(                 XK_1,                      0)
-	TAGKEYS(                 XK_2,                      1)
-	TAGKEYS(                 XK_3,                      2)
-	TAGKEYS(                 XK_4,                      3)
+	{ 0,                     XF86XK_AudioRaiseVolume, spawn,   {.v = alsa_vol_up } },
+	{ 0,                     XF86XK_AudioLowerVolume, spawn,   {.v = alsa_vol_dn } },
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
@@ -124,7 +124,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-    { ClkStatusText,        0,              Button1,        spawn,          {.v = showcal } },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = showcal } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
