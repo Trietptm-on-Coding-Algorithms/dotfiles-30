@@ -50,12 +50,14 @@ alias grep='grep --color=always -n'
 
 alias R='ranger'
 
+alias mpv='/usr/bin/firejail mpv'
+alias mpvnovid='/usr/bin/firejail mpv --no-video'
 alias firefox='jail firefox'
-alias chromium='jail chromium'
-alias google-chrome='jail web-browser google-chrome'
+alias chromium='~/bin/cf'
+alias google-chrome='jail google-chrome'
 alias chrome='jail chrome'
 alias vlc='jail qvlc'
-alias transmission-gtk='jail transmission transmission-gtk'
+alias transmission-gtk='jail transmission-gtk'
 
 alias downtube='youtube-dl --extract-audio --audio-format mp3'
 alias ncmpcpp-viz='ncmpcpp -s playlist -S visualizer'

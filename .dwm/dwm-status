@@ -1,9 +1,24 @@
 #!/bin/sh
 
+starts() {
+    s1="░"
+    s2="▒"
+    s3="▓"
+    echo -e "$s1$s1$s2"
+}
+
+ends() {
+    s3="░"
+    s2="▒"
+    s1="▓"
+    echo -e "$s2$s3"
+}
+
 dateshow() {
-    thedate="$(date "+%H:%M")"
-    echo -e " $thedate"
+    thedate="$(date "+%A %d %b")"
+    thetime="$(date "+%H:%M")"
+    echo -e " $thedate $thetime"
 }
 
 # echo "$(vpnstatus) : $(batpercent) : $(dateshow)"
-xsetroot -name " $(mpdstatus || spotify-current || echo None) :: $(vpnstatus) :: $(batpercent || echo Cord) :: $(dateshow)"
+xsetroot -name "$(starts)  $(mpdstatus || spotify-current || echo None) :: $(vpnstatus) :: $(batpercent || echo Cord) :: $(dateshow) $(ends)"
