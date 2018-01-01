@@ -14,28 +14,28 @@ URxvt*cursorBlink         : true
 URxvt*cursorUnderline     : true
 URxvt*depth               : 32
 
-URxvt*font         : xft:Monospace:pixelsize=10:Regular
-Uxvt*boldFont      : xft:Monospace:pixelsize=10:Bold
+!URxvt*font         : xft:Monospace:pixelsize=10:Regular
+!URxvt*boldFont     : xft:Monospace:pixelsize=10:Bold
 
-!URxvt*font          : xft:envy code r
+!URxvt*font        : xft:envy code r:pixelsize=10
 
-!URxvt*font		    : xft:Inconsolata:pixelsize=12:Regular
-!URxvt*boldFont	    : xft:Inconsolata:pixelsize=12:Bold
+URxvt*font        : xft:Inconsolata:pixelsize=12:Regular
+URxvt*boldFont    : xft:Inconsolata:pixelsize=12:Bold
 
-!URxvt*font         : xft:DejaVu Sans Mono:pixelsize=12:Regular
-!URxvt*boldFont     : xft:DejaVu Sans Mono:pixelsize=12:Bold
+!URxvt*font        : xft:DejaVu Sans Mono:pixelsize=12:Regular
+!URxvt*boldFont    : xft:DejaVu Sans Mono:pixelsize=12:Bold
 
-!URxvt*font		    : xft:Liberation Mono:pixelsize=12:Regular
-!URxvt*boldFont	    : xft:Liberation Mono:pixelsize=12:Bold
+!URxvt*font        : xft:Liberation Mono:pixelsize=12:Regular
+!URxvt*boldFont    : xft:Liberation Mono:pixelsize=12:Bold
 
-!URxvt*font		    : xft:Fira Code:pixelsize=10:Regular
-!URxvt*boldFont	    : xft:Fira Code:pixelsize=10:Bold
+!URxvt*font        : xft:Fira Code:pixelsize=10:Regular
+!URxvt*boldFont    : xft:Fira Code:pixelsize=10:Bold
 
-!URxvt*font         : xft:Iosevka Term:pixelsize=12:Regular
-!URxvt*boldFont     : xft:Iosevka Term:pixelsize=12:Bold
+!URxvt*font        : xft:Iosevka Term:pixelsize=12:Regular
+!URxvt*boldFont    : xft:Iosevka Term:pixelsize=12:Bold
 
-!URxvt*font         : xft:Tewi:pixelsize=12
+!URxvt*font        : xft:Tewi:pixelsize=12
 
-!URxvt*font		    : xft:Hack:pixelsize=10:Regular
+!URxvt*font        : xft:Hack:pixelsize=10:Regular
 
-URxvt.letterSpace         : -1
+URxvt.letterSpace  : -1

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Extracts IP and Ports from given masscan-log
+# and prints them as IP:PORT
+
+# Usage: ./msscan.sh [FILE]
+
+awk -F'[/ ]' '{p=$4;h=$7; print h":"p}' $1
