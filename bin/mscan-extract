@@ -2,7 +2,13 @@
 
 # Extracts IP and Ports from given masscan-log
 # and prints them as IP:PORT
-
 # Usage: ./msscan.sh [FILE]
+
+# Example use (This will extract all IP:PORTS and put them
+# inside a-href tags with target _blank and breaks after each line.
+#
+#  for i in $(mscan-extract  masscan.test); do                                                                    ~
+#   echo -e "<a href=$i target=_blank>$i</a><br />"
+#  done
 
 awk -F'[/ ]' '{p=$4;h=$7; print h":"p}' $1

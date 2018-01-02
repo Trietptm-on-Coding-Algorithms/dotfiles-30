@@ -25,10 +25,14 @@ sh -c "history -c"
 echo "[$(tput setaf 2)*$(tput sgr0)] Deleting clipboard"
 if [ -f "/usr/bin/xclip" ]; then
 	xclip -i /dev/null
-	if [-f ~/.empty_file]; then rm ~/.empty_file fi
+	if [ -f ~/.empty_file ]; then
+        rm ~/.empty_file
+    fi
 	touch ~/.empty_file
 	xclip -selection clipboard ~/.empty_file
-else echo " ... xclip not fount. Skipping" fi
+else
+    echo " ... xclip not fount. Skipping"
+fi
 
 echo "[$(tput setaf 2)*$(tput sgr0)] Deleting file history"
 if [ -f "~/.local/share/recently-used.xbel" ]; then
