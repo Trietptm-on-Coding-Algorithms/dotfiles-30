@@ -5,9 +5,9 @@
 # Usage: ./msscan.sh [FILE]
 
 # Example use (This will extract all IP:PORTS and put them
-# inside a-href tags with target _blank and breaks after each line.
+# inside a-href tags with target _blank and put breaks after each line.
 #
-#  for i in $(mscan-extract  masscan.test); do                                                                    ~
+#  for i in $(mscan-extract  ~/masscan.test); do
 #   echo -e "<a href=$i target=_blank>$i</a><br />"
 #  done
 
