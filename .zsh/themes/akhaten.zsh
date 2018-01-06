@@ -18,8 +18,13 @@ setopt prompt_subst
 #PROMPT_CHAR="➜"
 # Liberation Mono font
 PROMPT_CHAR="🢖"
-GIT_CHAR="👽"
-# GIT_CHAR="❤"
+GIT_CHAR=""
+# GIT_CHAR="❤"      ☭  👽
+
+# unstaged: you have changes that you have not staged (added) to your git repo
+UNSTAGE_CHAR="!" # %u
+# uncommited: you have changes not yet commited
+UNCOMMIT_CHAR="+" # %c
 
 ON_COLOR="%{$fg[cyan]%}"
 OFF_COLOR="%{$reset_color%}"
@@ -27,13 +32,22 @@ ERR_COLOR="%{$fg[red]%}"
 
 
 autoload -Uz vcs_info
+
 zstyle ':vcs_info:*' actionformats \
     '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+
 zstyle ':vcs_info:*' formats       \
-    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+    '%c%F{5}[%F{2}%b%F{5}]%u%f'
+
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
+zstyle ':vcs_info:*' stagedstr     '%B%F{red}+%f%b'
+zstyle ':vcs_info:*' unstagedstr   '%B%F{yellow}!%f%b'
+
 zstyle ':vcs_info:*' enable git cvs svn
+zstyle ':vcs_info:*' check-for-changes true
+
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-remotebranch
 
 # or use pre_cmd, see man zshcontrib
 vcs_info_wrapper() {
